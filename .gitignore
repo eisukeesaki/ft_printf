@@ -17,10 +17,7 @@
 ._.DS_Store
 
 # VSCode
-.vscode/
-
-# code from other people's GitHub
-#_example/
+.vscode/*
 
 # Prerequisites
 *.d
