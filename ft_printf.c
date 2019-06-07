@@ -3,73 +3,76 @@
 #include <stdarg.h>
 #include "libft/libft.h"
 
-const char	*find_fmt_spec(const char *s)
+size_t	ft_count_substr(const char *s, unsigned int start, char end)
 {
-	static size_t	i;
+	size_t	len;
 
-	i = 0;
-	while (s[i] && s[i] != '%')
-		i++;
-	i++;
-	return (&s[i]);
+	if (!s || !end)
+		return (0);
+
+	len = 0;
+	while (s[start + len] != end && s[start + len])
+		len++;;
+	return (len);
 }
 
-void	ft_printf(size_t ac, const char *s, ...)
+void	ft_print_substr(const char *s, unsigned int start, size_t len)
 {
-	size_t	i = 0;
-	va_list	ap;
+	size_t	i;
 
-	va_start(ap, s);
-
-	if (i > ac)
+	if (!s || len < 1)
 		return ;
 
-	find_fmt_spec(s);
-
-		if (*(find_fmt_spec(s)) == 's')
-		{
-			char *arg = va_arg(ap, char *);
-			ft_putstr(arg);
-			write(1, "\n", 1);
-		}
-		else if (*(find_fmt_spec(s)) == 'd')
-		{
-			int arg = va_arg(ap, int);
-			ft_putnbr(arg);
-			write(1, "\n", 1);
-		}
-	i++;
-	va_end(ap);
+	i = 0;
+	while (i < len)
+	{
+		write(1, &s[start + i], 1);
+		i++;;
+	}
 }
 
-int		main(void)
+int		ft_printf(const char *s, ...)
 {
-	const char	s[] = "str1";
-	int			n = 2147483647;
+	size_t	i;
+	size_t	len;
+	va_list	ap;
 
-	ft_printf(2, "string passed as arg:%s", s, n);
+	i = 0;
+	len = 0;
+	va_start(ap, s);
+	while (s[i])
+	{
+		len = ft_count_substr(s, i, '%');
+		ft_print_substr(s, i, len);
+		i += len + 1;
+	}
+	va_end(ap);
 
 	return (0);
 }
 
-// void	print_ints_strs(int ac, ...)
-// {
-// 	int		i = 0;
-// 	va_list	ap;
+int		main(void)
+{
+	// const char	s[] = "def";
+	// int			n = 2147483647;
 
-// 	va_start(ap, ac);
-// 	while (i < ac)
-// 	{
-// 		char *arg = va_arg(ap, char *);
-// 		ft_putstr(arg);
-// 		write(1, "\n", 1);
-// 		i++;
-// 	}
-// 	va_end(ap);
-// }
+	// ft_printf("abc%sghi%djkl", s, n);
+	ft_printf("moulinette%is%trash");
 
-// int		main(void)
-// {
-// 	print_ints_strs(4, "str1", 1, "str2", 2);
-// 	return (0);
-// }
+	return (0);
+}
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< back up
+		// if (*(find_fmt_spec(s)) == 's')
+		// {
+		// 	char *arg = va_arg(ap, char *);
+		// 	ft_putstr(arg);
+		// 	write(1, "\n", 1);
+		// }
+		// else if (*(find_fmt_spec(s)) == 'd')
+		// {
+		// 	int arg = va_arg(ap, int);
+		// 	ft_putnbr(arg);
+		// 	write(1, "\n", 1);
+		// }
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> back up
