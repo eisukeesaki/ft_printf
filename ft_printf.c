@@ -40,6 +40,12 @@ int		ft_printf(const char *s, ...)
 				ft_putunbr(arg);
 				i++;
 			}
+			else if (s[i + 1] == 'f')
+			{
+				float arg = va_arg(ap, float);
+				
+				i++;
+			}
 		}
 		else
 			write(1, &s[i], 1);
