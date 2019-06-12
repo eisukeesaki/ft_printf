@@ -43,7 +43,7 @@ int		ft_printf(const char *s, ...)
 			else if (s[i + 1] == 'f')
 			{
 				float arg = va_arg(ap, float);
-				
+				// printf float
 				i++;
 			}
 		}
