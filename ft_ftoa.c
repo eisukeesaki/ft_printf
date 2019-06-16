@@ -13,67 +13,77 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-long	ft_ftol(float n, size_t *dgt, size_t *dp, unsigned int *neg)
+long	ft_ftol(float n, size_t *dp, int *neg, int *zp)
 {
 	float	f;
-	long	nb;
+	size_t	dgt;
 
 	f = n;
-	*neg = f < 0 ? 1 : 0;
-	if (f < 0)
+	dgt = 7;
+	if (f < 0) // negative
+	{
+		if (f > -1)
+		{
+			(*zp) = 1;
+			(*dp) = 2;
+		}
+		else
+			(*dp) = 1;
+		*neg = 1;
 		f *= -1;
-	while (f / (int)f != 1) // *1
-	{
-		f = f * 10;
-		(*dp)++;
 	}
-	nb = (long)f;
-	while (nb >= 10)
+	else // positive
 	{
-		(*dgt)++;
-		nb /= 10;
+		*neg = 0;
+		if (f < 1)
+		{
+			(*zp) = 1;
+			(*dp) = 1;
+		}
 	}
-	return (f);
+	while (f >= 1)
+	{
+		f /= 10;
+			(*dp)++;
+	}
+	if (*zp)
+		dgt--;
+	while (dgt--)
+		f *= 10;
+	return ((long)f);
 }
-
-/*
-TODO
-- change *1's loop condition to absolute precision
-- redesign algorithm to find dp position
-- store all digits (absolute precision), sign, dp to array
-*/
 
 char	*ft_ftoa(float n)
 {
-	long			nb;
-	size_t			dgt;
-	size_t			dp;
-	char			*s;
-	unsigned int	neg;
+	long	nb;
+	size_t	i;
+	size_t	dp;
+	char	*s;
+	int		neg;
+	int		zp;
 
-	dgt = 1;
+	if (n == 0)
+		return (ft_strdup("0.000000"));
 	dp = 0;
-	nb = ft_ftol(n, &dgt, &dp, &neg);
-	s = ft_strnew(dgt + neg + 1);
-	dp = dgt - dp;
-	dgt++;
+	zp = 0;
+	nb = ft_ftol(n, &dp, &neg, &zp);
+	i = 7 + neg;
+	s = ft_strnew(i);
 	if (!s)
 		return (NULL);
 	if (neg)
-	{
 		s[0] = '-';
-		dgt++;
-		dp++;
-	}
+	if (zp)
+		s[neg] = '0';
 	s[dp] = '.';
-	while (dgt > 0)
+	while (nb > 0)
 	{
-		if (s[dgt - 1] == '.')
-			dgt--;
+		if (s[i] == '.')
+			i--;
 		else
 		{
-			s[dgt + neg - 1] = (nb % 10) + '0';
-			dgt--;
+			s[i] = (nb % 10) + '0';
+			i--;
 			nb /= 10;
 		}
 	}
@@ -83,12 +93,57 @@ char	*ft_ftoa(float n)
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ftoa
 int		main(void)
 {
-	float	f = -123.456;
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< positive
+	float	f = 0.123456;
 	printf("mine:%s\n", ft_ftoa(f));
 
-	// double	f2 = 123456789.123456;
-	// printf("libc:%lf\n", f2);
+	float	f2 = 0.123456;
+	printf("libc:%lf\n", f2);
+	puts("\n");
 
+	f = 1.234567;
+	printf("mine:%s\n", ft_ftoa(f));
+
+	f2 = 1.234567;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+
+	f = 123.4567;
+	printf("mine:%s\n", ft_ftoa(f));
+
+	f2 = 123.4567;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> positive
+	f = 0;
+	printf("mine:%s\n", ft_ftoa(f));
+
+	f2 = 0;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< negative
+	f = -0.123456;
+	printf("mine:%s\n", ft_ftoa(f));
+
+	f2 = -0.123456;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+
+	f = -1.234567;
+	printf("mine:%s\n", ft_ftoa(f));
+
+	f2 = -1.234567;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+
+	f = -123.4567;
+	printf("mine:%s\n", ft_ftoa(f));
+
+	f2 = -123.4567;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> negative
 	return (0);
 }
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ftoa
@@ -149,3 +204,32 @@ int		main(void)
 // 	return (i);
 // }
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> original count digit
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ftol backup
+// long	ft_ftol(float n, size_t *dgt, size_t *dp, unsigned int *neg)
+// {
+// 	float	f;
+// 	long	nb;
+// 	size_t	i;
+
+// 	f = n;
+// 	*neg = f < 0 ? 1 : 0;
+// 	i = 0;
+// 	if (f < 0)
+// 		f *= -1;
+// 	// while (f / (int)f != 1) // *1
+// 	while (i <= 6)
+// 	{
+// 		f = f * 10;
+// 		(*dp)++;
+// 		i++;
+// 	}
+// 	nb = (long)f;
+// 	while (nb >= 10)
+// 	{
+// 		(*dgt)++;
+// 		nb /= 10;
+// 	}
+// 	return (f);
+// }
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ftol backup
