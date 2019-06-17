@@ -42,8 +42,10 @@ int		ft_printf(const char *s, ...)
 			}
 			else if (s[i + 1] == 'f')
 			{
-				float arg = va_arg(ap, float);
-				// printf float
+				double arg = va_arg(ap, double);
+				char *s = ft_ftoa(arg);
+				ft_putstr(s);
+				free(s);
 				i++;
 			}
 		}
@@ -62,9 +64,10 @@ int		main(void)
 	int				d = -2147483648;
 	char			c = 'A';
 	unsigned int	u = 4294967295;
+	float			f = 123.4567;
 
 	// ft_printf("This %s costs %d dollars%c uint:%u", s, n, c, un);
-	ft_printf("string:%s\nint:%d\nchar:%c\nunsigned int:%u\n", s, d, c, u);
+	ft_printf("string:%s\nint:%d\nchar:%c\nunsigned int:%u\nfloat:%f\n", s, d, c, u, f);
 
 	return (0);
 }
