@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 22:43:35 by eesaki            #+#    #+#             */
-/*   Updated: 2019/06/16 22:55:49 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/06/18 18:10:46 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static char	*populate_array(long nb, size_t *dp, int *neg, int *zp)
 	return (s);
 }
 
-static long	ftol(float n, size_t *dp, int *neg, int *zp)
+static long	ftol(double n, size_t *dp, int *neg, int *zp)
 {
-	float	f;
+	double	f;
 	size_t	dgt;
 
 	f = n;
@@ -70,7 +70,7 @@ static long	ftol(float n, size_t *dp, int *neg, int *zp)
 	return ((long)f);
 }
 
-char		*ft_ftoa(float n)
+char		*ft_ftoa(double n)
 {
 	long	nb;
 	size_t	dp;
@@ -90,10 +90,10 @@ char		*ft_ftoa(float n)
 int			main(void)
 {
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< positive
-	float	f = 0.123456;
+	double	f = 0.123456;
 	printf("mine:%s\n", ft_ftoa(f));
 
-	float	f2 = 0.123456;
+	double	f2 = 0.123456;
 	printf("libc:%lf\n", f2);
 	puts("\n");
 
@@ -145,9 +145,9 @@ int			main(void)
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ftoa
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-// long	ft_ftol(float n, size_t *dp, int *neg, int *zp)
+// long	ft_ftol(double n, size_t *dp, int *neg, int *zp)
 // {
-// 	float	f;
+// 	double	f;
 // 	size_t	dgt;
 
 // 	f = n;
@@ -185,7 +185,7 @@ int			main(void)
 // 	return ((long)f);
 // }
 
-// char	*ft_ftoa(float n)
+// char	*ft_ftoa(double n)
 // {
 // 	long	nb;
 // 	size_t	i;
@@ -226,7 +226,7 @@ int			main(void)
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< count digit
 // int		main(void)
 // {
-// 	float	f = 123.4567;
+// 	double	f = 123.4567;
 // 	size_t	dgt = 0;
 
 // 	printf("ft_count_digit:%lu\n", ft_ftol(f, dgt));
@@ -281,9 +281,9 @@ int			main(void)
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> original count digit
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ftol backup
-// long	ft_ftol(float n, size_t *dgt, size_t *dp, unsigned int *neg)
+// long	ft_ftol(double n, size_t *dgt, size_t *dp, unsigned int *neg)
 // {
-// 	float	f;
+// 	double	f;
 // 	long	nb;
 // 	size_t	i;
 
