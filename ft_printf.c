@@ -64,10 +64,10 @@ int		main(void)
 	int				d = -2147483648;
 	char			c = 'A';
 	unsigned int	u = 4294967295;
-	float			f = 123.4567;
+	float			f = 123.45678;
 
-	// ft_printf("This %s costs %d dollars%c uint:%u", s, n, c, un);
 	ft_printf("string:%s\nint:%d\nchar:%c\nunsigned int:%u\nfloat:%f\n", s, d, c, u, f);
+	printf("libc:%f\n", 1234567891234.123456);
 
 	return (0);
 }
