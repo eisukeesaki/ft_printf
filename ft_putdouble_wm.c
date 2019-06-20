@@ -1,29 +1,91 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dtoa_wm.c                                       :+:      :+:    :+:   */
+/*   ft_putdouble_wm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 22:43:35 by eesaki            #+#    #+#             */
-/*   Updated: 2019/06/18 21:18:30 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/06/20 00:33:28 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h>
 
+static	int	remove_dp(double n)
+{
+	double	nb;
+
+	nb = n;
+	while (nb >= 1)
+	{
+		nb /= 10;
+		(*dp)++;
+	}
+}
+
+static void	zero_point(double n, size_t *dp, int *neg, int *zp)
+{
+	if (n < 0)
+	{
+		if (n > -1)
+			(*dp) = 2;
+		else
+			(*dp) = 1;
+		*neg = 1;
+		n *= -1;
+	}
+	else
+		n < 1 ? (*dp) = 1 : 0;
+	(n < 0 && n > -1) || (n > 0 && n < 1) ? (*zp) = 1 : 0;
+}
+
+static char *populate_fractional_array(int nb)
+{
+	int		i;
+	char	*s;
+
+	i = 5;
+	if (!(s = ft_strnew(6)))
+		return (NULL);
+	while (i >= 0)
+	{
+		s[i] = (nb % 10) + '0';
+		i--;
+		nb /= 10;
+	}
+	return (s);
+}
+
+static char	*convert_fractional(double n, size_t *dp)
+{
+	double	nb;
+	size_t	dgt;
+	size_t	i;
+
+	nb = n;
+	dgt = 6 + (*dp);
+	i = 0;
+	while (i < dgt)
+	{
+		nb *= 10;
+		i++;
+	}
+	return (populate_fractional_array((int)n));
+}
+
 static char	*populate_integer_array(int nb, size_t *dp, int *neg, int *zp)
 {
 	size_t	i;
 	char	*s;
 
-	i = 0;
-	if (!(s = ft_strnew(*dp)))
+	i = *dp - 1;
+	if (!(s = ft_strnew(*dp + *neg)))
 		return (NULL);
-	if (neg)
+	if (*neg)
 		s[0] = '-';
-	if (zp)
+	if (*zp)
 		s[*neg] = '0';
 	while (nb > 0)
 	{
@@ -34,143 +96,150 @@ static char	*populate_integer_array(int nb, size_t *dp, int *neg, int *zp)
 	return (s);
 }
 
-static char *populate_fractional_array(int nb, size_t *dp, size_t *dgt)
-{
-	size_t	i;
-	char	*s;
-
-	i = (*dgt) - (*dp);
-	if (!(s = ft_strnew((*dgt) - (*dp))))
-		return (NULL);
-	while (nb > 0)
-	{
-		s[i] = (nb % 10) + '0';
-		i--;
-		nb /= 10;
-	}
-	return (s);
-}
-
-static void	zero_point(int n, size_t *dp, int *neg, int *zp)
-{
-	int		nb;
-
-	nb = n;
-	if (nb < 0)
-	{
-		if (nb > -1)
-			(*dp) = 2;
-		else
-			(*dp) = 1;
-		*neg = 1;
-		nb *= -1;
-	}
-	else
-		nb < 1 ? (*dp) = 1 : 0;
-	(nb < 0 && nb > -1) || (nb > 0 && nb < 1) ? (*zp) = 1 : 0;
-}
-
-static int	convert(double n, size_t *dp, int *neg, int *zp)
+static char	*convert_integer(double n, size_t *dp, int *neg, int *zp)
 {
 	double	nb;
-	size_t	dgt;
-	char	*itgr;
-	char	*frctnl;
 	size_t	i;
 
 	nb = n;
 	i = 0;
-	zero_point(nb, &dp, &neg, &zp);
 	while (nb >= 1)
 	{
 		nb /= 10;
 		(*dp)++;
 	}
-	itgr =  populate_array(n, &dp, &neg, &zp);
-	dgt = 6 + (*dp);
-	while (i < dgt)
-	{
-		nb *= 10;
-		i++;
-	}
-	frctnl = populate_fractional_array(n, &dp, &dgt);
-
+	return (populate_integer_array((int)n, dp, neg, zp));
 }
 
-char	*ft_dtoa(double n)
+void		ft_putdouble(double n)
 {
-	int		nb;
 	size_t	dp;
 	int		neg;
 	int		zp;
 
 	if (n == 0)
-		return (ft_strdup("0.000000"));
+	{
+		ft_putstr("0.000000");
+		return ;
+	}
 	dp = 0;
 	zp = 0;
 	neg = 0;
-	nb = convert(n, &dp, &neg, &zp);
-	return (populate_array(nb, &dp, &neg, &zp));
+	zero_point(n, &dp, &neg, &zp);
+	ft_putstr(convert_integer(n, &dp, &neg, &zp));
+	write(1, ".", 1);
+	ft_putstr(convert_fractional(n, &dp));
 }
-
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ftoa
 int			main(void)
 {
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< basic
+	double	f = 789.123456;
+	printf("mine:");
+	ft_putdouble(f);
+	puts("\n");
+
+	double	f2 = 789.123456;
+	printf("libc:%lf\n", f2);
+	puts("\n");
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> basic
+
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< positive
-	double	f = 0.123456;
-	printf("mine:%s\n", ft_ftoa(f));
+	// double	f = 0.123456;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
 
-	double	f2 = 0.123456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// double	f2 = 0.123456;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
 
-	f = 1.123456;
-	printf("mine:%s\n", ft_ftoa(f));
+	// f = 1.123456;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
 
-	f2 = 1.123456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// f2 = 1.123456;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
 
-	f = 1234567891.123456;
-	printf("mine:%s\n", ft_ftoa(f));
+	// f = 1234567891.123456;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
 
-	f2 = 1234567891.123456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// f2 = 1234567891.123456;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> positive
-	f = 0;
-	printf("mine:%s\n", ft_ftoa(f));
 
-	f2 = 0;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 0
+	// f = 0;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
+
+	// f2 = 0;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 0
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< negative
-	f = -0.123456;
-	printf("mine:%s\n", ft_ftoa(f));
+	// f = -0.123456;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
 
-	f2 = -0.123456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// f2 = -0.123456;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
 
-	f = -1.23456;
-	printf("mine:%s\n", ft_ftoa(f));
+	// f = -1.23456;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
 
-	f2 = -1.23456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// f2 = -1.23456;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
 
-	f = -1234567891.123456;
-	printf("mine:%s\n", ft_ftoa(f));
+	// f = -1234567891.123456;
+	// printf("mine:");
+	// ft_putdouble(f);
+	// puts("\n");
 
-	f2 = -1234567891.123456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
+	// f2 = -1234567891.123456;
+	// printf("libc:%lf\n", f2);
+	// puts("\n");
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> negative
+
 	return (0);
 }
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ftoa
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< backup
+// static char	*populate_integer_array(int nb, size_t *dp, int *neg, int *zp)
+// {
+// 	size_t	i;
+// 	char	*s;
+
+// 	i = *dp - 1;
+// 	if (!(s = ft_strnew(*dp)))
+// 		return (NULL);
+// 	if (*neg)
+// 		s[0] = '-';
+// 	if (*zp)
+// 		s[*neg] = '0';
+// 	while (nb > 0)
+// 	{
+// 		s[i] = (nb % 10) + '0';
+// 		i--;
+// 		nb /= 10;
+// 	}
+// 	return (s);
+// }
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> backup
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // long	ft_ftol(double n, size_t *dp, int *neg, int *zp)
