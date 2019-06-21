@@ -6,47 +6,21 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 22:43:35 by eesaki            #+#    #+#             */
-/*   Updated: 2019/06/20 00:33:28 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/06/20 20:40:42 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h>
 
-static	int	remove_dp(double n)
+static char *populate_fractional_array(long long n)
 {
-	double	nb;
-
-	nb = n;
-	while (nb >= 1)
-	{
-		nb /= 10;
-		(*dp)++;
-	}
-}
-
-static void	zero_point(double n, size_t *dp, int *neg, int *zp)
-{
-	if (n < 0)
-	{
-		if (n > -1)
-			(*dp) = 2;
-		else
-			(*dp) = 1;
-		*neg = 1;
-		n *= -1;
-	}
-	else
-		n < 1 ? (*dp) = 1 : 0;
-	(n < 0 && n > -1) || (n > 0 && n < 1) ? (*zp) = 1 : 0;
-}
-
-static char *populate_fractional_array(int nb)
-{
-	int		i;
-	char	*s;
+	int			i;
+	char		*s;
+	long long	nb;
 
 	i = 5;
+	nb = n;
 	if (!(s = ft_strnew(6)))
 		return (NULL);
 	while (i >= 0)
@@ -58,29 +32,29 @@ static char *populate_fractional_array(int nb)
 	return (s);
 }
 
-static char	*convert_fractional(double n, size_t *dp)
+static char	*convert_fractional(double n)
 {
 	double	nb;
-	size_t	dgt;
 	size_t	i;
 
 	nb = n;
-	dgt = 6 + (*dp);
 	i = 0;
-	while (i < dgt)
+	while (i < 6)
 	{
 		nb *= 10;
 		i++;
 	}
-	return (populate_fractional_array((int)n));
+	return (populate_fractional_array((long long)nb));
 }
 
-static char	*populate_integer_array(int nb, size_t *dp, int *neg, int *zp)
+static char	*populate_integer_array(long long n, size_t *dp, int *neg, int *zp)
 {
-	size_t	i;
-	char	*s;
+	size_t		i;
+	char		*s;
+	long long	nb;
 
 	i = *dp - 1;
+	nb = n;
 	if (!(s = ft_strnew(*dp + *neg)))
 		return (NULL);
 	if (*neg)
@@ -108,7 +82,24 @@ static char	*convert_integer(double n, size_t *dp, int *neg, int *zp)
 		nb /= 10;
 		(*dp)++;
 	}
-	return (populate_integer_array((int)n, dp, neg, zp));
+	return (populate_integer_array((long long)n, dp, neg, zp));
+}
+
+static void	check_negative(double *n, size_t *dp, int *neg, int *zp)
+{
+	if (*n < 0)
+	{
+		if (*n > -1)
+			(*dp) = 2;
+		else
+			(*dp) = 1;
+		*neg = 1;
+		*n *= -1;
+	}
+	else if (*n < 1)
+			(*dp) = 1; // *n < 1 ? (*dp) = 1 : 0
+	if ((*n < 0 && *n > -1) || (*n > 0 && *n < 1))
+		(*zp) = 1; // (*n < 0 && *n > -1) || (*n > 0 && *n < 1) ? (*zp) = 1 : 0;
 }
 
 void		ft_putdouble(double n)
@@ -125,93 +116,136 @@ void		ft_putdouble(double n)
 	dp = 0;
 	zp = 0;
 	neg = 0;
-	zero_point(n, &dp, &neg, &zp);
+	check_negative(&n, &dp, &neg, &zp);
 	ft_putstr(convert_integer(n, &dp, &neg, &zp));
 	write(1, ".", 1);
-	ft_putstr(convert_fractional(n, &dp));
+	ft_putstr(convert_fractional(n));
 }
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ftoa
 int			main(void)
 {
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< basic
-	double	f = 789.123456;
-	printf("mine:");
-	ft_putdouble(f);
-	puts("\n");
-
-	double	f2 = 789.123456;
-	printf("libc:%lf\n", f2);
-	puts("\n");
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> basic
-
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< positive
-	// double	f = 0.123456;
-	// printf("mine:");
+	// ft_putstr("mine:");
+	// double	f = 789.123456;
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
 
-	// double	f2 = 0.123456;
+	// double	f2 = 789.123456;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
+	// ft_putstr("\n");
+
+	// f = 0.123456;
+	// ft_putstr("mine:");
+	// ft_putdouble(f);
+	// ft_putstr("\n");
+
+	// f2 = 0.123456;
+	// printf("libc:%lf\n", f2);
+	// ft_putstr("\n");
 
 	// f = 1.123456;
-	// printf("mine:");
+	// ft_putstr("mine:");
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f2 = 1.123456;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f = 1234567891.123456;
-	// printf("mine:");
+	// ft_putstr("mine:");
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f2 = 1234567891.123456;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
+	// ft_putstr("\n");
+
+	// f = 1020304050.060708;
+	// ft_putstr("mine:");
+	// ft_putdouble(f);
+	// ft_putstr("\n");
+
+	// f2 = 1020304050.060708;
+	// printf("libc:%lf\n", f2);
+	// ft_putstr("\n");
+
+	double	f = 9223372036854.123456;
+	ft_putstr("mine:");
+	ft_putdouble(f);
+	ft_putstr("\n");
+
+	double	f2 = 9223372036854.123456;
+	printf("libc:%lf\n", f2);
+	ft_putstr("\n");
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> positive
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 0
 	// f = 0;
-	// printf("mine:");
+	// ft_putstr("mine:");
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f2 = 0;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 0
+	// ft_putstr("\n");
+	// // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 0
 
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< negative
-	// f = -0.123456;
-	// printf("mine:");
+	// // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< negative
+	// ft_putstr("mine:");
+	// f = -789.123456;
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
+
+	// f2 = -789.123456;
+	// printf("libc:%lf\n", f2);
+	// ft_putstr("\n");
+
+	// f = -0.123456;
+	// ft_putstr("mine:");
+	// ft_putdouble(f);
+	// ft_putstr("\n");
 
 	// f2 = -0.123456;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f = -1.23456;
-	// printf("mine:");
+	// ft_putstr("mine:");
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f2 = -1.23456;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f = -1234567891.123456;
-	// printf("mine:");
+	// ft_putstr("mine:");
 	// ft_putdouble(f);
-	// puts("\n");
+	// ft_putstr("\n");
 
 	// f2 = -1234567891.123456;
 	// printf("libc:%lf\n", f2);
-	// puts("\n");
+	// ft_putstr("\n");
+
+	// f = -1020304050.060708;
+	// ft_putstr("mine:");
+	// ft_putdouble(f);
+	// ft_putstr("\n");
+
+	// f2 = -1020304050.060708;
+	// printf("libc:%lf\n", f2);
+	// ft_putstr("\n");
+
+	// f = -9223372036854775807.123456;
+	// ft_putstr("mine:");
+	// ft_putdouble(f);
+	// ft_putstr("\n");
+
+	// f2 = -9223372036854775807.123456;
+	// printf("libc:%lf\n", f2);
+	// ft_putstr("\n");
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> negative
 
 	return (0);
