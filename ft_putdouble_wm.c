@@ -6,12 +6,15 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 22:43:35 by eesaki            #+#    #+#             */
-/*   Updated: 2019/06/20 20:40:42 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/06/20 22:25:16 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h>
+
+// note:
+// f = f - (long)f
 
 static char *populate_fractional_array(long long n)
 {
@@ -171,12 +174,21 @@ int			main(void)
 	// printf("libc:%lf\n", f2);
 	// ft_putstr("\n");
 
-	double	f = 9223372036854.123456;
+	// f = 9223372036854.123456;
+	// ft_putstr("mine:");
+	// ft_putdouble(f);
+	// ft_putstr("\n");
+
+	// f2 = 9223372036854.123456;
+	// printf("libc:%lf\n", f2);
+	// ft_putstr("\n");
+
+	double	f = 9223372036854775807.123456;
 	ft_putstr("mine:");
 	ft_putdouble(f);
 	ft_putstr("\n");
 
-	double	f2 = 9223372036854.123456;
+	double	f2 = 9223372036854775807.123456;
 	printf("libc:%lf\n", f2);
 	ft_putstr("\n");
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> positive
