@@ -34,7 +34,7 @@ void ftoa(float n, char *res, int afterpoint)
 {
     int ipart = (int)n;
     float fpart = n - (float)ipart;
-    int i = intToStr(ipart, res, 0);
+    int i = intToStr(ipart, res, 12);
 
     if (afterpoint != 0)
     {
@@ -47,9 +47,9 @@ void ftoa(float n, char *res, int afterpoint)
 int main()
 {
     char res[100];
-    double n = 9223372036854.123456;
+    double n = 123456.123456;
     ftoa(n, res, 6);
     printf("\n\"%s\"\n", res);
-    printf("libc:%f\n", 9223372036854.123456);
+    printf("libc:%f\n", 123456.123456);
     return 0;
 }
