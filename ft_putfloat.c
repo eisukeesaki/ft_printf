@@ -17,37 +17,37 @@ size_t	ft_count_digit(long n)
 	return (i);
 }
 
-void	reverse_array(char *s, size_t **len)
+void	reverse_array(char *s, size_t len)
 {
-	size_t	i;
-	size_t	k;
+	size_t	head;
+	size_t	tail;
 	char	tmp;
 
-	i = 0;
-	k = **len - 1;
-	while (i < k)
+	head = 0;
+	tail = len - 1;
+	while (head < tail)
 	{
-		tmp = s[i];
-		s[i] = s[k];
-		s[k] = tmp;
-		i++;
-		k--;
+		tmp = s[head];
+		s[head] = s[tail];
+		s[tail] = tmp;
+		head++;
+		tail--;
 	}
 }
 
-void	convert_to_str(long part, char *s, size_t *i)
+void	convert_to_str(long part, char *s)
 {
-	// size_t	i;
+	size_t	i;
 
-	// i = 0;
+	i = 0;
 	while (part)
 	{
-		s[(*i)++] = part % 10 + '0';
+		s[i++] = part % 10 + '0';
 		part /= 10;
 	}
-	reverse_array(s, &i);
-	s[(*i)] = '\0';
-	// return (i);
+	reverse_array(s, i);
+	s[i] = '\0';
+	return (i);
 }
 
 void	ft_putfloat(double n, size_t prec)
