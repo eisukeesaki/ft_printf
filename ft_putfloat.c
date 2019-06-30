@@ -33,25 +33,15 @@ char	*assign_int_part(long double n, char *s, size_t len, int neg)
 		s[i] = '-';
 	while (i < len)
 	{
-		if (s[i] == '.')
-			i++;
-		else
-		{
-			s[i] = ((int)ft_fmod(n, 10)) + '0';
-			n /= 10;
-			i++;
-		}
+		s[i] = ((int)ft_fmod(n, 10)) + '0';
+		n /= 10;
+		i++;
 	}
 	s = reverse_str(s, len);
 	s[i] = '.';
 	return (s);
 }
 
-char	*assign_dp(size_t slen, size_t prec, char *s, int neg)
-{
-	s[(slen - 1) - prec + neg] = '.';
-	return (s);
-}
 
 size_t	ct_int_part(long double n)
 {
@@ -90,10 +80,18 @@ void	ft_putfloat(long double n, size_t prec)
 
 int		main(void)
 {
-	// long double	n = 123.456789;
-	long double	n = 1234567890123456789.123456;
+	long double	n = 123.456789;
+	// long double	n = 1234567890123456789.123456;
 
 	ft_putfloat(n, 6);
 
 	return (0);
 }
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// char	*assign_dp(size_t slen, size_t prec, char *s, int neg)
+// {
+// 	s[(slen - 1) - prec + neg] = '.';
+// 	return (s);
+// }
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
