@@ -1,28 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putfloat.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/30 23:21:04 by eesaki            #+#    #+#             */
+/*   Updated: 2019/07/01 00:44:05 by eesaki           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft/libft.h"
 
-int	ft_pow(int base, int exponent)
+char		*reverse_str(char *s, size_t len)
 {
-	int		res;
-
-	res = base;
-	while (1 < exponent)
-	{
-		res *= base;
-		exponent--;
-	}
-	return (res);
-}
-
-long double	ft_fmod(long double n, long double div)
-{
-	return (n - div * (long)(n / div));
-}
-
-char	*reverse_str(char *s, size_t len)
-{
-	size_t	i;
-	size_t	k;
-	char	tmp;
+	size_t		i;
+	size_t		k;
+	char		tmp;
 
 	i = 0;
 	k = len - 1;
@@ -37,10 +31,10 @@ char	*reverse_str(char *s, size_t len)
 	return (s);
 }
 
-char	*assign_int_part(long double n, size_t len)
+char		*assign_int_part(long double n, size_t len)
 {
-	char	*s;
-	size_t	i;
+	char		*s;
+	size_t		i;
 
 	if (len == 0)
 	{
@@ -62,11 +56,11 @@ char	*assign_int_part(long double n, size_t len)
 	return (s);
 }
 
-char	*assign_frac_part(long double n, size_t prec)
+char		*assign_frac_part(long double n, size_t prec)
 {
-	char	*s;
+	char		*s;
 	long double	nb;
-	size_t	i;
+	size_t		i;
 
 	s = ft_strnew(prec);
 	nb = (n - (long)n) * ft_pow(10, prec);
@@ -81,9 +75,9 @@ char	*assign_frac_part(long double n, size_t prec)
 	return (s);
 }
 
-size_t	ct_int_part(long double n)
+size_t		ct_int_part(long double n)
 {
-	size_t	len;
+	size_t		len;
 
 	len = 0;
 	while (n > 1)
@@ -104,11 +98,11 @@ long double	check_neg(long double n)
 	return (n);
 }
 
-void	ft_putfloat(long double n, size_t prec)
+void		ft_putfloat(long double n, size_t prec)
 {
-	char	*int_part;
-	char	*frac_part;
-	size_t	len;
+	char		*int_part;
+	char		*frac_part;
+	size_t		len;
 	long double	nb;
 
 	nb = check_neg(n);
