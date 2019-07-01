@@ -1,9 +1,21 @@
-#include <stdio.h>
 #include "libft/libft.h"
+
+int	ft_pow(int base, int exponent)
+{
+	int		res;
+
+	res = base;
+	while (1 < exponent)
+	{
+		res *= base;
+		exponent--;
+	}
+	return (res);
+}
 
 long double	ft_fmod(long double n, long double div)
 {
-	return (n - div * (long)(n / div)); // use of type casting becomes a bottleneck
+	return (n - div * (long)(n / div));
 }
 
 char	*reverse_str(char *s, size_t len)
@@ -25,12 +37,20 @@ char	*reverse_str(char *s, size_t len)
 	return (s);
 }
 
-char	*assign_int_part(long double n, char *s, size_t len, int neg)
+char	*assign_int_part(long double n, size_t len)
 {
+	char	*s;
 	size_t	i;
 
-	if ((i = neg))
-		s[i] = '-';
+	if (len == 0)
+	{
+		s = ft_strnew(2);
+		s[0] = '0';
+		s[1] = '.';
+		return (s);
+	}
+	s = ft_strnew(len + 1);
+	i = 0;
 	while (i < len)
 	{
 		s[i] = ((int)ft_fmod(n, 10)) + '0';
@@ -42,6 +62,24 @@ char	*assign_int_part(long double n, char *s, size_t len, int neg)
 	return (s);
 }
 
+char	*assign_frac_part(long double n, size_t prec)
+{
+	char	*s;
+	long double	nb;
+	size_t	i;
+
+	s = ft_strnew(prec);
+	nb = (n - (long)n) * ft_pow(10, prec);
+	i = 0;
+	while (i < prec)
+	{
+		s[i] = ((int)ft_fmod(nb, 10)) + '0';
+		nb /= 10;
+		i++;
+	}
+	s = reverse_str(s, prec);
+	return (s);
+}
 
 size_t	ct_int_part(long double n)
 {
@@ -56,42 +94,27 @@ size_t	ct_int_part(long double n)
 	return (len);
 }
 
-int		check_neg(long double n)
+long double	check_neg(long double n)
 {
-	return (n < 0 ? 1 : 0);
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		return (-n);
+	}
+	return (n);
 }
 
 void	ft_putfloat(long double n, size_t prec)
 {
 	char	*int_part;
-	// char	*frac_part;
+	char	*frac_part;
 	size_t	len;
-	int		neg;
+	long double	nb;
 
-	neg = check_neg(n);
-	len = ct_int_part(n);
-	int_part = ft_strnew(neg + len + 1);
-	int_part = assign_int_part(n, int_part, len, neg);
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< debug
-	printf("<dbg%lu>\n", prec);
+	nb = check_neg(n);
+	len = ct_int_part(nb);
+	int_part = assign_int_part(nb, len);
+	frac_part = assign_frac_part(nb, prec);
 	ft_putstr(int_part);
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> debug
+	ft_putstr(frac_part);
 }
-
-int		main(void)
-{
-	long double	n = 123.456789;
-	// long double	n = 1234567890123456789.123456;
-
-	ft_putfloat(n, 6);
-
-	return (0);
-}
-
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-// char	*assign_dp(size_t slen, size_t prec, char *s, int neg)
-// {
-// 	s[(slen - 1) - prec + neg] = '.';
-// 	return (s);
-// }
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
