@@ -6,30 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 23:21:04 by eesaki            #+#    #+#             */
-/*   Updated: 2019/07/01 00:44:05 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/07/01 19:59:57 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-
-char		*reverse_str(char *s, size_t len)
-{
-	size_t		i;
-	size_t		k;
-	char		tmp;
-
-	i = 0;
-	k = len - 1;
-	while (i < k)
-	{
-		tmp = s[i];
-		s[i] = s[k];
-		s[k] = tmp;
-		i++;
-		k--;
-	}
-	return (s);
-}
 
 char		*assign_int_part(long double n, size_t len)
 {
@@ -51,7 +32,7 @@ char		*assign_int_part(long double n, size_t len)
 		n /= 10;
 		i++;
 	}
-	s = reverse_str(s, len);
+	s = ft_strrev(s);
 	s[i] = '.';
 	return (s);
 }
@@ -71,7 +52,7 @@ char		*assign_frac_part(long double n, size_t prec)
 		nb /= 10;
 		i++;
 	}
-	s = reverse_str(s, prec);
+	s = ft_strrev(s);
 	return (s);
 }
 
