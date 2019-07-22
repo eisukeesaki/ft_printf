@@ -6,13 +6,13 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 23:21:04 by eesaki            #+#    #+#             */
-/*   Updated: 2019/07/01 19:59:57 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/07/01 21:08:26 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
-char		*assign_int_part(long double n, size_t len)
+static char			*assign_int_part(long double n, size_t len)
 {
 	char		*s;
 	size_t		i;
@@ -37,7 +37,7 @@ char		*assign_int_part(long double n, size_t len)
 	return (s);
 }
 
-char		*assign_frac_part(long double n, size_t prec)
+static char			*assign_frac_part(long double n, size_t prec)
 {
 	char		*s;
 	long double	nb;
@@ -56,7 +56,7 @@ char		*assign_frac_part(long double n, size_t prec)
 	return (s);
 }
 
-size_t		ct_int_part(long double n)
+static size_t		ct_int_part(long double n)
 {
 	size_t		len;
 
@@ -69,7 +69,7 @@ size_t		ct_int_part(long double n)
 	return (len);
 }
 
-long double	check_neg(long double n)
+static long double	check_neg(long double n)
 {
 	if (n < 0)
 	{
@@ -79,7 +79,7 @@ long double	check_neg(long double n)
 	return (n);
 }
 
-void		ft_putfloat(long double n, size_t prec)
+void				ft_putfloat(long double n, size_t prec)
 {
 	char		*int_part;
 	char		*frac_part;
@@ -92,4 +92,6 @@ void		ft_putfloat(long double n, size_t prec)
 	frac_part = assign_frac_part(nb, prec);
 	ft_putstr(int_part);
 	ft_putstr(frac_part);
+	free(int_part);
+	free(frac_part);
 }
