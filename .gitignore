@@ -19,6 +19,9 @@
 # VSCode
 .vscode/*
 
+# Unnecessary dirs
+ex_glprl/
+
 # Prerequisites
 *.d
 
