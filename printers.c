@@ -1,5 +1,5 @@
 #include "libft/libft.h"
-#include <stdarg.h>
+#include "printf.h"
 
 void	ft_putfloat(long double n, size_t prec);
 
