@@ -10,4 +10,12 @@ void			dispatch_u(va_list ap);
 
 typedef void	printer(va_list);
 
+typedef struct	s_format
+{
+	char	flags;
+	int		min_field_width;
+	int		precision;
+	char	length;
+}				t_format;
+
 #endif
