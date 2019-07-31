@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "../../libft/libft.h"
+
+void		ft_putoctal(int d);
 
 int		main(void)
 {
@@ -17,9 +20,8 @@ int		main(void)
 	// }
 
 	printf("libc:%o\n", d);
-	printf("mine:");
+	ft_putstr("mine:");
 	ft_putoctal(d);
-	printf("\n");
 
 	return (0);
 }
