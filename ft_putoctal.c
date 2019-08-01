@@ -6,48 +6,32 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:21:17 by eesaki            #+#    #+#             */
-/*   Updated: 2019/07/29 00:03:54 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/07/31 19:41:41 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 // #include "ft_printf.h"
 
-static void	output(long n)
+void		ft_putoctal(unsigned long long d)
 {
-	if (n >= 10)
-		output(n / 10);
-	ft_putchar(n % 10 + '0');
-}
+	unsigned long long	n;
+	int					rem;
+	char				octal[21];
+	int					i;
 
-static void	ft_putlong(long n)
-{
-	long	nb;
-
-	nb = n;
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	output(nb);
-}
-
-// void	ft_putoctal(int d, t_format format)
-void		ft_putoctal(int d)
-{
-	long	n;
-	long	rem;
-	long	shift;
-
-	n = (long)d;
-	rem = 0;
-	shift = 1;
-	while (n)
-	{
-		shift *= 10;
-		rem += (n % 8) * shift;
-		n /= 8;
-	}
-	ft_putlong(rem / 10);
+	n = d;
+	i = 0;
+	if (n == 0)
+		octal[i++] = '0';
+	else
+		while (n)
+		{
+			rem = n % 8;
+			n /= 8;
+			octal[i] = rem + '0';
+			i++;
+		}
+	octal[i] = '\0';
+	ft_putstr(ft_strrev(octal));
 }
