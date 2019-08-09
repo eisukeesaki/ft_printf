@@ -8,6 +8,7 @@
 printer *g_jump_table[256] =
 {
 	['d'] = &dispatch_d,
+	['i'] = &dispatch_d,
 	['c'] = &dispatch_c,
 	['s'] = &dispatch_s,
 	['f'] = &dispatch_f,
