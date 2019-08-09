@@ -6,14 +6,16 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 19:11:52 by eesaki            #+#    #+#             */
-/*   Updated: 2019/07/31 21:12:27 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/09 16:36:41 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../../libft/libft.h"
 #include <stdio.h>
 #include <limits.h>
 // #include "ft_printf.h"
+
+void		ft_puthex_lower(unsigned long long d);
 
 int		main(void)
 {
@@ -31,12 +33,14 @@ int		main(void)
 
 	// long long			n = LLONG_MIN;
 	// long long			n = LONG_MAX;
-	unsigned long long	n = ULLONG_MAX;
+	// unsigned long long	n = ULLONG_MAX;
+
+	int						n = 123456789;
 
 
 	// while (n < 100)
 	// {
-		printf("libc:%llX\n", n);
+		printf("libc:%x\n", n);
 		ft_putstr("mine:");
 		ft_puthex_lower(n);
 		ft_putstr("\n\n");
