@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:44:47 by eesaki            #+#    #+#             */
-/*   Updated: 2019/07/31 21:05:56 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/09 17:45:29 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_putoctal(unsigned long long d);
 void	ft_putunbr(unsigned int n);
 void	ft_puthex_upper(unsigned long long d);
 void	ft_puthex_lower(unsigned long long d);
+void	ft_putptr(void *p);
 
 void	dispatch_d(va_list ap)
 {
@@ -83,4 +84,12 @@ void	dispatch_x(va_list ap)
 
 	arg = va_arg(ap, unsigned long long);
 	ft_puthex_lower(arg);
+}
+
+void	dispatch_p(va_list ap)
+{
+	void	*arg;
+
+	arg = va_arg(ap, void *);
+	ft_putptr(arg);
 }
