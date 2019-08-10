@@ -16,6 +16,7 @@ printer *g_jump_table[256] =
 	['o'] = &dispatch_o,
 	['X'] = &dispatch_X,
 	['x'] = &dispatch_x,
+	['p'] = &dispatch_p,
 };
 
 int		ft_printf(const char *s, ...)
@@ -54,6 +55,7 @@ int		main(void)
 	unsigned 		o = 123456;
 	unsigned		X = 123456;
 	unsigned		x = 123456;
+	int				*p = &d;
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %s
 	ft_putstr("<%s>\n");
@@ -118,6 +120,14 @@ int		main(void)
 	ft_printf("%x", x);
 	ft_putstr("\n</%x>\n\n");
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %x
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %p
+	ft_putstr("<%p>\n");
+	printf("libc:%p\n", p);
+	ft_putstr("mine:");
+	ft_printf("%p", p);
+	ft_putstr("\n</%p>\n\n");
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %p
 
 	return (0);
 }
