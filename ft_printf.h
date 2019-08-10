@@ -10,6 +10,7 @@ void			dispatch_u(va_list ap);
 void			dispatch_o(va_list ap);
 void			dispatch_X(va_list ap);
 void			dispatch_x(va_list ap);
+void			dispatch_p(va_list ap);
 
 typedef void	printer(va_list);
 
