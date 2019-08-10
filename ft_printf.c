@@ -17,6 +17,7 @@ printer *g_jump_table[256] =
 	['X'] = &dispatch_X,
 	['x'] = &dispatch_x,
 	['p'] = &dispatch_p,
+	// ['%'] = &dispatch_amp,
 };
 
 int		ft_printf(const char *s, ...)
@@ -35,6 +36,8 @@ int		ft_printf(const char *s, ...)
 				g_jump_table[(unsigned char)s[i + 1]](ap);
 				i++;
 			}
+			else if (s[i + 1] == '%')
+				ft_putchar('%');
 		}
 		else
 			write(1, &s[i], 1);
@@ -128,6 +131,24 @@ int		main(void)
 	ft_printf("%p", p);
 	ft_putstr("\n</%p>\n\n");
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %p
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%
+	ft_putstr("<%%>\n");
+	printf("libc:%%\n");
+	ft_putstr("mine:");
+	ft_printf("%%");
+	ft_putstr("\n</%%>\n\n");
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %%
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< combined
+	ft_putstr("<combined (libc)>\n");
+	printf("libc:int => %d\nampersand => %%\nhex(lower) => %x", d, x);
+	setbuf(stdout, NULL);
+	ft_putstr("\n</combined (libc)>\n\n");
+	ft_putstr("<combined (min)>\n");
+	ft_printf("mine:int => %d\nampersand => %%\nhex(lo) => %x", d, x);
+	ft_putstr("\n</combined (min)>\n\n");
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> combined
 
 	return (0);
 }
