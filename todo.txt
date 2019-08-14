@@ -1,0 +1,16 @@
+[] length modifier
+	[] diouxX (conversions) with...
+		[] hh
+		[] h
+		[] l
+		[] ll
+	[] f (conversion) with...
+		[] l
+		[] L
+	[] #
+	[] 0
+	[] -
+	[] +
+
+[] minimum field width
+[] precision

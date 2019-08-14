@@ -5,47 +5,83 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-printer *g_jump_table[256] =
+int		parse_format(void)
 {
-	['d'] = &dispatch_d,
-	['i'] = &dispatch_d,
-	['c'] = &dispatch_c,
-	['s'] = &dispatch_s,
-	['f'] = &dispatch_f,
-	['u'] = &dispatch_u,
-	['o'] = &dispatch_o,
-	['X'] = &dispatch_X,
-	['x'] = &dispatch_x,
-	['p'] = &dispatch_p,
-	// ['%'] = &dispatch_amp,
-};
+	ft_putstr("parse_format called");
+	return (1);
+}
 
-int		ft_printf(const char *s, ...)
+ssize_t	parse(const char *format, t_format *recipe, va_list ap)
 {
 	size_t	i;
-	va_list	ap;
-
+	
 	i = 0;
-	va_start(ap, s);
-	while (s[i])
+	while (format[i] != '%' && format[i])
 	{
-		if (s[i] == '%')
+		if (!(ft_strchr(ALLSYMBOLS, format[i])))
+			recipe->nprinted += write(1, &format[i], 1);
+		else if (format[i] == '%')
 		{
-			if (g_jump_table[(unsigned char)s[i + 1]])
+			if (!(ft_strchr(ALLSYMBOLS, format[i + 1])))
+				break;
+			while (ft_strchr(ALLSYMBOLS, format[i]))
 			{
-				g_jump_table[(unsigned char)s[i + 1]](ap);
 				i++;
+				if (ft_strchr(CONVERSIONS, format[i]))
+				{
+					recipe->nprinted = parse_format() + 2;
+					break ;
+				}
+				else
+					recipe->nprinted = parse_format();
 			}
-			else if (s[i + 1] == '%')
-				ft_putchar('%');
+			continue;
 		}
-		else
-			write(1, &s[i], 1);
 		i++;
 	}
+	return (recipe->nprinted);
+}
+
+void	bzero_recipe(t_format *recipe)
+{
+	recipe->nprinted = 0;
+	recipe->i = 0;
+	recipe->len = 0;
+	recipe->hash = 0;
+	recipe->zero = 0;
+	recipe->minus = 0;
+	recipe->plus = 0;
+	recipe->space = 0;
+	recipe->width = 0;
+	recipe->precision = 0;
+	recipe->length = 0;
+}
+
+int		ft_printf(const char *format, ...)
+{
+	t_format	*recipe;
+	ssize_t		printed_bytes;
+	int			format_len;
+	va_list		ap;
+
+	format_len = ft_strlen(format);
+
+	if (!(recipe = (t_format *)malloc(sizeof(t_format))))
+		return (0);
+
+	bzero_recipe(recipe);
+
+	recipe->format = format;
+
+	va_start(ap, format);
+
+	printed_bytes = parse(format, recipe, ap);
+
+	// parse_conversion(format, ap, parse_format(format, ap));
+
 	va_end(ap);
 
-	return (0);
+	return (printed_bytes);
 }
 
 int		main(void)
@@ -152,3 +188,87 @@ int		main(void)
 
 	return (0);
 }
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< backup
+// int		ft_printf(const char *s, ...)
+// {
+// 	size_t	i;
+// 	va_list	ap;
+
+// 	i = 0;
+// 	va_start(ap, s);
+// 	while (s[i])
+// 	{
+// 		if (s[i] == '%')
+// 		{
+// 			if (g_jump_table[(unsigned char)s[i + 1]])
+// 			{
+// 				g_jump_table[(unsigned char)s[i + 1]](ap);
+// 				i++;
+// 			}
+// 			else if (s[i + 1] == '%')
+// 				ft_putchar('%');
+// 		}
+// 		else
+// 			write(1, &s[i], 1);
+// 		i++;
+// 	}
+// 	va_end(ap);
+
+// 	return (0);
+// }
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> backup
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< backup
+// printer	*g_jump_table[256] =
+// {
+// 	['d'] = &conversion_d,
+// 	['i'] = &conversion_d,
+// 	['c'] = &conversion_c,
+// 	['s'] = &conversion_s,
+// 	['f'] = &conversion_f,
+// 	['u'] = &conversion_u,
+// 	['o'] = &conversion_o,
+// 	['X'] = &conversion_X,
+// 	['x'] = &conversion_x,
+// 	['p'] = &conversion_p,
+// 	// ['%'] = &conversion_amp,
+// };
+
+// TODO: read through strings by shifting pointer, instead of using array index
+// figure out a way to dispatch length functions
+// t_format	*parse_format(const char *s, va_list ap)
+// {
+// 	size_t		i;
+// 	t_format	*format;
+
+// 	i = 0;
+// 	// <zero out all struct members?>
+// 	while (s[i])
+// 	{
+// 		if (s[i] == '%')
+// 		{
+// 			if (g_frmt_jump_table[i + 1])
+// 				g_frmt_jump_table[i + 1](s, i, format);
+// 			/*
+// 				- compare letter <-> index char of frmt jump table
+// 				- call func for found flag
+// 				- called func will...
+// 					- check h or hh / l or ll
+// 					- populate format struct
+// 					- returns populated struct
+// 				- call parse_conversion(format struct)
+// 			*/
+// 		}
+// 		else if (s[i + 1] == '%')
+// 				ft_putchar('%');
+// 		else
+// 			write(1, &s[i], 1);
+// 		i++;
+// 	}
+// 	return (format);
+// }
+
+// void	parse_conversion(const char *s, va_list ap, )
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> backup

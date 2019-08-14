@@ -6,12 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:44:47 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/09 17:45:29 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/11 19:44:37 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putfloat(long double n, size_t prec);
 void	ft_putoctal(unsigned long long d);
@@ -20,7 +20,7 @@ void	ft_puthex_upper(unsigned long long d);
 void	ft_puthex_lower(unsigned long long d);
 void	ft_putptr(void *p);
 
-void	dispatch_d(va_list ap)
+void	conversion_d(va_list ap, t_format format)
 {
 	int			arg;
 
@@ -28,7 +28,7 @@ void	dispatch_d(va_list ap)
 	ft_putnbr(arg);
 }
 
-void	dispatch_u(va_list ap)
+void	conversion_u(va_list ap, t_format format)
 {
 	unsigned	arg;
 
@@ -36,7 +36,7 @@ void	dispatch_u(va_list ap)
 	ft_putunbr(arg);
 }
 
-void	dispatch_c(va_list ap)
+void	conversion_c(va_list ap, t_format format)
 {
 	char		arg;
 
@@ -44,7 +44,7 @@ void	dispatch_c(va_list ap)
 	write(1, &arg, 1);
 }
 
-void	dispatch_s(va_list ap)
+void	conversion_s(va_list ap, t_format format)
 {
 	char		*arg;
 
@@ -52,8 +52,8 @@ void	dispatch_s(va_list ap)
 	ft_putstr(arg);
 }
 
-// void	dispatch_f(va_list ap, size_t prec)
-void	dispatch_f(va_list ap)
+// void	conversion_f(va_list ap, size_t prec)
+void	conversion_f(va_list ap, t_format format)
 {
 	long double	arg;
 
@@ -62,7 +62,7 @@ void	dispatch_f(va_list ap)
 	// ft_putfloat(arg, prec);
 }
 
-void	dispatch_o(va_list ap)
+void	conversion_o(va_list ap, t_format format)
 {
 	unsigned long long	arg;
 
@@ -70,7 +70,7 @@ void	dispatch_o(va_list ap)
 	ft_putoctal(arg);
 }
 
-void	dispatch_X(va_list ap)
+void	conversion_X(va_list ap, t_format format)
 {
 	unsigned long long	arg;
 
@@ -78,7 +78,7 @@ void	dispatch_X(va_list ap)
 	ft_puthex_upper(arg);
 }
 
-void	dispatch_x(va_list ap)
+void	conversion_x(va_list ap, t_format format)
 {
 	unsigned long long	arg;
 
@@ -86,7 +86,7 @@ void	dispatch_x(va_list ap)
 	ft_puthex_lower(arg);
 }
 
-void	dispatch_p(va_list ap)
+void	conversion_p(va_list ap, t_format format)
 {
 	void	*arg;
 
