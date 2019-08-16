@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 19:44:47 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/11 19:44:37 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/15 22:32:43 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_puthex_upper(unsigned long long d);
 void	ft_puthex_lower(unsigned long long d);
 void	ft_putptr(void *p);
 
-void	conversion_d(va_list ap, t_format format)
+void	conversion_d(va_list ap, t_format *recipe)
 {
 	int			arg;
 
@@ -28,7 +28,7 @@ void	conversion_d(va_list ap, t_format format)
 	ft_putnbr(arg);
 }
 
-void	conversion_u(va_list ap, t_format format)
+void	conversion_u(va_list ap, t_format *recipe)
 {
 	unsigned	arg;
 
@@ -36,7 +36,7 @@ void	conversion_u(va_list ap, t_format format)
 	ft_putunbr(arg);
 }
 
-void	conversion_c(va_list ap, t_format format)
+void	conversion_c(va_list ap, t_format *recipe)
 {
 	char		arg;
 
@@ -44,7 +44,7 @@ void	conversion_c(va_list ap, t_format format)
 	write(1, &arg, 1);
 }
 
-void	conversion_s(va_list ap, t_format format)
+void	conversion_s(va_list ap, t_format *recipe)
 {
 	char		*arg;
 
@@ -53,7 +53,7 @@ void	conversion_s(va_list ap, t_format format)
 }
 
 // void	conversion_f(va_list ap, size_t prec)
-void	conversion_f(va_list ap, t_format format)
+void	conversion_f(va_list ap, t_format *recipe)
 {
 	long double	arg;
 
@@ -62,7 +62,7 @@ void	conversion_f(va_list ap, t_format format)
 	// ft_putfloat(arg, prec);
 }
 
-void	conversion_o(va_list ap, t_format format)
+void	conversion_o(va_list ap, t_format *recipe)
 {
 	unsigned long long	arg;
 
@@ -70,7 +70,7 @@ void	conversion_o(va_list ap, t_format format)
 	ft_putoctal(arg);
 }
 
-void	conversion_X(va_list ap, t_format format)
+void	conversion_X(va_list ap, t_format *recipe)
 {
 	unsigned long long	arg;
 
@@ -78,7 +78,7 @@ void	conversion_X(va_list ap, t_format format)
 	ft_puthex_upper(arg);
 }
 
-void	conversion_x(va_list ap, t_format format)
+void	conversion_x(va_list ap, t_format *recipe)
 {
 	unsigned long long	arg;
 
@@ -86,7 +86,7 @@ void	conversion_x(va_list ap, t_format format)
 	ft_puthex_lower(arg);
 }
 
-void	conversion_p(va_list ap, t_format format)
+void	conversion_p(va_list ap, t_format *recipe)
 {
 	void	*arg;
 
