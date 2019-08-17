@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 20:37:22 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/16 00:23:45 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/17 00:48:02 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,40 @@
 #include <stdint.h>
 #include <limits.h>
 
-int		main(void)
-{
-	// int	n1 = 1L;
-	// int	n2 = 1;
-	int		n1 = 2147483647;
-	long	res = n1 * 2l;
+// int		main(void)
+// {
+// 	// int	n1 = 1L;
+// 	// int	n2 = 1;
+// 	int		n1 = 2147483647;
+// 	long	res = n1 * 2l;
 
-	printf("%ld\n", res);
+// 	printf("%ld\n", res);
 
-	// printf("n1:%d\n", n1);
-	// printf("n2:%d\n", n2);
+// 	// printf("n1:%d\n", n1);
+// 	// printf("n2:%d\n", n2);
 
-	// if (n1 == n2)
-	// if (1 == 1L)
-	// 	printf("equal.\n");
-	// else
-	// 	printf("not equal\n");
-	// printf("%lu\n", sizeof(1));
-	// printf("%lu\n", sizeof(1));
+// 	// if (n1 == n2)
+// 	// if (1 == 1L)
+// 	// 	printf("equal.\n");
+// 	// else
+// 	// 	printf("not equal\n");
+// 	// printf("%lu\n", sizeof(1));
+// 	// printf("%lu\n", sizeof(1));
 
-	return (0);
-}
+// 	return (0);
+// }
 
 // int 		main(void)
 // {
-// 	// printf ("Characters: %c %c \n", 'a', 65);
-// 	// printf ("Decimals: %d %ld\n", 1977, 650000L);
-// 	printf ("Decimals: %d %ld\n", 1977, 1L);
-// 	printf ("Preceding with blanks: %10d \n", 1977);
-// 	printf ("Preceding with zeros: %010d \n", 1977);
-// 	printf ("Some different radices: %d %x %o %#x %#o \n", 100, 100, 100, 100, 100);
-// 	// printf ("floats: %4.2f %+.0e %E \n", 3.1416, 3.1416, 3.1416);
-// 	printf ("Width trick: %*d \n", 5, 10);
-// 	// printf ("%s \n", "A string");
-// 	return 0;
+	// printf ("Characters:%c %c \n", 'a', 65);
+	// printf ("Decimals:%d %ld\n", 1977, 650000L);
+	// printf ("Preceding with blanks:%8d \n", 1977);
+	// printf ("Preceding with zeros:%8d \n", 1977);
+	// printf ("Some different radices:%d %x %o %#x %#o \n", 100, 100, 100, 100, 100);
+	// printf ("floats:%4.2f %+.0e %E \n", 3.1416, 3.1416, 3.1416);
+	// printf ("Width trick:%*d \n", 5, 10);
+	// printf ("%s \n", "A string");
+// 	return (0);
 // }
 
 // int		main(void)
