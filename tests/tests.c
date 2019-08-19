@@ -5,10 +5,12 @@
 #include "../libft/libft.h"
 #include "../ft_printf.h"
 
+int		ft_printf(const char *format, ...);
+
 int		main(void)
 {
-// 	const char		s[] = "foo bar hoge";
-// 	int				d = INT_MIN;
+	// const char		s[] = "foo bar hoge";
+	int				d = INT_MIN;
 // 	char			c = 'A';
 // 	unsigned int	u = UINT_MAX;
 // 	long double		f = 1234567891.123456;
@@ -18,19 +20,19 @@ int		main(void)
 // 	int				*p = &d;
 
 // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %s
-// 	ft_putstr("<%s>\n");
-// 	printf("libc:%s\n", s);
-// 	ft_putstr("mine:");
-// 	ft_printf("%s", s);
-// 	ft_putstr("\n</%s>\n\n");
+	// ft_putstr("<%s>\n");
+	// printf("libc:%s\n", s);
+	// ft_putstr("mine:");
+	// ft_printf("%s", s);
+	// ft_putstr("\n</%s>\n\n");
 // // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %s
 
 // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %d
-// 	ft_putstr("<%d>\n");
-// 	printf("libc:%d\n", d);
-// 	ft_putstr("mine:");
-// 	ft_printf("%d", d);
-// 	ft_putstr("\n</%d>\n\n");
+	ft_putstr("<%d>\n");
+	printf("libc:%d\n", d);
+	ft_putstr("mine:");
+	ft_printf("%d", d);
+	ft_putstr("\n</%d>\n\n");
 // // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %d
 
 // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %c
@@ -64,7 +66,7 @@ int		main(void)
 // 	ft_printf("%o", o);
 // 	ft_putstr("\n</%o>\n\n");
 // // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %o
-
+// 
 // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %X
 // 	ft_putstr("<%X>\n");
 // 	printf("libc:%X\n", X);
@@ -108,8 +110,8 @@ int		main(void)
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> combined
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< hh
-	ft_printf("hhd:%hhd\n", 5);
-	printf("hhd:%hhd\n", 5);
+	// ft_printf("hhd:%hhd\n", 5);
+	// printf("hhd:%hhd\n", 5);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> hh
 
 	return (0);

@@ -4,6 +4,7 @@
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< headers
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdint.h>
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< headers
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< length modifiers
@@ -12,6 +13,8 @@
 # define L				3
 # define LL				4
 # define UPRL			5
+# define POSITIVE		8
+# define NEGATIVE		9
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> length modifiers
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< symbol lists
@@ -39,27 +42,28 @@ typedef struct			s_format
 	int					space;
 
 	int					width;
+	int					hasprecision;
 	int					precision;
 	int					length;
 }						t_format;
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> recipe
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion
-void					conversion_d(va_list ap, t_format format);
-void					conversion_c(va_list ap, t_format format);
-void					conversion_s(va_list ap, t_format format);
-void					conversion_f(va_list ap, t_format format);
-void					conversion_u(va_list ap, t_format format);
-void					conversion_o(va_list ap, t_format format);
-void					conversion_X(va_list ap, t_format format);
-void					conversion_x(va_list ap, t_format format);
-void					conversion_p(va_list ap, t_format format);
+// void					conversion_d(va_list ap, t_format format);
+// void					conversion_c(va_list ap, t_format format);
+// void					conversion_s(va_list ap, t_format format);
+// void					conversion_f(va_list ap, t_format format);
+// void					conversion_u(va_list ap, t_format format);
+// void					conversion_o(va_list ap, t_format format);
+// void					conversion_X(va_list ap, t_format format);
+// void					conversion_x(va_list ap, t_format format);
+// void					conversion_p(va_list ap, t_format format);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> conversion
 
-void					length_h(const char *s, size_t i, t_format format);
-void					length_l(const char *s, size_t i, t_format format);
+// void					length_h(const char *s, size_t i, t_format format);
+// void					length_l(const char *s, size_t i, t_format format);
 
-typedef void			printer(va_list); // print functions' prototype
-typedef void			formatter(const char *, size_t, t_format);
+// typedef void			printer(va_list); // print functions' prototype
+// typedef void			formatter(const char *, size_t, t_format);
 
 #endif

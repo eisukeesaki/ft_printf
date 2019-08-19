@@ -6,47 +6,53 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/15 19:33:00 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/18 20:06:42 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 // void	flags(const char *format, t_format *recipe)
-void	flags(void)
+void	flags(const char *format, t_format *recipe)
 {
-	printf("flags() called\n");
-	// while (ft_strchr(FLAGS, format[recipe->i]))
-	// {
-	// 	if (format[recipe->i] == '#')
-	// 		recipe->hash = 1;
-	// 	else if (format[recipe->i] == '0')
-	// 		recipe->zero = 1;
-	// 	else if (format[recipe->i] == '-')
-	// 		recipe->minus = 1;
-	// 	else if (format[recipe->i] == '+')
-	// 		recipe->plus = 1;
-	// 	else if (format[recipe->i] == ' ')
-	// 		recipe->space = 1;
-	// 	recipe->i++;
-	// }
+	while (ft_strchr(FLAGS, format[recipe->i]))
+	{
+		if (format[recipe->i] == '#')
+			recipe->hash = 1;
+		else if (format[recipe->i] == '0')
+			recipe->zero = 1;
+		else if (format[recipe->i] == '-')
+			recipe->minus = 1;
+		else if (format[recipe->i] == '+')
+			recipe->plus = 1;
+		else if (format[recipe->i] == ' ')
+			recipe->space = 1;
+		recipe->i++;
+	}
 	// TODO: manage case: '+' and ' ' combination
 }
 
-// void	width(const char *format, t_format *recipe)
-void	width(void)
+void	width(const char *format, t_format *recipe)
 {
-	printf("width() called\n");
+	// TODO: handle *
+	if ('0' <= format[recipe->i] && format[recipe->i] <= '9')
+		recipe->width = ft_atoi(&format[recipe->i]);
+	while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
+		recipe->i++;
 }
 
-void	precision(void)
+void	precision(const char *format, t_format *recipe)
 {
-	printf("precision() called\n");
+	if (format[recipe->i] == '.')
+		recipe->precision = ft_atoi(format[recipe->i++]);
+	recipe->hasprecision = 1;
+	while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
+		recipe->i++;
 }
 
 void	length(const char* format, t_format *recipe)
 {
-		printf("length() called\n");
 	size_t	i;
 
 	i = recipe->i;
@@ -70,14 +76,12 @@ void	length(const char* format, t_format *recipe)
 	while (ft_strchr(LENGTH, format[i]))
 		i++;
 	recipe->i = i;
-		printf("recipe->length:%d\n", recipe->length);
 }
 
 void	sub_specs(const char* format, t_format *recipe, va_list ap)
 {
-		ft_putstr("sub_specs called");
-	flags();
-	width();
-	precision();
+	flags(format, recipe);
+	width(format, recipe);
+	precision(format, recipe);
 	length(format, recipe);
 }
