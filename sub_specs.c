@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/18 20:06:42 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/20 20:40:50 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	width(const char *format, t_format *recipe)
 void	precision(const char *format, t_format *recipe)
 {
 	if (format[recipe->i] == '.')
-		recipe->precision = ft_atoi(format[recipe->i++]);
+		recipe->precision = ft_atoi(&format[recipe->i++]);
 	recipe->hasprecision = 1;
 	while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
 		recipe->i++;
@@ -78,7 +78,7 @@ void	length(const char* format, t_format *recipe)
 	recipe->i = i;
 }
 
-void	sub_specs(const char* format, t_format *recipe, va_list ap)
+void	sub_specs(const char* format, t_format *recipe)
 {
 	flags(format, recipe);
 	width(format, recipe);

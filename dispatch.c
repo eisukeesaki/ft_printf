@@ -6,11 +6,13 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 20:03:14 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/18 20:05:55 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/20 20:47:51 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	print_int(t_format *recipe, va_list ap);
 
 void	dispatch(char c, t_format *recipe, va_list ap)
 {
@@ -25,7 +27,7 @@ void	dispatch(char c, t_format *recipe, va_list ap)
 		// print_pointer();
 	else if (c == 'd' || c == 'i')
 		// return ; // avoid compilation error
-		print_int();
+		print_int(recipe, ap);
 	else if (c == 'o')
 		return ; // avoid compilation error
 		// print_octal();

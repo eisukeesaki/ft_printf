@@ -5,6 +5,9 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
+void	bzero_recipe(t_format *recipe);
+ssize_t	parse(const char *format, t_format *recipe, va_list ap);
+
 int		ft_printf(const char *format, ...)
 {
 	t_format	*recipe;
@@ -19,7 +22,7 @@ int		ft_printf(const char *format, ...)
 
 	bzero_recipe(recipe);
 
-	recipe->format = format;
+	recipe->format = (char *)format;
 
 	va_start(ap, format);
 

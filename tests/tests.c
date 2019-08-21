@@ -10,7 +10,7 @@ int		ft_printf(const char *format, ...);
 int		main(void)
 {
 	// const char		s[] = "foo bar hoge";
-	int				d = INT_MIN;
+	long			d = LONG_MIN;
 // 	char			c = 'A';
 // 	unsigned int	u = UINT_MAX;
 // 	long double		f = 1234567891.123456;
@@ -28,11 +28,13 @@ int		main(void)
 // // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %s
 
 // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %d
-	ft_putstr("<%d>\n");
-	printf("libc:%d\n", d);
-	ft_putstr("mine:");
-	ft_printf("%d", d);
-	ft_putstr("\n</%d>\n\n");
+	// ft_putstr("<%d>\n");
+	// printf("libc:%d\n", d);
+	// ft_putstr("mine:");
+	// printf("libc:%ld\n", d);
+	// setbuf(stdout, NULL);
+	ft_printf("mine:%ld\n", d);
+	// ft_putstr("\n</%d>\n\n");
 // // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %d
 
 // // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %c
