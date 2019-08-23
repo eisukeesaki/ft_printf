@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/22 23:11:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/22 23:26:55 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*toa(intmax_t n, uintmax_t base)
 char	*itoa_base(intmax_t n, uintmax_t base)
 {
 	if (n == LONG_MIN)
-		return ("-9223372036854775808");
+		return ("9223372036854775808");
 	else if (base == 10)
 		return (itoa(n));
 	else if (base >= 2 && base <= 16 && base != 10)
