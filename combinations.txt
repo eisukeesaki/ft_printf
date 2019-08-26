@@ -1,0 +1,962 @@
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< d
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %d
+[] %d
+	<flags only>
+		[] %-d
+		[] %-+d
+		[] %+d
+		[] % d
+		[] % -d
+		[] % 0d
+		[] %0d
+		[] %0+d
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)d
+			[] %-(w)d
+			[] %-+(w)d
+			[] %+(w)d
+			[] % (w)d
+			[] % -(w)d
+			[] % 0(w)d
+			[] %0(w)d
+			[] %0+(w)d
+		</flags/(w)>
+
+		<flags/*>
+			[] %*d
+			[] %-*d
+			[] %-+*d
+			[] %+*d
+			[] % *d
+			[] % -*d
+			[] % 0*d
+			[] %0*d
+			[] %0+*d
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)d
+			[] %-.(p)d
+			[] %-+.(p)d
+			[] %+.(p)d
+			[] % .(p)d
+			[] % -.(p)d
+			[] % 0.(p)d
+			[] %0.(p)d
+			[] %0+.(p)d
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*d
+			[] %-.*d
+			[] %-+.*d
+			[] %+.*d
+			[] % .*d
+			[] % -.*d
+			[] % 0.*d
+			[] %0.*d
+			[] %0+.*d
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)d
+			[] %-(w).(p)d
+			[] %-+(w).(p)d
+			[] %+(w).(p)d
+			[] % (w).(p)d
+			[] % -(w).(p)d
+			[] % 0(w).(p)d
+			[] %0(w).(p)d
+			[] %0+(w).(p)d
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*d
+			[] %-(w).*d
+			[] %-+(w).*d
+			[] %+(w).*d
+			[] % (w).*d
+			[] % -(w).*d
+			[] % 0(w).*d
+			[] %0(w).*d
+			[] %0+(w).*d
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %d
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %hd
+[] %hd
+	<flags only>
+		[] %-hd
+		[] %-+hd
+		[] %+hd
+		[] % hd
+		[] % -hd
+		[] % 0hd
+		[] %0hd
+		[] %0+hd
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)hd
+			[] %-(w)hd
+			[] %-+(w)hd
+			[] %+(w)hd
+			[] % (w)hd
+			[] % -(w)hd
+			[] % 0(w)hd
+			[] %0(w)hd
+			[] %0+(w)hd
+		</flags/(w)>
+
+		<flags/*>
+			[] %*hd
+			[] %-*hd
+			[] %-+*hd
+			[] %+*hd
+			[] % *hd
+			[] % -*hd
+			[] % 0*hd
+			[] %0*hd
+			[] %0+*hd
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)hd
+			[] %-.(p)hd
+			[] %-+.(p)hd
+			[] %+.(p)hd
+			[] % .(p)hd
+			[] % -.(p)hd
+			[] % 0.(p)hd
+			[] %0.(p)hd
+			[] %0+.(p)hd
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*hd
+			[] %-.*hd
+			[] %-+.*hd
+			[] %+.*hd
+			[] % .*hd
+			[] % -.*hd
+			[] % 0.*hd
+			[] %0.*hd
+			[] %0+.*hd
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)hd
+			[] %-(w).(p)hd
+			[] %-+(w).(p)hd
+			[] %+(w).(p)hd
+			[] % (w).(p)hd
+			[] % -(w).(p)hd
+			[] % 0(w).(p)hd
+			[] %0(w).(p)hd
+			[] %0+(w).(p)hd
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*hd
+			[] %-(w).*hd
+			[] %-+(w).*hd
+			[] %+(w).*hd
+			[] % (w).*hd
+			[] % -(w).*hd
+			[] % 0(w).*hd
+			[] %0(w).*hd
+			[] %0+(w).*hd
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %hd
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %hhd
+	<flags only>
+		[] %-hhd
+		[] %-+hhd
+		[] %+hhd
+		[] % hhd
+		[] % -hhd
+		[] % 0hhd
+		[] %0hhd
+		[] %0+hhd
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)hhd
+			[] %-(w)hhd
+			[] %-+(w)hhd
+			[] %+(w)hhd
+			[] % (w)hhd
+			[] % -(w)hhd
+			[] % 0(w)hhd
+			[] %0(w)hhd
+			[] %0+(w)hhd
+		</flags/(w)>
+
+		<flags/*>
+			[] %*hhd
+			[] %-*hhd
+			[] %-+*hhd
+			[] %+*hhd
+			[] % *hhd
+			[] % -*hhd
+			[] % 0*hhd
+			[] %0*hhd
+			[] %0+*hhd
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)hhd
+			[] %-.(p)hhd
+			[] %-+.(p)hhd
+			[] %+.(p)hhd
+			[] % .(p)hhd
+			[] % -.(p)hhd
+			[] % 0.(p)hhd
+			[] %0.(p)hhd
+			[] %0+.(p)hhd
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*hhd
+			[] %-.*hhd
+			[] %-+.*hhd
+			[] %+.*hhd
+			[] % .*hhd
+			[] % -.*hhd
+			[] % 0.*hhd
+			[] %0.*hhd
+			[] %0+.*hhd
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)hhd
+			[] %-(w).(p)hhd
+			[] %-+(w).(p)hhd
+			[] %+(w).(p)hhd
+			[] % (w).(p)hhd
+			[] % -(w).(p)hhd
+			[] % 0(w).(p)hhd
+			[] %0(w).(p)hhd
+			[] %0+(w).(p)hhd
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*hhd
+			[] %-(w).*hhd
+			[] %-+(w).*hhd
+			[] %+(w).*hhd
+			[] % (w).*hhd
+			[] % -(w).*hhd
+			[] % 0(w).*hhd
+			[] %0(w).*hhd
+			[] %0+(w).*hhd
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %hhd
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %ld
+	<flags only>
+		[] %-ld
+		[] %-+ld
+		[] %+ld
+		[] % ld
+		[] % -ld
+		[] % 0ld
+		[] %0ld
+		[] %0+ld
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)ld
+			[] %-(w)ld
+			[] %-+(w)ld
+			[] %+(w)ld
+			[] % (w)ld
+			[] % -(w)ld
+			[] % 0(w)ld
+			[] %0(w)ld
+			[] %0+(w)ld
+		</flags/(w)>
+
+		<flags/*>
+			[] %*ld
+			[] %-*ld
+			[] %-+*ld
+			[] %+*ld
+			[] % *ld
+			[] % -*ld
+			[] % 0*ld
+			[] %0*ld
+			[] %0+*ld
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)ld
+			[] %-.(p)ld
+			[] %-+.(p)ld
+			[] %+.(p)ld
+			[] % .(p)ld
+			[] % -.(p)ld
+			[] % 0.(p)ld
+			[] %0.(p)ld
+			[] %0+.(p)ld
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*ld
+			[] %-.*ld
+			[] %-+.*ld
+			[] %+.*ld
+			[] % .*ld
+			[] % -.*ld
+			[] % 0.*ld
+			[] %0.*ld
+			[] %0+.*ld
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)ld
+			[] %-(w).(p)ld
+			[] %-+(w).(p)ld
+			[] %+(w).(p)ld
+			[] % (w).(p)ld
+			[] % -(w).(p)ld
+			[] % 0(w).(p)ld
+			[] %0(w).(p)ld
+			[] %0+(w).(p)ld
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*ld
+			[] %-(w).*ld
+			[] %-+(w).*ld
+			[] %+(w).*ld
+			[] % (w).*ld
+			[] % -(w).*ld
+			[] % 0(w).*ld
+			[] %0(w).*ld
+			[] %0+(w).*ld
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %ld
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %lld
+	<flags only>
+		[] %-lld
+		[] %-+lld
+		[] %+lld
+		[] % lld
+		[] % -lld
+		[] % 0lld
+		[] %0lld
+		[] %0+lld
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)lld
+			[] %-(w)lld
+			[] %-+(w)lld
+			[] %+(w)lld
+			[] % (w)lld
+			[] % -(w)lld
+			[] % 0(w)lld
+			[] %0(w)lld
+			[] %0+(w)lld
+		</flags/(w)>
+
+		<flags/*>
+			[] %*lld
+			[] %-*lld
+			[] %-+*lld
+			[] %+*lld
+			[] % *lld
+			[] % -*lld
+			[] % 0*lld
+			[] %0*lld
+			[] %0+*lld
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)lld
+			[] %-.(p)lld
+			[] %-+.(p)lld
+			[] %+.(p)lld
+			[] % .(p)lld
+			[] % -.(p)lld
+			[] % 0.(p)lld
+			[] %0.(p)lld
+			[] %0+.(p)lld
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*lld
+			[] %-.*lld
+			[] %-+.*lld
+			[] %+.*lld
+			[] % .*lld
+			[] % -.*lld
+			[] % 0.*lld
+			[] %0.*lld
+			[] %0+.*lld
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)lld
+			[] %-(w).(p)lld
+			[] %-+(w).(p)lld
+			[] %+(w).(p)lld
+			[] % (w).(p)lld
+			[] % -(w).(p)lld
+			[] % 0(w).(p)lld
+			[] %0(w).(p)lld
+			[] %0+(w).(p)lld
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*lld
+			[] %-(w).*lld
+			[] %-+(w).*lld
+			[] %+(w).*lld
+			[] % (w).*lld
+			[] % -(w).*lld
+			[] % 0(w).*lld
+			[] %0(w).*lld
+			[] %0+(w).*lld
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %lld
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< i
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %i
+[] %i
+	<flags only>
+		[] %-i
+		[] %-+i
+		[] %+i
+		[] % i
+		[] % -i
+		[] % 0i
+		[] %0i
+		[] %0+i
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)i
+			[] %-(w)i
+			[] %-+(w)i
+			[] %+(w)i
+			[] % (w)i
+			[] % -(w)i
+			[] % 0(w)i
+			[] %0(w)i
+			[] %0+(w)i
+		</flags/(w)>
+
+		<flags/*>
+			[] %*i
+			[] %-*i
+			[] %-+*i
+			[] %+*i
+			[] % *i
+			[] % -*i
+			[] % 0*i
+			[] %0*i
+			[] %0+*i
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)i
+			[] %-.(p)i
+			[] %-+.(p)i
+			[] %+.(p)i
+			[] % .(p)i
+			[] % -.(p)i
+			[] % 0.(p)i
+			[] %0.(p)i
+			[] %0+.(p)i
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*i
+			[] %-.*i
+			[] %-+.*i
+			[] %+.*i
+			[] % .*i
+			[] % -.*i
+			[] % 0.*i
+			[] %0.*i
+			[] %0+.*i
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)i
+			[] %-(w).(p)i
+			[] %-+(w).(p)i
+			[] %+(w).(p)i
+			[] % (w).(p)i
+			[] % -(w).(p)i
+			[] % 0(w).(p)i
+			[] %0(w).(p)i
+			[] %0+(w).(p)i
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*i
+			[] %-(w).*i
+			[] %-+(w).*i
+			[] %+(w).*i
+			[] % (w).*i
+			[] % -(w).*i
+			[] % 0(w).*i
+			[] %0(w).*i
+			[] %0+(w).*i
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %i
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %hi
+[] %hi
+	<flags only>
+		[] %-hi
+		[] %-+hi
+		[] %+hi
+		[] % hi
+		[] % -hi
+		[] % 0hi
+		[] %0hi
+		[] %0+hi
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)hi
+			[] %-(w)hi
+			[] %-+(w)hi
+			[] %+(w)hi
+			[] % (w)hi
+			[] % -(w)hi
+			[] % 0(w)hi
+			[] %0(w)hi
+			[] %0+(w)hi
+		</flags/(w)>
+
+		<flags/*>
+			[] %*hi
+			[] %-*hi
+			[] %-+*hi
+			[] %+*hi
+			[] % *hi
+			[] % -*hi
+			[] % 0*hi
+			[] %0*hi
+			[] %0+*hi
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)hi
+			[] %-.(p)hi
+			[] %-+.(p)hi
+			[] %+.(p)hi
+			[] % .(p)hi
+			[] % -.(p)hi
+			[] % 0.(p)hi
+			[] %0.(p)hi
+			[] %0+.(p)hi
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*hi
+			[] %-.*hi
+			[] %-+.*hi
+			[] %+.*hi
+			[] % .*hi
+			[] % -.*hi
+			[] % 0.*hi
+			[] %0.*hi
+			[] %0+.*hi
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)hi
+			[] %-(w).(p)hi
+			[] %-+(w).(p)hi
+			[] %+(w).(p)hi
+			[] % (w).(p)hi
+			[] % -(w).(p)hi
+			[] % 0(w).(p)hi
+			[] %0(w).(p)hi
+			[] %0+(w).(p)hi
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*hi
+			[] %-(w).*hi
+			[] %-+(w).*hi
+			[] %+(w).*hi
+			[] % (w).*hi
+			[] % -(w).*hi
+			[] % 0(w).*hi
+			[] %0(w).*hi
+			[] %0+(w).*hi
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %hi
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %hhi
+	<flags only>
+		[] %-hhi
+		[] %-+hhi
+		[] %+hhi
+		[] % hhi
+		[] % -hhi
+		[] % 0hhi
+		[] %0hhi
+		[] %0+hhi
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)hhi
+			[] %-(w)hhi
+			[] %-+(w)hhi
+			[] %+(w)hhi
+			[] % (w)hhi
+			[] % -(w)hhi
+			[] % 0(w)hhi
+			[] %0(w)hhi
+			[] %0+(w)hhi
+		</flags/(w)>
+
+		<flags/*>
+			[] %*hhi
+			[] %-*hhi
+			[] %-+*hhi
+			[] %+*hhi
+			[] % *hhi
+			[] % -*hhi
+			[] % 0*hhi
+			[] %0*hhi
+			[] %0+*hhi
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)hhi
+			[] %-.(p)hhi
+			[] %-+.(p)hhi
+			[] %+.(p)hhi
+			[] % .(p)hhi
+			[] % -.(p)hhi
+			[] % 0.(p)hhi
+			[] %0.(p)hhi
+			[] %0+.(p)hhi
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*hhi
+			[] %-.*hhi
+			[] %-+.*hhi
+			[] %+.*hhi
+			[] % .*hhi
+			[] % -.*hhi
+			[] % 0.*hhi
+			[] %0.*hhi
+			[] %0+.*hhi
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)hhi
+			[] %-(w).(p)hhi
+			[] %-+(w).(p)hhi
+			[] %+(w).(p)hhi
+			[] % (w).(p)hhi
+			[] % -(w).(p)hhi
+			[] % 0(w).(p)hhi
+			[] %0(w).(p)hhi
+			[] %0+(w).(p)hhi
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*hhi
+			[] %-(w).*hhi
+			[] %-+(w).*hhi
+			[] %+(w).*hhi
+			[] % (w).*hhi
+			[] % -(w).*hhi
+			[] % 0(w).*hhi
+			[] %0(w).*hhi
+			[] %0+(w).*hhi
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %hhi
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %li
+	<flags only>
+		[] %-li
+		[] %-+li
+		[] %+li
+		[] % li
+		[] % -li
+		[] % 0li
+		[] %0li
+		[] %0+li
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)li
+			[] %-(w)li
+			[] %-+(w)li
+			[] %+(w)li
+			[] % (w)li
+			[] % -(w)li
+			[] % 0(w)li
+			[] %0(w)li
+			[] %0+(w)li
+		</flags/(w)>
+
+		<flags/*>
+			[] %*li
+			[] %-*li
+			[] %-+*li
+			[] %+*li
+			[] % *li
+			[] % -*li
+			[] % 0*li
+			[] %0*li
+			[] %0+*li
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)li
+			[] %-.(p)li
+			[] %-+.(p)li
+			[] %+.(p)li
+			[] % .(p)li
+			[] % -.(p)li
+			[] % 0.(p)li
+			[] %0.(p)li
+			[] %0+.(p)li
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*li
+			[] %-.*li
+			[] %-+.*li
+			[] %+.*li
+			[] % .*li
+			[] % -.*li
+			[] % 0.*li
+			[] %0.*li
+			[] %0+.*li
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)li
+			[] %-(w).(p)li
+			[] %-+(w).(p)li
+			[] %+(w).(p)li
+			[] % (w).(p)li
+			[] % -(w).(p)li
+			[] % 0(w).(p)li
+			[] %0(w).(p)li
+			[] %0+(w).(p)li
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*li
+			[] %-(w).*li
+			[] %-+(w).*li
+			[] %+(w).*li
+			[] % (w).*li
+			[] % -(w).*li
+			[] % 0(w).*li
+			[] %0(w).*li
+			[] %0+(w).*li
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %li
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %lli
+	<flags only>
+		[] %-lli
+		[] %-+lli
+		[] %+lli
+		[] % lli
+		[] % -lli
+		[] % 0lli
+		[] %0lli
+		[] %0+lli
+	</flags only>
+
+	<flags/width>
+		<flags/(w)>
+			[] %(w)lli
+			[] %-(w)lli
+			[] %-+(w)lli
+			[] %+(w)lli
+			[] % (w)lli
+			[] % -(w)lli
+			[] % 0(w)lli
+			[] %0(w)lli
+			[] %0+(w)lli
+		</flags/(w)>
+
+		<flags/*>
+			[] %*lli
+			[] %-*lli
+			[] %-+*lli
+			[] %+*lli
+			[] % *lli
+			[] % -*lli
+			[] % 0*lli
+			[] %0*lli
+			[] %0+*lli
+		</flags/*>
+	</flags/width>
+
+	<flags/precision>
+		<flags/(p)>
+			[] %.(p)lli
+			[] %-.(p)lli
+			[] %-+.(p)lli
+			[] %+.(p)lli
+			[] % .(p)lli
+			[] % -.(p)lli
+			[] % 0.(p)lli
+			[] %0.(p)lli
+			[] %0+.(p)lli
+		</flags/(p)>
+
+		<flags/.*>
+			[] %.*lli
+			[] %-.*lli
+			[] %-+.*lli
+			[] %+.*lli
+			[] % .*lli
+			[] % -.*lli
+			[] % 0.*lli
+			[] %0.*lli
+			[] %0+.*lli
+		</flags/.*>
+	</flags/precision>
+
+	<flags/width/precision>
+		<flags/(w).(p)>
+			[] %(w).(p)lli
+			[] %-(w).(p)lli
+			[] %-+(w).(p)lli
+			[] %+(w).(p)lli
+			[] % (w).(p)lli
+			[] % -(w).(p)lli
+			[] % 0(w).(p)lli
+			[] %0(w).(p)lli
+			[] %0+(w).(p)lli
+		</flags/(w).(p)>
+
+		<flags/(w).*>
+			[] %(w).*lli
+			[] %-(w).*lli
+			[] %-+(w).*lli
+			[] %+(w).*lli
+			[] % (w).*lli
+			[] % -(w).*lli
+			[] % 0(w).*lli
+			[] %0(w).*lli
+			[] %0+(w).*lli
+		</flags/(w).*>
+	</flags/width/precision>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %lli
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> i
+
+<invalid combinations>
+0-
+' '+
+</invalid combinations>
+
+<flags>
+-
++
+' '
+0
+#
+</flags>
+
+[]i
+	[] hh
+	[] h
+	[] l
+	[] ll
+	[] hh
+[]o
+	[] h
+	[] l
+	[] ll
+	[] hh
+[]u
+	[] h
+	[] l
+	[] ll
+	[] hh
+[]x
+	[] h
+	[] l
+	[] ll
+	[] hh
+[]X
+	[] h
+	[] l
+	[] ll
+	[] hh
+[] f
+	[] l
+	[] L
+[] c
+[] s
+[] p
