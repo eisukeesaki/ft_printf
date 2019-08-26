@@ -22,7 +22,7 @@
 # define SUBSPEC		"#0-+ *.0123456789lL"
 # define FLAGS			"#0-+ "
 # define LENGTH			"hlL"
-# define ALLSYMBOLS		"cspdiouxX%#0-+ *.0123456789lL"
+# define ALLSYMBOLS		"cspdiouxX%#0-+ *.0123456789hlL"
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> symbol lists
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< recipe

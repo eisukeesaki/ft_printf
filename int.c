@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/22 23:08:43 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/25 18:31:49 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	right_justify(char *s, t_format *recipe, int sign)
 		recipe->nprinted = write(1, "+", 1);
 	else if (sign == NEGATIVE)
 		recipe->nprinted = write(1, "-", 1);
-	recipe->nprinted = write(1, s, ft_strlen(s));
+	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
 // void	left_justify(char *s, t_format *recipe, int sign)
