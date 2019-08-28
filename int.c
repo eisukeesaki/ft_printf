@@ -6,31 +6,61 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/25 18:31:49 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/27 21:29:32 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< debug purpose
+#include <stdio.h>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> debug purpose
+
 char	*itoa_base(intmax_t n, uintmax_t base);
 
 // void	right_justify(char *s, t_format *recipe, int sign)
 void	right_justify(char *s, t_format *recipe, int sign)
 {
-	if (recipe->space)
-		recipe->nprinted = write(1, s, 1);
-	if (sign == POSITIVE)
-		recipe->nprinted = write(1, "+", 1);
-	else if (sign == NEGATIVE)
-		recipe->nprinted = write(1, "-", 1);
+	if (sign == NEGATIVE)
+		recipe->nprinted += write(1, "-", 1); //TODO: FIX
+	else if (sign == POSITIVE)
+		recipe->nprinted += write(1, "+", 1); //TODO: FIX
+	else if (recipe->space)
+		recipe->nprinted += write(1, " ", 1); //TODO: FIX
+	while (recipe->width > 0)
+	{
+		recipe->nprinted += write(1, " ", 1);
+		recipe->width--;
+	}
+	while (recipe->precision > 0)
+	{
+		recipe->nprinted += write(1, "0", 1);
+		recipe->precision--;
+	}
 	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
 // void	left_justify(char *s, t_format *recipe, int sign)
-void	left_justify(char *s, t_format *recipe)
+void	left_justify(char *s, t_format *recipe, int sign)
 {
-	recipe->nprinted = write(1, s, ft_strlen(s));
+	if (sign == NEGATIVE)
+		recipe->nprinted += write(1, "-", 1);
+	else if (sign == POSITIVE)
+		recipe->nprinted += write(1, "+", 1);
+	else if (recipe->space)
+		recipe->nprinted += write(1, " ", 1);
+	while (recipe->precision > 0)
+	{
+		recipe->nprinted += write(1, "0", 1);
+		recipe->precision--;
+	}
+	while (recipe->width > 0)
+	{
+		recipe->nprinted += write(1, " ", 1);
+		recipe->width--;
+	}
+	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
 // void	apply_sub_spec(intmax_t n, t_format *recipe, int sign)
@@ -42,7 +72,7 @@ void	apply_sub_spec(long long n, t_format *recipe, int sign)
 		recipe->space = 0;
 	s = itoa_base(n, 10);
 	if (recipe->minus == 1)
-		left_justify(s, recipe);
+		left_justify(s, recipe, sign);
 		// left_justify(s, recipe, sign);
 	else if (recipe->minus == 0)
 		right_justify(s, recipe, sign);
