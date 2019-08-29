@@ -6,14 +6,13 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/20 20:40:50 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/28 22:42:36 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-// void	flags(const char *format, t_format *recipe)
 void	flags(const char *format, t_format *recipe)
 {
 	while (ft_strchr(FLAGS, format[recipe->i]))
@@ -78,7 +77,7 @@ void	length(const char* format, t_format *recipe)
 	recipe->i = i;
 }
 
-void	sub_specs(const char* format, t_format *recipe)
+void		sub_specs(const char* format, t_format *recipe)
 {
 	flags(format, recipe);
 	width(format, recipe);

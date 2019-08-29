@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/27 21:29:32 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/29 00:05:05 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,43 @@
 #include <stdio.h>
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> debug purpose
 
-char	*itoa_base(intmax_t n, uintmax_t base);
+// char	*itoa_base(intmax_t n, uintmax_t base);
 
 // void	right_justify(char *s, t_format *recipe, int sign)
 void	right_justify(char *s, t_format *recipe, int sign)
 {
-	if (sign == NEGATIVE)
-		recipe->nprinted += write(1, "-", 1); //TODO: FIX
-	else if (sign == POSITIVE)
-		recipe->nprinted += write(1, "+", 1); //TODO: FIX
-	else if (recipe->space)
+	if (recipe->space)
 		recipe->nprinted += write(1, " ", 1); //TODO: FIX
-	while (recipe->width > 0)
-	{
+	while (recipe->width-- > 0)
 		recipe->nprinted += write(1, " ", 1);
-		recipe->width--;
-	}
 	while (recipe->precision > 0)
 	{
 		recipe->nprinted += write(1, "0", 1);
 		recipe->precision--;
 	}
+	if (sign == NEGATIVE)
+		recipe->nprinted += write(1, "-", 1); //TODO: FIX
+	else if (sign == POSITIVE)
+		recipe->nprinted += write(1, "+", 1); //TODO: FIX
 	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
 // void	left_justify(char *s, t_format *recipe, int sign)
 void	left_justify(char *s, t_format *recipe, int sign)
 {
+	if (recipe->space)
+		recipe->nprinted += write(1, " ", 1);
 	if (sign == NEGATIVE)
 		recipe->nprinted += write(1, "-", 1);
 	else if (sign == POSITIVE)
 		recipe->nprinted += write(1, "+", 1);
-	else if (recipe->space)
-		recipe->nprinted += write(1, " ", 1);
 	while (recipe->precision > 0)
 	{
 		recipe->nprinted += write(1, "0", 1);
 		recipe->precision--;
 	}
-	while (recipe->width > 0)
-	{
-		recipe->nprinted += write(1, " ", 1);
-		recipe->width--;
-	}
+	while (recipe->width-- > 0)
+		recipe->nprinted++;
 	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
@@ -67,7 +61,13 @@ void	left_justify(char *s, t_format *recipe, int sign)
 void	apply_sub_spec(long long n, t_format *recipe, int sign)
 {
 	char	*s;
+	size_t	intlen;
 	
+	intlen = count_int_digits(n);
+	if (sign != 0) // is NEGATIVE or POSITIVE
+		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space + 1);
+	else
+		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space);
 	if (recipe->space && sign != 0)
 		recipe->space = 0;
 	s = itoa_base(n, 10);

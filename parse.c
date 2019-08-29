@@ -6,21 +6,18 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:40:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/20 22:38:24 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/28 22:42:22 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void	sub_specs(const char* format, t_format *recipe, va_list ap);
-void	dispatch(char c, t_format *recipe, va_list ap);
-
 int		parse_specs(const char *format, t_format *recipe, size_t i, va_list ap)
 {
 	recipe->i = i;
 	if (!ft_strchr(CONVERSIONS, format[i]))
-		sub_specs(format, recipe, ap);
+		sub_specs(format, recipe);
 	else if (ft_strchr(CONVERSIONS, format[i]))
 		dispatch(format[i], recipe, ap);
 	return (recipe->i - 1);

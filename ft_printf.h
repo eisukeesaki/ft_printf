@@ -48,6 +48,16 @@ typedef struct			s_format
 }						t_format;
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> recipe
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< prototypes
+size_t		count_int_digits(intmax_t n);
+void		sub_specs(const char* format, t_format *recipe);
+void		dispatch(char c, t_format *recipe, va_list ap);
+void		bzero_recipe(t_format *recipe);
+ssize_t		parse(const char *format, t_format *recipe, va_list ap);
+char		*itoa_base(intmax_t n, uintmax_t base);
+void		print_int(t_format *recipe, va_list ap);
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
+
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion
 // void					conversion_d(va_list ap, t_format format);
 // void					conversion_c(va_list ap, t_format format);
