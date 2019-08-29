@@ -14,8 +14,8 @@ int		main(void)
 
 	// setbuf(stdout, NULL);
 
-	nprinted_l = printf("arg:123456|spec: d@libc:% d\n", 123456);
-	nprinted_m = ft_printf("arg:123456|spec: d@mine:% d\n", 123456);
+	nprinted_l = printf("arg:-123456|spec: 9d@libc:% 9d\n", -123456);
+	nprinted_m = ft_printf("arg:-123456|spec: 9d@mine:% 9d\n", -123456);
 	printf("nprinted@libc:%d\n", nprinted_l);
 	printf("nprinted@mine:%d\n\n", nprinted_m);
 
