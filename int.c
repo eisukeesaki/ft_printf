@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/29 00:05:05 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/31 00:01:59 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,48 @@
 #include <stdio.h>
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> debug purpose
 
-// char	*itoa_base(intmax_t n, uintmax_t base);
+int		zero_and_width(t_format *recipe, char pad, char sign_char, int sign)
+{
+	if (pad == '0' && recipe->width > 0)
+	{
+		if (recipe->space)
+		{
+			recipe->nprinted += write(1, " ", 1);
+			recipe->space = 0;
+		}
+		if (sign_char == '+' || sign_char == '-')
+			recipe->nprinted += write(1, &sign_char, 1);
+		sign = 0;
+	}
+	return (sign);
+}
 
-// void	right_justify(char *s, t_format *recipe, int sign)
 void	right_justify(char *s, t_format *recipe, int sign)
 {
+	char	pad;
+	char	sign_char;
+
+	if (recipe->zero && !recipe->hasprecision)
+		pad = '0';
+	else
+		pad = ' ';
+	sign_char = '\0';
+	if (sign == POSITIVE)
+		sign_char = '+';
+	else if (sign == NEGATIVE)
+		sign_char = '-';
+	sign = zero_and_width(recipe, pad, sign_char, sign);
+	while (recipe->width-- > 0)
+		recipe->nprinted += write(1, &pad, 1);
 	if (recipe->space)
 		recipe->nprinted += write(1, " ", 1); //TODO: FIX
-	while (recipe->width-- > 0)
-		recipe->nprinted += write(1, " ", 1);
-	while (recipe->precision > 0)
-	{
+	if (sign != 0 && (sign_char == '+' || sign_char == '-'))
+		recipe->nprinted += write(1, &sign_char, 1);
+	while (recipe->precision-- > 0)
 		recipe->nprinted += write(1, "0", 1);
-		recipe->precision--;
-	}
-	if (sign == NEGATIVE)
-		recipe->nprinted += write(1, "-", 1); //TODO: FIX
-	else if (sign == POSITIVE)
-		recipe->nprinted += write(1, "+", 1); //TODO: FIX
 	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
-// void	left_justify(char *s, t_format *recipe, int sign)
 void	left_justify(char *s, t_format *recipe, int sign)
 {
 	if (recipe->space)
@@ -57,14 +77,15 @@ void	left_justify(char *s, t_format *recipe, int sign)
 	recipe->nprinted += write(1, s, ft_strlen(s));
 }
 
-// void	apply_sub_spec(intmax_t n, t_format *recipe, int sign)
 void	apply_sub_spec(long long n, t_format *recipe, int sign)
 {
 	char	*s;
 	size_t	intlen;
 	
+	if (recipe->space && sign != 0)
+		recipe->space = 0;
 	intlen = count_int_digits(n);
-	if (sign != 0) // is NEGATIVE or POSITIVE
+	if (sign != 0)
 		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space + 1);
 	else
 		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space);
