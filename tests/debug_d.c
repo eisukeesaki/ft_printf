@@ -9,20 +9,20 @@ int		ft_printf(const char *format, ...);
 
 int		main(void)
 {
-	int					nprinted_l = 0;
-	int					nprinted_m = 0;
+	int					nprinted_libc = 0;
+	int					nprinted_mine = 0;
 
 	// setbuf(stdout, NULL);
 
-	nprinted_l = printf("arg:-123456|spec:9d@libc:%9d\n", -123456);
-	nprinted_m = ft_printf("arg:-123456|spec:9d@mine:%9d\n", -123456);
-	printf("nprinted@libc:%d\n", nprinted_l);
-	printf("nprinted@mine:%d\n\n", nprinted_m);
+	// nprinted_libc = printf("arg:0, 123456|spec:*d@libc:%*d\n", 0, 123456);
+	// nprinted_mine = ft_printf("arg:0, 123456|spec:*d@mine:%*d\n", 0, 123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_l = printf("arg:-123456|spec:09d@libc:%09d\n", -123456);
-	nprinted_m = ft_printf("arg:-123456|spec:09d@mine:%09d\n", -123456);
-	printf("nprinted@libc:%d\n", nprinted_l);
-	printf("nprinted@mine:%d\n\n", nprinted_m);
+	nprinted_libc = printf("arg:123456|spec:00d@libc:%009d\n", 123456);
+	nprinted_mine = ft_printf("arg:123456|spec:00d@mine:%009d\n", 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
 
 	return (0);
 }
