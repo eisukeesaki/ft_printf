@@ -4,7 +4,7 @@
 
 int		main(void)
 {
-	printf("% +d\n", 123);
+	printf("%-0-d\n", 123);
 
 	return (0);
 }
