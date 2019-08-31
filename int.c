@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/31 00:01:59 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/31 01:12:56 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	right_justify(char *s, t_format *recipe, int sign)
 	while (recipe->width-- > 0)
 		recipe->nprinted += write(1, &pad, 1);
 	if (recipe->space)
-		recipe->nprinted += write(1, " ", 1); //TODO: FIX
+		recipe->nprinted += write(1, " ", 1);
 	if (sign != 0 && (sign_char == '+' || sign_char == '-'))
 		recipe->nprinted += write(1, &sign_char, 1);
 	while (recipe->precision-- > 0)
@@ -94,15 +94,12 @@ void	apply_sub_spec(long long n, t_format *recipe, int sign)
 	s = itoa_base(n, 10);
 	if (recipe->minus == 1)
 		left_justify(s, recipe, sign);
-		// left_justify(s, recipe, sign);
 	else if (recipe->minus == 0)
 		right_justify(s, recipe, sign);
-		// right_justify(s, recipe, sign);
 }
 
 void	print_int(t_format *recipe, va_list ap)
 {
-	// intmax_t	n;
 	long long	n;
 	int			sign;
 

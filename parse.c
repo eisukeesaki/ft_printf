@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:40:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/28 22:42:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/31 02:01:46 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		parse_specs(const char *format, t_format *recipe, size_t i, va_list ap)
 {
 	recipe->i = i;
 	if (!ft_strchr(CONVERSIONS, format[i]))
-		sub_specs(format, recipe);
+		sub_specs(format, recipe, ap);
 	else if (ft_strchr(CONVERSIONS, format[i]))
 		dispatch(format[i], recipe, ap);
 	return (recipe->i - 1);

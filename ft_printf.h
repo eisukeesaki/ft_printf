@@ -50,7 +50,7 @@ typedef struct			s_format
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< prototypes
 size_t		count_int_digits(intmax_t n);
-void		sub_specs(const char* format, t_format *recipe);
+void		sub_specs(const char* format, t_format *recipe, va_list ap);
 void		dispatch(char c, t_format *recipe, va_list ap);
 void		bzero_recipe(t_format *recipe);
 ssize_t		parse(const char *format, t_format *recipe, va_list ap);

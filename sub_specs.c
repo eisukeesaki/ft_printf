@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/30 20:26:34 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/08/31 02:32:13 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,23 @@ void	flags(const char *format, t_format *recipe)
 			recipe->space = 1;
 		recipe->i++;
 	}
-	// TODO: manage case: '+' and ' ' combination
 }
 
-void	width(const char *format, t_format *recipe)
+void	width(const char *format, t_format *recipe, va_list ap)
 {
 	// TODO: handle *
 	if ('0' <= format[recipe->i] && format[recipe->i] <= '9')
+	{
 		recipe->width = ft_atoi(&format[recipe->i]);
-	while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
-		recipe->i++;
+		while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
+			recipe->i++;
+	}
+	else if (format[recipe->i] == '*')
+	{
+		recipe->width = (int)va_arg(ap, int);
+		while (format[recipe->i] == '*')
+			recipe->i++;
+	}
 }
 
 void	precision(const char *format, t_format *recipe)
@@ -79,10 +86,10 @@ void	length(const char* format, t_format *recipe)
 	recipe->i = i;
 }
 
-void		sub_specs(const char* format, t_format *recipe)
+void		sub_specs(const char* format, t_format *recipe, va_list ap)
 {
 	flags(format, recipe);
-	width(format, recipe);
+	width(format, recipe, ap);
 	precision(format, recipe);
 	length(format, recipe);
 }
