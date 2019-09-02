@@ -1,2 +1,0 @@
-[] 0width and -flag combination?
-[] test 0 width for all combinations
