@@ -49,6 +49,7 @@ typedef struct			s_format
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> recipe
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< prototypes
+int			ft_printf(const char *format, ...);
 size_t		count_int_digits(intmax_t n);
 void		sub_specs(const char* format, t_format *recipe, va_list ap);
 void		dispatch(char c, t_format *recipe, va_list ap);
