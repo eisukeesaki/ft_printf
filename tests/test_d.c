@@ -409,35 +409,35 @@ int		main(void)
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%-(w)d\n");
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
-	nprinted_libc = printf("arg:0|spec:-00d@libc:%-00d\n", 0);
-	nprinted_mine = ft_printf("arg:0|spec:-00d@mine:%-00d\n", 0);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:0|spec:-00d@libc:%-00d\n", 0);
+	// nprinted_mine = ft_printf("arg:0|spec:-00d@mine:%-00d\n", 0);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:123456|spec:-00d@libc:%-00d\n", 123456);
-	nprinted_mine = ft_printf("arg:123456|spec:-00d@mine:%-00d\n", 123456);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:123456|spec:-00d@libc:%-00d\n", 123456);
+	// nprinted_mine = ft_printf("arg:123456|spec:-00d@mine:%-00d\n", 123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:-123456|spec:-00d@libc:%-00d\n", -123456);
-	nprinted_mine = ft_printf("arg:-123456|spec:-00d@mine:%-00d\n", -123456);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:-123456|spec:-00d@libc:%-00d\n", -123456);
+	// nprinted_mine = ft_printf("arg:-123456|spec:-00d@mine:%-00d\n", -123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:INT_MIN@|spec:-00d@libc:%-00d\n", INT_MIN);
-	nprinted_mine = ft_printf("arg:INT_MIN@|spec:-00d@mine:%-00d\n", INT_MIN);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:INT_MIN@|spec:-00d@libc:%-00d\n", INT_MIN);
+	// nprinted_mine = ft_printf("arg:INT_MIN@|spec:-00d@mine:%-00d\n", INT_MIN);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:INT_MAX|spec:-00d@libc:%-00d\n", INT_MAX);
-	nprinted_mine = ft_printf("arg:INT_MAX|spec:-00d@mine:%-00d\n", INT_MAX);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:INT_MAX|spec:-00d@libc:%-00d\n", INT_MAX);
+	// nprinted_mine = ft_printf("arg:INT_MAX|spec:-00d@mine:%-00d\n", INT_MAX);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:UINT_MAX|spec:-00d@libc:%-00d\n", UINT_MAX);
-	nprinted_mine = ft_printf("arg:UINT_MAX|spec:-00d@mine:%-00d\n", UINT_MAX);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n", nprinted_mine);
+	// nprinted_libc = printf("arg:UINT_MAX|spec:-00d@libc:%-00d\n", UINT_MAX);
+	// nprinted_mine = ft_printf("arg:UINT_MAX|spec:-00d@mine:%-00d\n", UINT_MAX);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n", nprinted_mine);
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
 
 	nprinted_libc = printf("arg:0|spec:-5d@libc:%-5d\n", 0);
@@ -477,35 +477,35 @@ int		main(void)
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%-+(w)d\n");
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
-	nprinted_libc = printf("arg:0|spec:-+00d@libc:%-+00d\n", 0);
-	nprinted_mine = ft_printf("arg:0|spec:-+00d@mine:%-+00d\n", 0);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:0|spec:-+00d@libc:%-+00d\n", 0);
+	// nprinted_mine = ft_printf("arg:0|spec:-+00d@mine:%-+00d\n", 0);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:123456|spec:-+00d@libc:%-+00d\n", 123456);
-	nprinted_mine = ft_printf("arg:123456|spec:-+00d@mine:%-+00d\n", 123456);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:123456|spec:-+00d@libc:%-+00d\n", 123456);
+	// nprinted_mine = ft_printf("arg:123456|spec:-+00d@mine:%-+00d\n", 123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:-123456|spec:-+00d@libc:%-+00d\n", -123456);
-	nprinted_mine = ft_printf("arg:-123456|spec:-+00d@mine:%-+00d\n", -123456);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:-123456|spec:-+00d@libc:%-+00d\n", -123456);
+	// nprinted_mine = ft_printf("arg:-123456|spec:-+00d@mine:%-+00d\n", -123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:INT_MIN@|spec:-+00d@libc:%-+00d\n", INT_MIN);
-	nprinted_mine = ft_printf("arg:INT_MIN@|spec:-+00d@mine:%-+00d\n", INT_MIN);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:INT_MIN@|spec:-+00d@libc:%-+00d\n", INT_MIN);
+	// nprinted_mine = ft_printf("arg:INT_MIN@|spec:-+00d@mine:%-+00d\n", INT_MIN);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:INT_MAX|spec:-+00d@libc:%-+00d\n", INT_MAX);
-	nprinted_mine = ft_printf("arg:INT_MAX|spec:-+00d@mine:%-+00d\n", INT_MAX);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:INT_MAX|spec:-+00d@libc:%-+00d\n", INT_MAX);
+	// nprinted_mine = ft_printf("arg:INT_MAX|spec:-+00d@mine:%-+00d\n", INT_MAX);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:UINT_MAX|spec:-+00d@libc:%-+00d\n", UINT_MAX);
-	nprinted_mine = ft_printf("arg:UINT_MAX|spec:-+00d@mine:%-+00d\n", UINT_MAX);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:UINT_MAX|spec:-+00d@libc:%-+00d\n", UINT_MAX);
+	// nprinted_mine = ft_printf("arg:UINT_MAX|spec:-+00d@mine:%-+00d\n", UINT_MAX);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
 
 	nprinted_libc = printf("arg:0|spec:-+5d@libc:%-+5d\n", 0);
@@ -681,35 +681,35 @@ int		main(void)
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%' '-(w)d\n");
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
-	nprinted_libc = printf("arg:0|spec: -00d@libc:% -00d\n", 0);
-	nprinted_mine = ft_printf("arg:0|spec: -00d@mine:% -00d\n", 0);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:0|spec: -00d@libc:% -00d\n", 0);
+	// nprinted_mine = ft_printf("arg:0|spec: -00d@mine:% -00d\n", 0);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:123456|spec: -00d@libc:% -00d\n", 123456);
-	nprinted_mine = ft_printf("arg:123456|spec: -00d@mine:% -00d\n", 123456);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:123456|spec: -00d@libc:% -00d\n", 123456);
+	// nprinted_mine = ft_printf("arg:123456|spec: -00d@mine:% -00d\n", 123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:-123456|spec: -00d@libc:% -00d\n", -123456);
-	nprinted_mine = ft_printf("arg:-123456|spec: -00d@mine:% -00d\n", -123456);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:-123456|spec: -00d@libc:% -00d\n", -123456);
+	// nprinted_mine = ft_printf("arg:-123456|spec: -00d@mine:% -00d\n", -123456);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:INT_MIN@|spec: -00d@libc:% -00d\n", INT_MIN);
-	nprinted_mine = ft_printf("arg:INT_MIN@|spec: -00d@mine:% -00d\n", INT_MIN);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:INT_MIN@|spec: -00d@libc:% -00d\n", INT_MIN);
+	// nprinted_mine = ft_printf("arg:INT_MIN@|spec: -00d@mine:% -00d\n", INT_MIN);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:INT_MAX|spec: -00d@libc:% -00d\n", INT_MAX);
-	nprinted_mine = ft_printf("arg:INT_MAX|spec: -00d@mine:% -00d\n", INT_MAX);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:INT_MAX|spec: -00d@libc:% -00d\n", INT_MAX);
+	// nprinted_mine = ft_printf("arg:INT_MAX|spec: -00d@mine:% -00d\n", INT_MAX);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 
-	nprinted_libc = printf("arg:UINT_MAX|spec: -00d@libc:% -00d\n", UINT_MAX);
-	nprinted_mine = ft_printf("arg:UINT_MAX|spec: -00d@mine:% -00d\n", UINT_MAX);
-	printf("nprinted@libc:%d\n", nprinted_libc);
-	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// nprinted_libc = printf("arg:UINT_MAX|spec: -00d@libc:% -00d\n", UINT_MAX);
+	// nprinted_mine = ft_printf("arg:UINT_MAX|spec: -00d@mine:% -00d\n", UINT_MAX);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@mine:%d\n\n", nprinted_mine);
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
 
 	nprinted_libc = printf("arg:0|spec: -5d@libc:% -5d\n", 0);
@@ -884,6 +884,38 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %0+(w)d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%0+(w)d\n");
 
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0|spec:0+0d@libc:%0+0d\n",0);
+	nprinted_mine = ft_printf("arg:0|spec:0+0d@mine:%0+0d\n",0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:123456|spec:0+0d@libc:%0+0d\n", 123456);
+	nprinted_mine = ft_printf("arg:123456|spec:0+0d@mine:%0+0d\n", 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:-123456|spec:0+0d@libc:%0+0d\n", -123456);
+	nprinted_mine = ft_printf("arg:-123456|spec:0+0d@mine:%0+0d\n", -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:INT_MIN@|spec:0+0d@libc:%0+0d\n", INT_MIN);
+	nprinted_mine = ft_printf("arg:INT_MIN@|spec:0+0d@mine:%0+0d\n", INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:INT_MAX|spec:0+0d@libc:%0+0d\n", INT_MAX);
+	nprinted_mine = ft_printf("arg:INT_MAX|spec:0+0d@mine:%0+0d\n", INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:UINT_MAX|spec:0+0d@libc:%0+0d\n", UINT_MAX);
+	nprinted_mine = ft_printf("arg:UINT_MAX|spec:0+0d@mine:%0+0d\n", UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
 	nprinted_libc = printf("arg:0|spec:0+5d@libc:%0+5d\n",0);
 	nprinted_mine = ft_printf("arg:0|spec:0+5d@mine:%0+5d\n",0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
@@ -919,6 +951,38 @@ int		main(void)
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%*d\n");
+
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec:*d@libc:%*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec:*d@mine:%*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec:*d@libc:%*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec:*d@mine:%*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec:*d@libc:%*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec:*d@mine:%*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec:*d@libc:%*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec:*d@mine:%*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec:*d@libc:%*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec:*d@mine:%*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec:*d@libc:%*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec:*d@mine:%*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> wdith:0
 
 	nprinted_libc = printf("arg:5, 0|spec:*d@libc:%*d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec:*d@mine:%*d\n", 5, 0);
@@ -956,6 +1020,38 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %-*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%-*d\n");
 
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec:-*d@libc:%-*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec:-*d@mine:%-*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec:-*d@libc:%-*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec:-*d@mine:%-*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec:-*d@libc:%-*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec:-*d@mine:%-*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec:-*d@libc:%-*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec:-*d@mine:%-*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec:-*d@libc:%-*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec:-*d@mine:%-*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec:-*d@libc:%-*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec:-*d@mine:%-*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
 	nprinted_libc = printf("arg:5, 0|spec:-*d@libc:%-*d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec:-*d@mine:%-*d\n", 5, 0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
@@ -992,6 +1088,38 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %-+*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%-+*d\n");
 
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec:-+*d@libc:%-+*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec:-+*d@mine:%-+*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec:-+*d@libc:%-+*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec:-+*d@mine:%-+*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec:-+*d@libc:%-+*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec:-+*d@mine:%-+*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec:-+*d@libc:%-+*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec:-+*d@mine:%-+*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec:-+*d@libc:%-+*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec:-+*d@mine:%-+*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec:-+*d@libc:%-+*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec:-+*d@mine:%-+*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
 	nprinted_libc = printf("arg:5, 0|spec:-+*d@libc:%-+*d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec:-+*d@mine:%-+*d\n", 5, 0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
@@ -1021,11 +1149,44 @@ int		main(void)
 	nprinted_mine = ft_printf("arg:13, UINT_MAX|spec:-+*d@mine:%-+*d\n", 13, UINT_MAX);
 	printf("nprinted@libc:%d\n", nprinted_libc);
 	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
 	printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %%-+*d\n\n");
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> %-+*d
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %+*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%+*d\n");
+
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec:+*d@libc:%+*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec:+*d@mine:%+*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec:+*d@libc:%+*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec:+*d@mine:%+*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec:+*d@libc:%+*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec:+*d@mine:%+*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec:+*d@libc:%+*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec:+*d@mine:%+*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec:+*d@libc:%+*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec:+*d@mine:%+*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec:+*d@libc:%+*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec:+*d@mine:%+*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
 
 	nprinted_libc = printf("arg:5, 0|spec:+*d@libc:%+*d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec:+*d@mine:%+*d\n", 5, 0);
@@ -1063,6 +1224,38 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %' '*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%' '*d\n");
 
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec: *d@libc:% *d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec: *d@mine:% *d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec: *d@libc:% *d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec: *d@mine:% *d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec: *d@libc:% *d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec: *d@mine:% *d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec: *d@libc:% *d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec: *d@mine:% *d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec: *d@libc:% *d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec: *d@mine:% *d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec: *d@libc:% *d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec: *d@mine:% *d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
 	nprinted_libc = printf("arg:5, 0|spec: *d@libc:% *d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec: *d@mine:% *d\n", 5, 0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
@@ -1098,6 +1291,38 @@ int		main(void)
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %' '-*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%' '-*d\n");
+
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec: -*d@libc:% -*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec: -*d@mine:% -*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec: -*d@libc:% -*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec: -*d@mine:% -*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec: -*d@libc:% -*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec: -*d@mine:% -*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec: -*d@libc:% -*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec: -*d@mine:% -*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec: -*d@libc:% -*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec: -*d@mine:% -*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec: -*d@libc:% -*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec: -*d@mine:% -*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
 
 	nprinted_libc = printf("arg:5, 0|spec: -*d@libc:% -*d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec: -*d@mine:% -*d\n", 5, 0);
@@ -1135,6 +1360,38 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %' '0*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%' '0*d\n");
 
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec: *d@libc:% *d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec: *d@mine:% *d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec: *d@libc:% *d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec: *d@mine:% *d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec: *d@libc:% *d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec: *d@mine:% *d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec: 0*d@libc:% 0*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec: 0*d@mine:% 0*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec: 0*d@libc:% 0*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec: 0*d@mine:% 0*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec: 0*d@libc:% 0*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec: 0*d@mine:% 0*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
 	nprinted_libc = printf("arg:5, 0|spec: *d@libc:% *d\n", 5, 0);
 	nprinted_mine = ft_printf("arg:5, 0|spec: *d@mine:% *d\n", 5, 0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
@@ -1171,8 +1428,40 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %0*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%0*d\n");
 
-	nprinted_libc = printf("arg:5, 0|spec:*d@libc:%*d\n", 5,0);
-	nprinted_mine = ft_printf("arg:5, 0|spec:*d@mine:%*d\n", 5,0);
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec:*d@libc:%*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec:*d@mine:%*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec:*d@libc:%*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec:*d@mine:%*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec:*d@libc:%*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec:*d@mine:%*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec:0*d@libc:%0*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec:0*d@mine:%0*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec:0*d@libc:%0*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec:0*d@mine:%0*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec:0*d@libc:%0*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec:0*d@mine:%0*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
+	nprinted_libc = printf("arg:5, 0|spec:*d@libc:%*d\n", 5, 0);
+	nprinted_mine = ft_printf("arg:5, 0|spec:*d@mine:%*d\n", 5, 0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
 	printf("nprinted@mine:%d\n\n", nprinted_mine);
 
@@ -1207,8 +1496,40 @@ int		main(void)
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %0+*d
 	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< %%0+*d\n");
 
-	nprinted_libc = printf("arg:5, 0|spec:0+*d@libc:%0+*d\n", 5,0);
-	nprinted_mine = ft_printf("arg:5, 0|spec:0+*d@mine:%0+*d\n", 5,0);
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< width:0
+	nprinted_libc = printf("arg:0, 0|spec:0+*d@libc:%0+*d\n", 0, 0);
+	nprinted_mine = ft_printf("arg:0, 0|spec:0+*d@mine:%0+*d\n", 0, 0);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, 123456|spec:0+*d@libc:%0+*d\n", 0, 123456);
+	nprinted_mine = ft_printf("arg:0, 123456|spec:0+*d@mine:%0+*d\n", 0, 123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, -123456|spec:0+*d@libc:%0+*d\n", 0, -123456);
+	nprinted_mine = ft_printf("arg:0, -123456|spec:0+*d@mine:%0+*d\n", 0, -123456);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MIN@|spec:0+*d@libc:%0+*d\n", 0, INT_MIN);
+	nprinted_mine = ft_printf("arg:0, INT_MIN@|spec:0+*d@mine:%0+*d\n", 0, INT_MIN);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, INT_MAX|spec:0+*d@libc:%0+*d\n", 0, INT_MAX);
+	nprinted_mine = ft_printf("arg:0, INT_MAX|spec:0+*d@mine:%0+*d\n", 0, INT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+
+	nprinted_libc = printf("arg:0, UINT_MAX|spec:0+*d@libc:%0+*d\n", 0, UINT_MAX);
+	nprinted_mine = ft_printf("arg:0, UINT_MAX|spec:0+*d@mine:%0+*d\n", 0, UINT_MAX);
+	printf("nprinted@libc:%d\n", nprinted_libc);
+	printf("nprinted@mine:%d\n\n", nprinted_mine);
+	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> width:0
+
+	nprinted_libc = printf("arg:5, 0|spec:0+*d@libc:%0+*d\n", 5, 0);
+	nprinted_mine = ft_printf("arg:5, 0|spec:0+*d@mine:%0+*d\n", 5, 0);
 	printf("nprinted@libc:%d\n", nprinted_libc);
 	printf("nprinted@mine:%d\n\n", nprinted_mine);
 
