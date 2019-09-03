@@ -21,7 +21,7 @@ OBJS = ft_printf.o \
 NAME = libftprintf.a
 RM = rm -rf
 
-$(NAME):
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $(SRCS) -I libft
 	ar rcs $(NAME) $(OBJS)
 
@@ -37,3 +37,8 @@ re: fclean all
 
 libft/libft.a:
 	make -c libft
+
+# TODO: generate object files to dedicated directory
+		# separate them to libftobj/ ftprintfobj/ ?
+# TODO: check for libft changes and make them every time if necessary
+# TODO: organize files to src/ includes/ ?
