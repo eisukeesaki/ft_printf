@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/31 01:12:56 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/03 05:37:33 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		zero_and_width(t_format *recipe, char pad, char sign_char, int sign)
 	return (sign);
 }
 
-void	right_justify(char *s, t_format *recipe, int sign)
+void	right_justify(char *s, int intlen, t_format *recipe, int sign)
 {
 	char	pad;
 	char	sign_char;
@@ -56,7 +56,7 @@ void	right_justify(char *s, t_format *recipe, int sign)
 		recipe->nprinted += write(1, &sign_char, 1);
 	while (recipe->precision-- > 0)
 		recipe->nprinted += write(1, "0", 1);
-	recipe->nprinted += write(1, s, ft_strlen(s));
+	recipe->nprinted += write(1, s, intlen);
 }
 
 void	left_justify(char *s, t_format *recipe, int sign)
@@ -72,19 +72,25 @@ void	left_justify(char *s, t_format *recipe, int sign)
 		recipe->nprinted += write(1, "0", 1);
 		recipe->precision--;
 	}
-	while (recipe->width-- > 0)
-		recipe->nprinted++;
 	recipe->nprinted += write(1, s, ft_strlen(s));
+	while (recipe->width-- > 0)
+		recipe->nprinted += write(1, " ", 1);
 }
 
 void	apply_sub_spec(long long n, t_format *recipe, int sign)
 {
 	char	*s;
-	size_t	intlen;
+	int		intlen;
 	
 	if (recipe->space && sign != 0)
 		recipe->space = 0;
 	intlen = count_int_digits(n);
+	if (recipe->hasprecision && recipe->precision == 0 && n == 0)
+		intlen = 0;
+	if (recipe->hasprecision && recipe->precision > intlen)
+		recipe->precision = recipe->precision - intlen;
+	else
+		recipe->precision = 0;
 	if (sign != 0)
 		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space + 1);
 	else
@@ -95,7 +101,7 @@ void	apply_sub_spec(long long n, t_format *recipe, int sign)
 	if (recipe->minus == 1)
 		left_justify(s, recipe, sign);
 	else if (recipe->minus == 0)
-		right_justify(s, recipe, sign);
+		right_justify(s, intlen, recipe, sign);
 }
 
 void	print_int(t_format *recipe, va_list ap)
@@ -108,7 +114,7 @@ void	print_int(t_format *recipe, va_list ap)
 	if (recipe->length == 0)
 		n = (int)va_arg(ap, int);
 	else if (recipe->length == HH)
-		n = (unsigned char)va_arg(ap, int);
+		n = (char)va_arg(ap, int);
 	else if (recipe->length == H)
 		n = (short)va_arg(ap, int);
 	else if (recipe->length == LL)
