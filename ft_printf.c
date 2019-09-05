@@ -21,6 +21,8 @@ int		ft_printf(const char *format, ...)
 
 	printed_bytes = parse(format, recipe, ap);
 
+	free(recipe);
+
 	va_end(ap);
 
 	return (printed_bytes);
