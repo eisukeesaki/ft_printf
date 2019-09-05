@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 20:03:14 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/28 22:43:05 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/04 21:58:22 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	dispatch(char c, t_format *recipe, va_list ap)
 {
 	if (c == 'c')
-		return ; // avoid compilation error
-		// print_char();
+		print_char(recipe, ap);
 	else if (c == 's')
 		return ; // avoid compilation error
 		// print_string();

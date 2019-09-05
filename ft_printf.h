@@ -54,9 +54,11 @@ size_t		count_int_digits(intmax_t n);
 void		sub_specs(const char* format, t_format *recipe, va_list ap);
 void		dispatch(char c, t_format *recipe, va_list ap);
 void		bzero_recipe(t_format *recipe);
+void		re_bzero_recipe(t_format *recipe);
 ssize_t		parse(const char *format, t_format *recipe, va_list ap);
 char		*itoa_base(intmax_t n, uintmax_t base);
 void		print_int(t_format *recipe, va_list ap);
+void		print_char(t_format *recipe, va_list ap);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion
