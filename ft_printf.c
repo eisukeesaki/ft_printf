@@ -1,7 +1,3 @@
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< test purpose
-#include <stdio.h>
-#include <limits.h>
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> test purpose
 #include "libft/libft.h"
 #include "ft_printf.h"
 
@@ -24,8 +20,6 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 
 	printed_bytes = parse(format, recipe, ap);
-
-	// parse_conversion(format, ap, parse_format(format, ap));
 
 	va_end(ap);
 

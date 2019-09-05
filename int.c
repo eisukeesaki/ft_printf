@@ -6,16 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/03 05:37:33 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/04 20:07:20 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< debug purpose
-#include <stdio.h>
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> debug purpose
 
 int		zero_and_width(t_format *recipe, char pad, char sign_char, int sign)
 {
@@ -59,7 +55,7 @@ void	right_justify(char *s, int intlen, t_format *recipe, int sign)
 	recipe->nprinted += write(1, s, intlen);
 }
 
-void	left_justify(char *s, t_format *recipe, int sign)
+void	left_justify(char *s, int intlen, t_format *recipe, int sign)
 {
 	if (recipe->space)
 		recipe->nprinted += write(1, " ", 1);
@@ -72,7 +68,7 @@ void	left_justify(char *s, t_format *recipe, int sign)
 		recipe->nprinted += write(1, "0", 1);
 		recipe->precision--;
 	}
-	recipe->nprinted += write(1, s, ft_strlen(s));
+	recipe->nprinted += write(1, s, intlen);
 	while (recipe->width-- > 0)
 		recipe->nprinted += write(1, " ", 1);
 }
@@ -99,7 +95,7 @@ void	apply_sub_spec(long long n, t_format *recipe, int sign)
 		recipe->space = 0;
 	s = itoa_base(n, 10);
 	if (recipe->minus == 1)
-		left_justify(s, recipe, sign);
+		left_justify(s, intlen, recipe, sign);
 	else if (recipe->minus == 0)
 		right_justify(s, intlen, recipe, sign);
 }

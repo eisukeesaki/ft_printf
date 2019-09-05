@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/03 05:04:19 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/04 18:46:27 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	flags(const char *format, t_format *recipe)
 			recipe->space = 1;
 		recipe->i++;
 	}
+	if (recipe->plus)
+		recipe->space = 0;
 }
 
 void	width(const char *format, t_format *recipe, va_list ap)
