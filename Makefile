@@ -6,6 +6,7 @@ SRCS = ft_printf.c \
 		sub_specs.c \
 		dispatch.c \
 		int.c \
+		uint.c \
 		char.c \
 		count_int_digits.c \
 		itoa_base.c \
@@ -16,6 +17,7 @@ OBJS = ft_printf.o \
 		sub_specs.o \
 		dispatch.o \
 		int.o \
+		uint.o \
 		char.o \
 		count_int_digits.o \
 		itoa_base.o \

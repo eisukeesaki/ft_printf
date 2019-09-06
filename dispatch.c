@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 20:03:14 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/04 21:58:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/05 19:36:43 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ void	dispatch(char c, t_format *recipe, va_list ap)
 		return ; // avoid compilation error
 		// print_pointer();
 	else if (c == 'd' || c == 'i')
-		// return ; // avoid compilation error
 		print_int(recipe, ap);
 	else if (c == 'o')
 		return ; // avoid compilation error
 		// print_octal();
 	else if (c == 'u')
-		return ; // avoid compilation error
-		// print_uint();
+		print_uint(recipe, ap);
 	else if (c == 'x')
 		return ; // avoid compilation error
 		// print_hex_lower();
