@@ -60,6 +60,7 @@ char		*itoa_base(intmax_t n, uintmax_t base);
 void		print_int(t_format *recipe, va_list ap);
 void		print_uint(t_format *recipe, va_list ap);
 void		print_char(t_format *recipe, va_list ap);
+void		print_string(t_format *recipe, va_list ap);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion

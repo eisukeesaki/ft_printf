@@ -8,6 +8,7 @@ SRCS = ft_printf.c \
 		int.c \
 		uint.c \
 		char.c \
+		string.c \
 		count_int_digits.c \
 		itoa_base.c \
 		libft/*.c
@@ -19,6 +20,7 @@ OBJS = ft_printf.o \
 		int.o \
 		uint.o \
 		char.o \
+		string.o \
 		count_int_digits.o \
 		itoa_base.o \
 		ft_*.o
