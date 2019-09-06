@@ -58,6 +58,7 @@ void		re_bzero_recipe(t_format *recipe);
 ssize_t		parse(const char *format, t_format *recipe, va_list ap);
 char		*itoa_base(intmax_t n, uintmax_t base);
 void		print_int(t_format *recipe, va_list ap);
+void		print_uint(t_format *recipe, va_list ap);
 void		print_char(t_format *recipe, va_list ap);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 

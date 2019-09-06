@@ -6,14 +6,14 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/04 20:07:20 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/05 19:44:13 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int		zero_and_width(t_format *recipe, char pad, char sign_char, int sign)
+int		zero_and_width_int(t_format *recipe, char pad, char sign_char, int sign)
 {
 	if (pad == '0' && recipe->width > 0)
 	{
@@ -29,7 +29,7 @@ int		zero_and_width(t_format *recipe, char pad, char sign_char, int sign)
 	return (sign);
 }
 
-void	right_justify(char *s, int intlen, t_format *recipe, int sign)
+void	right_justify_int(char *s, int intlen, t_format *recipe, int sign)
 {
 	char	pad;
 	char	sign_char;
@@ -43,7 +43,7 @@ void	right_justify(char *s, int intlen, t_format *recipe, int sign)
 		sign_char = '+';
 	else if (sign == NEGATIVE)
 		sign_char = '-';
-	sign = zero_and_width(recipe, pad, sign_char, sign);
+	sign = zero_and_width_int(recipe, pad, sign_char, sign);
 	while (recipe->width-- > 0)
 		recipe->nprinted += write(1, &pad, 1);
 	if (recipe->space)
@@ -55,7 +55,7 @@ void	right_justify(char *s, int intlen, t_format *recipe, int sign)
 	recipe->nprinted += write(1, s, intlen);
 }
 
-void	left_justify(char *s, int intlen, t_format *recipe, int sign)
+void	left_justify_int(char *s, int intlen, t_format *recipe, int sign)
 {
 	if (recipe->space)
 		recipe->nprinted += write(1, " ", 1);
@@ -73,7 +73,7 @@ void	left_justify(char *s, int intlen, t_format *recipe, int sign)
 		recipe->nprinted += write(1, " ", 1);
 }
 
-void	apply_sub_spec(long long n, t_format *recipe, int sign)
+void	apply_sub_spec_int(long long n, t_format *recipe, int sign)
 {
 	char	*s;
 	int		intlen;
@@ -95,9 +95,9 @@ void	apply_sub_spec(long long n, t_format *recipe, int sign)
 		recipe->space = 0;
 	s = itoa_base(n, 10);
 	if (recipe->minus == 1)
-		left_justify(s, intlen, recipe, sign);
+		left_justify_int(s, intlen, recipe, sign);
 	else if (recipe->minus == 0)
-		right_justify(s, intlen, recipe, sign);
+		right_justify_int(s, intlen, recipe, sign);
 }
 
 void	print_int(t_format *recipe, va_list ap)
@@ -124,5 +124,5 @@ void	print_int(t_format *recipe, va_list ap)
 		sign = NEGATIVE;
 		n *= -1;
 	}
-	apply_sub_spec(n, recipe, sign);
+	apply_sub_spec_int(n, recipe, sign);
 }
