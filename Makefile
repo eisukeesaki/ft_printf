@@ -7,6 +7,7 @@ SRCS = ft_printf.c \
 		dispatch.c \
 		int.c \
 		uint.c \
+		octal.c \
 		char.c \
 		string.c \
 		count_int_digits.c \
@@ -19,6 +20,7 @@ OBJS = ft_printf.o \
 		dispatch.o \
 		int.o \
 		uint.o \
+		octal.o \
 		char.o \
 		string.o \
 		count_int_digits.o \
