@@ -14,11 +14,11 @@ int		main(void)
 
 	// setbuf(stdout, NULL);
 
-	nprinted_libc = printf("%9.6s", "Acekay");
+	nprinted_libc = printf("%-9s", "Acekay");
 	setbuf(stdout, NULL);
 	putchar('\n');
 
-	nprinted_mine = ft_printf("%9.6s", "Acekay");
+	nprinted_mine = ft_printf("%-9s", "Acekay");
 	setbuf(stdout, NULL);
 	putchar('\n');
 
