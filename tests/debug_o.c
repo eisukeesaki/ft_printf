@@ -14,11 +14,11 @@ int		main(void)
 
 	// setbuf(stdout, NULL);
 
-	nprinted_libc = printf("%o", 4294967295u);
+	nprinted_libc = printf("%#04o", 0);
 	setbuf(stdout, NULL);
 	putchar('\n');
 
-	nprinted_mine = ft_printf("%o", 4294967295u);
+	nprinted_mine = ft_printf("%#04o", 0);
 	setbuf(stdout, NULL);
 	putchar('\n');
 
