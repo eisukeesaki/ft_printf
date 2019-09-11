@@ -8,10 +8,12 @@ SRCS = ft_printf.c \
 		int.c \
 		uint.c \
 		octal.c \
+		hex.c \
 		char.c \
 		string.c \
 		count_int_digits.c \
 		itoa_base.c \
+		itoa_base_upper.c \
 		libft/*.c
 OBJS = ft_printf.o \
 		bzero_recipe.o \
@@ -21,10 +23,12 @@ OBJS = ft_printf.o \
 		int.o \
 		uint.o \
 		octal.o \
+		hex.o \
 		char.o \
 		string.o \
 		count_int_digits.o \
 		itoa_base.o \
+		itoa_base_upper.o \
 		ft_*.o
 NAME = libftprintf.a
 RM = rm -rf
