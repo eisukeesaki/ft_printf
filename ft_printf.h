@@ -56,7 +56,8 @@ void		dispatch(char c, t_format *recipe, va_list ap);
 void		bzero_recipe(t_format *recipe);
 void		re_bzero_recipe(t_format *recipe);
 ssize_t		parse(const char *format, t_format *recipe, va_list ap);
-char		*itoa_base(intmax_t n, uintmax_t base);
+// char		*itoa_base(intmax_t n, uintmax_t base);
+char		*itoa_base(uintmax_t n, uintmax_t base);
 char		*itoa_base_upper(intmax_t n, uintmax_t base);
 void		print_int(t_format *recipe, va_list ap);
 void		print_uint(t_format *recipe, va_list ap);
@@ -64,6 +65,7 @@ void		print_char(t_format *recipe, va_list ap);
 void		print_string(t_format *recipe, va_list ap);
 void		print_octal(t_format *recipe, va_list ap);
 void		print_hex(const char x, t_format *recipe, va_list ap);
+void		print_pointer(t_format *recipe, va_list ap);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion
