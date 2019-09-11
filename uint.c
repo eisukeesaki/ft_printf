@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/05 20:08:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/11 01:31:29 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	right_justify_uint(char *s, int intlen, t_format *recipe)
 {
 	char	pad;
 
-	if (recipe->zero && !recipe->hasprecision)
-		pad = '0';
-	else
-		pad = ' ';
+	pad = (recipe->zero && !recipe->hasprecision) ? '0' : ' ';
 	while (recipe->width-- > 0)
 		recipe->nprinted += write(1, &pad, 1);
 	if (recipe->space)
@@ -47,7 +44,7 @@ void	apply_sub_spec_uint(unsigned long long n, t_format *recipe)
 {
 	char	*s;
 	int		intlen;
-	
+
 	intlen = count_int_digits(n);
 	if (recipe->hasprecision && recipe->precision == 0 && n == 0)
 		intlen = 0;
@@ -55,7 +52,8 @@ void	apply_sub_spec_uint(unsigned long long n, t_format *recipe)
 		recipe->precision = recipe->precision - intlen;
 	else
 		recipe->precision = 0;
-	recipe->width = recipe->width - (intlen + recipe->precision + recipe->space);
+	recipe->width =
+				recipe->width - (intlen + recipe->precision + recipe->space);
 	s = itoa_base(n, 10);
 	if (recipe->minus == 1)
 		left_justify_uint(s, intlen, recipe);
@@ -78,6 +76,5 @@ void	print_uint(t_format *recipe, va_list ap)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
 	else if (recipe->length == L)
 		n = (unsigned long)va_arg(ap, unsigned long);
-
 	apply_sub_spec_uint(n, recipe);
 }
