@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/09 20:56:47 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/10 21:04:58 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	right_justify_octal(char *s, int intlen, t_format *recipe)
 		recipe->nprinted += write(1, &pad, 1);
 	while (recipe->precision-- > 0)
 		recipe->nprinted += write(1, "0", 1);
-	if (!(!recipe->hasprecision && ft_strequ(s, "0"))) // TODO
+	if (recipe->hash && !ft_strequ(s, "0"))
 		recipe->nprinted += write(1, "0", 1);
 	recipe->nprinted += write(1, s, intlen);
 }
@@ -37,7 +37,7 @@ void	left_justify_octal(char *s, int intlen, t_format *recipe)
 		recipe->nprinted += write(1, "0", 1);
 		recipe->precision--;
 	}
-	if (!(recipe->hash != 0 && !recipe->hasprecision && ft_strequ(s, "0")))
+	if (recipe->hash && !ft_strequ(s, "0"))
 		recipe->nprinted += write(1, "0", 1);
 	recipe->nprinted += write(1, s, intlen);
 	while (recipe->width-- > 0)
@@ -48,16 +48,21 @@ void	apply_sub_spec_octal(uintmax_t n, t_format *recipe)
 {
 	char	*s;
 	int		intlen;
-	
+
 	s = itoa_base(n, 8);
 	intlen = ft_strlen(s);
-	if (recipe->hasprecision && recipe->precision == 0 && n == 0)
+	if (recipe->hasprecision && recipe->precision == 0 && !recipe->hash && n == 0)
 		intlen = 0;
-	if (recipe->hasprecision && recipe->precision > intlen)
+	if (recipe->hasprecision && ft_strequ(s, "0") && recipe->precision > intlen)
+		recipe->precision = recipe->precision - intlen;
+	else if (recipe->hasprecision && recipe->precision > intlen)
 		recipe->precision = recipe->precision - intlen - recipe->hash;
 	else
 		recipe->precision = 0;
-	recipe->width = recipe->width - (intlen + recipe->precision + recipe->hash);
+	if (ft_strequ(s, "0") && recipe->hash)
+		recipe->width = recipe->width - (intlen + recipe->precision);
+	else
+		recipe->width = recipe->width - (intlen + recipe->precision + recipe->hash);
 	if (recipe->minus == 1)
 		left_justify_octal(s, intlen, recipe);
 	else if (recipe->minus == 0)
