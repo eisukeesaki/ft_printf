@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/10 21:51:10 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/11 04:25:44 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,13 @@ char	*toa(intmax_t n, uintmax_t base)
 	return (ft_strrev(s));
 }
 
-char	*itoa_base(intmax_t n, uintmax_t base)
+// char	*itoa_base(intmax_t n, uintmax_t base) // 1
+char	*itoa_base(uintmax_t n, uintmax_t base) // 2
 {
-	if (n == LONG_MIN)
-		return ("9223372036854775808");
+	// if (n == LONG_MIN) // 1
+	// 	return ("9223372036854775808");
+	if (n == ULONG_MAX && base == 10) // 2
+		return ("18446744073709551615");
 	else if (base == 10)
 		return (itoa(n));
 	else if (base >= 2 && base <= 16 && base != 10)
