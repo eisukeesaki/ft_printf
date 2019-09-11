@@ -63,7 +63,7 @@ void		print_uint(t_format *recipe, va_list ap);
 void		print_char(t_format *recipe, va_list ap);
 void		print_string(t_format *recipe, va_list ap);
 void		print_octal(t_format *recipe, va_list ap);
-void		print_hex(char x, t_format *recipe, va_list ap);
+void		print_hex(const char x, t_format *recipe, va_list ap);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion
