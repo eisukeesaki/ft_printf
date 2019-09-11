@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/05 19:44:13 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/11 01:30:27 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	right_justify_int(char *s, int intlen, t_format *recipe, int sign)
 	char	pad;
 	char	sign_char;
 
-	if (recipe->zero && !recipe->hasprecision)
-		pad = '0';
-	else
-		pad = ' ';
+	pad = (recipe->zero && !recipe->hasprecision) ? '0' : ' ';
 	sign_char = '\0';
 	if (sign == POSITIVE)
 		sign_char = '+';
@@ -77,7 +74,7 @@ void	apply_sub_spec_int(long long n, t_format *recipe, int sign)
 {
 	char	*s;
 	int		intlen;
-	
+
 	if (recipe->space && sign != 0)
 		recipe->space = 0;
 	intlen = count_int_digits(n);
@@ -88,9 +85,11 @@ void	apply_sub_spec_int(long long n, t_format *recipe, int sign)
 	else
 		recipe->precision = 0;
 	if (sign != 0)
-		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space + 1);
+		recipe->width =
+			recipe->width - (intlen + recipe->precision + recipe->space + 1);
 	else
-		recipe->width = recipe->width - (intlen + recipe->precision + recipe->space);
+		recipe->width =
+				recipe->width - (intlen + recipe->precision + recipe->space);
 	if (recipe->space && sign != 0)
 		recipe->space = 0;
 	s = itoa_base(n, 10);
