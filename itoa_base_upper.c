@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base.c                                        :+:      :+:    :+:   */
+/*   itoa_base_upper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/10 21:51:10 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/10 21:51:01 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <limits.h>
 
-size_t	count_digit(intmax_t n)
+size_t	count_digit_upper(intmax_t n)
 {
 	size_t	i;
 
@@ -34,7 +34,7 @@ size_t	count_digit(intmax_t n)
 	return (i);
 }
 
-char	*itoa(intmax_t n)
+char	*itoa_upper(intmax_t n)
 {
 	intmax_t	nb;
 	size_t		dgt;
@@ -43,7 +43,7 @@ char	*itoa(intmax_t n)
 
 	nb = n;
 	neg = n < 0 ? 1 : 0;
-	dgt = count_digit(nb);
+	dgt = count_digit_upper(nb);
 	s = ft_strnew(dgt + neg);
 	if (!s)
 		return (NULL);
@@ -61,7 +61,7 @@ char	*itoa(intmax_t n)
 	return (s);
 }
 
-char	*toa(intmax_t n, uintmax_t base)
+char	*toa_upper(intmax_t n, uintmax_t base)
 {
 	size_t	dgt;
 	char	*s;
@@ -69,10 +69,10 @@ char	*toa(intmax_t n, uintmax_t base)
 	int		rem;
 	char	c;
 
-	dgt = count_digit(n);
+	dgt = count_digit_upper(n);
 	s = ft_strnew(dgt);
 	i = 0;
-	c = 'a';
+	c = 'A';
 	if (n == 0)
 		s[i++] = '0';
 	else
@@ -90,14 +90,14 @@ char	*toa(intmax_t n, uintmax_t base)
 	return (ft_strrev(s));
 }
 
-char	*itoa_base(intmax_t n, uintmax_t base)
+char	*itoa_base_upper(intmax_t n, uintmax_t base)
 {
 	if (n == LONG_MIN)
 		return ("9223372036854775808");
 	else if (base == 10)
-		return (itoa(n));
+		return (itoa_upper(n));
 	else if (base >= 2 && base <= 16 && base != 10)
-		return (toa(n, base));
+		return (toa_upper(n, base));
 	else
 		return (NULL);
 }
