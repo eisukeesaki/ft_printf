@@ -18,11 +18,11 @@
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> length modifiers
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< symbol lists
-# define CONVERSIONS	"cspdiouxX%"
+# define CONVERSIONS	"cspdiouxXf%"
 # define SUBSPEC		"#0-+ *.0123456789lL"
 # define FLAGS			"#0-+ "
 # define LENGTH			"hlL"
-# define ALLSYMBOLS		"cspdiouxX%#0-+ *.0123456789hlL"
+# define ALLSYMBOLS		"cspdiouxXf%#0-+ *.0123456789hlL"
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> symbol lists
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< recipe
@@ -48,6 +48,17 @@ typedef struct			s_format
 }						t_format;
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> recipe
 
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< float struct
+typedef struct			s_float
+{
+	char				*int_part_s;
+	char				*frac_part_s;
+	long double			int_part_ll;
+	// pad
+	// sign
+}						t_float;
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> float struct
+
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< prototypes
 int			ft_printf(const char *format, ...);
 size_t		count_int_digits(intmax_t n);
@@ -56,8 +67,8 @@ void		dispatch(char c, t_format *recipe, va_list ap);
 void		bzero_recipe(t_format *recipe);
 void		re_bzero_recipe(t_format *recipe);
 ssize_t		parse(const char *format, t_format *recipe, va_list ap);
-// char		*itoa_base(intmax_t n, uintmax_t base);
 char		*itoa_base(uintmax_t n, uintmax_t base);
+char		*uitoa_base(uintmax_t n, uintmax_t base);
 char		*itoa_base_upper(intmax_t n, uintmax_t base);
 void		print_int(t_format *recipe, va_list ap);
 void		print_uint(t_format *recipe, va_list ap);
@@ -66,6 +77,10 @@ void		print_string(t_format *recipe, va_list ap);
 void		print_octal(t_format *recipe, va_list ap);
 void		print_hex(const char x, t_format *recipe, va_list ap);
 void		print_pointer(t_format *recipe, va_list ap);
+// char		*ftoa(long double n, int prec);
+void		print_float(t_format *recipe, va_list ap);
+intmax_t	power(intmax_t base, intmax_t exponent);
+// void		ft_putfloat(long double n, size_t prec);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion

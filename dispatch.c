@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 20:03:14 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 04:14:54 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/11 23:02:14 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void	dispatch(char c, t_format *recipe, va_list ap)
 	else if (c == 'x' || c == 'X')
 		print_hex((const char)c, recipe, ap);
 	else if (c == 'f')
-		return ; // avoid compilation error
-		// print_float();
+		print_float(recipe, ap);
 }
