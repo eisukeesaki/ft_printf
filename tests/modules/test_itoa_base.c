@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdint.h>
-#include "libft/libft.h"
+#include "../../libft/libft.h"
 
 char	*itoa_base(intmax_t n, uintmax_t base);
 
 int		main(void)
 {
-	intmax_t	n = ULLONG_MAX;
+	// intmax_t	n = ULLONG_MAX;
+	long double	n = -9223372036854775808.0;
 	uintmax_t	base = 10;
 	char		*a = NULL;
 
@@ -24,7 +25,7 @@ int		main(void)
 
 	a = itoa_base(n, base);
 	printf("mine:%s\n", a);
-	printf("libc:%ld\n", n);
+	// printf("libc:%Lf\n", n);
 	// printf("base  8:%jo\n", n);
 	// printf("base 16:%jX\n", n);
 	return (0);
