@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 23:21:04 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/15 23:48:40 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/16 01:16:05 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		assign_int_part(t_float *fl)
 		fl->int_part = ft_strnew(2);
 		fl->int_part[0] = '0';
 		fl->int_part[1] = '.';
+		fl->int_part[2] = '\0';
 		return ;
 	}
 	fl->int_part = ft_strnew(fl->neg + fl->len + 1);
@@ -56,6 +57,7 @@ void		assign_int_part(t_float *fl)
 	}
 	fl->int_part = ft_strnrev(fl->int_part, 0 + fl->neg);
 	fl->int_part[i] = '.';
+	fl->int_part[++i] = '\0';
 }
 
 void		assign_frac_part(t_float *fl)
@@ -76,6 +78,7 @@ void		assign_frac_part(t_float *fl)
 		nb /= 10;
 		i++;
 	}
+	fl->frac_part[i] = '\0';
 	fl->frac_part = ft_strrev(fl->frac_part);
 }
 
