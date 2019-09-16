@@ -6,11 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 23:21:04 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/12 21:44:02 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/15 23:48:40 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include "ft_printf.h"
 
 long double	my_fmod(double n, double div)
 {
@@ -30,88 +31,92 @@ long long	my_pow(int base, int exponent)
 	return (res);
 }
 
-
-static char			*assign_int_part(long double n, size_t len)
+void		assign_int_part(t_float *fl)
 {
-	char		*s;
+	long double	n;
 	size_t		i;
 
-	if (len == 0)
+	n = fl->f;
+	if (fl->len == 0)
 	{
-		s = ft_strnew(2);
-		s[0] = '0';
-		s[1] = '.';
-		return (s);
+		fl->int_part = ft_strnew(2);
+		fl->int_part[0] = '0';
+		fl->int_part[1] = '.';
+		return ;
 	}
-	s = ft_strnew(len + 1);
+	fl->int_part = ft_strnew(fl->neg + fl->len + 1);
 	i = 0;
-	while (i < len)
+	if (fl->neg)
+		fl->int_part[i++] = '-';
+	while (i < fl->len + fl->neg)
 	{
-		s[i] = ((long long)my_fmod(n, 10)) + '0';
+		fl->int_part[i] = ((long long)my_fmod(n, 10)) + '0';
 		n /= 10;
 		i++;
 	}
-	s = ft_strrev(s);
-	s[i] = '.';
-	return (s);
+	fl->int_part = ft_strnrev(fl->int_part, 0 + fl->neg);
+	fl->int_part[i] = '.';
 }
 
-static char			*assign_frac_part(long double n, int prec)
+void		assign_frac_part(t_float *fl)
 {
-	char		*s;
 	long double	nb;
 	int			i;
 
-	s = ft_strnew(prec);
-	nb = (n - (long long)n) * my_pow(10, prec);
+	fl->frac_part = ft_strnew(fl->precision);
+	nb = (fl->f - (long long)fl->f) * my_pow(10, fl->precision);
+	if (nb >= 0)
+		nb += (long double)0.5;
+	else
+		nb -= (long double)0.5;
 	i = 0;
-	while (i < prec)
+	while (i < fl->precision)
 	{
-		s[i] = ((long long)my_fmod(nb, 10)) + '0';
+		fl->frac_part[i] = ((long long)my_fmod(nb, 10)) + '0';
 		nb /= 10;
 		i++;
 	}
-	s = ft_strrev(s);
-	return (s);
+	fl->frac_part = ft_strrev(fl->frac_part);
 }
 
-static size_t		ct_int_part(long double n)
+void		ct_int_part(t_float *fl)
 {
-	size_t		len;
+	long double	n;
 
-	len = 0;
+	n = fl->f;
 	while (n > 1)
 	{
 		n /= 10;
-		len++;
+		fl->len++;
 	}
-	return (len);
 }
 
-static long double	check_neg(long double n)
+void		check_neg(t_float *fl)
 {
-	if (n < 0)
+	if (fl->f < 0)
 	{
-		write(1, "-", 1);
-		return (-n);
+		fl->neg = 1;
+		fl->f = -fl->f;
 	}
-	return (n);
+	else
+		fl->neg = 0;
 }
 
-char				*ftoa(long double n, int prec)
+char		*ftoa(long double n, int prec)
 {
-	char		*int_part;
-	char		*frac_part;
-	char		*s;
-	size_t		len;
-	long double	nb;
+	t_float		*fl;
 
-	nb = check_neg(n);
-	len = ct_int_part(nb);
-	int_part = assign_int_part(nb, len);
-	frac_part = assign_frac_part(nb, prec);
-	s = ft_strjoin(int_part, frac_part);
-	free(int_part);
-	free(frac_part);
-	return (s);
+	if (!(fl = (t_float *)malloc(sizeof(t_float))))
+		return (0);
+	// bzero_fl(fl);
+	fl->f = n;
+	fl->precision = prec;
+	check_neg(fl);
+	ct_int_part(fl);
+	assign_int_part(fl);
+	assign_frac_part(fl);
+	fl->a = ft_strjoin(fl->int_part, fl->frac_part);
+	free(fl->int_part);
+	free(fl->frac_part);
+	return (fl->a);
 }
