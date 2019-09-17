@@ -8,12 +8,13 @@ char	*ftoa(long double n, int prec);
 int		main(void)
 {
 	char		*s;
-	long double	f = 1.2;
+	// long double	f = -9223372036854775808.0;
+	long double	f = 3.9999999;
 
-	printf("libc:%.12Lf\n", f);
+	printf("libc:%Lf\n", f);
 	setbuf(stdout, NULL);
 
-	s = ftoa(f, 12);
+	s = ftoa(f, 7);
 	printf("mine:%s", s);
 	setbuf(stdout, NULL);
 	free (s);

@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/16 00:19:54 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/17 00:21:01 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void	print_float(t_format *recipe, va_list ap)
 
 	sign = 0;
 	n = (long double)va_arg(ap, double);
+	if (recipe->precision == 0 && !recipe->hasprecision)
+		recipe->precision = 6;
 	if (recipe->plus && n >= 0)
 		sign = POSITIVE;
 	apply_sub_spec_float(n, recipe, sign);

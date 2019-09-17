@@ -17,6 +17,7 @@ SRCS = ft_printf.c \
 		count_int_digits.c \
 		itoa_base.c \
 		itoa_base_upper.c \
+		power.c \
 		libft/*.c
 OBJS = ft_printf.o \
 		bzero_recipe.o \
@@ -35,6 +36,7 @@ OBJS = ft_printf.o \
 		count_int_digits.o \
 		itoa_base.o \
 		itoa_base_upper.o \
+		power.o \
 		ft_*.o
 NAME = libftprintf.a
 RM = rm -rf

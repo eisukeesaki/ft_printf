@@ -66,6 +66,7 @@ typedef struct			s_float
 	int					precision;
 	int					neg;
 	size_t				len;
+	int					round;
 	char				*int_part;
 	char				*frac_part;
 	// size_t				i;
