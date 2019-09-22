@@ -6,16 +6,16 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 22:03:22 by eesaki            #+#    #+#             */
-/*   Updated: 2019/08/28 22:59:50 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/21 23:57:57 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdint.h>
 
-size_t		count_int_digits(intmax_t n)
+int		count_int_digits(intmax_t n)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
 	if (n == 0)
