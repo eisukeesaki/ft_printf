@@ -6,116 +6,145 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/17 00:21:01 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/22 06:40:22 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-int		zero_and_width_float(t_format *recipe, char pad, char sign_char, int sign)
+void	right_justify_float(t_format *recipe, t_float fl)
 {
-	if (pad == '0' && recipe->width > 0)
+	size_t	i;
+
+	i = 0;
+	if (recipe->space)
 	{
-		if (recipe->space)
+		recipe->nprinted += write(1, " ", 1);
+		fl.npad--;
+	}
+// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: implement subroutine that prints sign, then 0pad if padc == 0, vice versa
+	if (fl.hassign)
+		recipe->nprinted += write(1, &fl.sign, 1);
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO: implement subroutine that prints sign, then 0pad if padc == 0, vice versa
+	while (fl.npad-- > 0)
+		recipe->nprinted += write(1, &fl.padc, 1);
+	while (fl.int_s[i])
+		recipe->nprinted += write(1, &fl.int_s[i++], 1);
+	if (fl.dot)
+	{
+		recipe->nprinted += write(1, ".", 1);
+		while (fl.zeros-- > 0 && fl.precision-- != 0)
+			recipe->nprinted += write(1, "0", 1);
+		i = 0;
+		while (fl.frac_s[i] && fl.precision != 0)
 		{
-			recipe->nprinted += write(1, " ", 1);
-			recipe->space = 0;
+			recipe->nprinted += write(1, &fl.frac_s[i++], 1);
+			fl.precision--;
 		}
-		if (sign_char == '+' || sign_char == '-')
-			recipe->nprinted += write(1, &sign_char, 1);
-		sign = 0;
+		// while (fl.append-- > 0)
+		// 	recipe->nprinted += write(1, "0", 1);
 	}
-	return (sign);
 }
 
-void	right_justify_float(char *s, int intlen, t_format *recipe, int sign)
+void	left_justify_float(t_format *recipe, t_float fl)
 {
-	char	pad;
-	char	sign_char;
+	size_t	i;
 
-	pad = (recipe->zero && !recipe->hasprecision) ? '0' : ' ';
-	sign_char = '\0';
-	if (sign == POSITIVE)
-		sign_char = '+';
-	// else if (sign == NEGATIVE)
-	// 	sign_char = '-';
-	sign = zero_and_width_float(recipe, pad, sign_char, sign);
-	while (recipe->width-- > 0)
-		recipe->nprinted += write(1, &pad, 1);
-	if (recipe->space)
-		recipe->nprinted += write(1, " ", 1);
-	if (sign != 0 && (sign_char == '+' || sign_char == '-'))
-		recipe->nprinted += write(1, &sign_char, 1);
-	while (recipe->precision-- > 0)
-		recipe->nprinted += write(1, "0", 1);
-	recipe->nprinted += write(1, s, intlen);
-}
-
-void	left_justify_float(char *s, int intlen, t_format *recipe, int sign)
-{
-	if (recipe->space)
-		recipe->nprinted += write(1, " ", 1);
-	// if (sign == NEGATIVE)
-	// 	recipe->nprinted += write(1, "-", 1);
-	// else if (sign == POSITIVE)
-	if (sign == POSITIVE)
-		recipe->nprinted += write(1, "+", 1);
-	while (recipe->precision > 0)
+	i = 0;
+	if (fl.hassign)
+		recipe->nprinted += write(1, &fl.sign, 1);
+	while (fl.int_s[i])
+		recipe->nprinted += write(1, &fl.int_s[i++], 1);
+	if (fl.dot)
 	{
-		recipe->nprinted += write(1, "0", 1);
-		recipe->precision--;
+		recipe->nprinted += write(1, ".", 1);
+		while (fl.zeros-- > 0 && fl.precision-- != 0)
+			recipe->nprinted += write(1, "0", 1);
+		i = 0;
+		while (fl.frac_s[i] && fl.precision != 0)
+		{
+			recipe->nprinted += write(1, &fl.frac_s[i++], 1);
+			fl.precision--;
+		}
 	}
-	recipe->nprinted += write(1, s, intlen);
-	while (recipe->width-- > 0)
-		recipe->nprinted += write(1, " ", 1);
+	while (fl.npad-- > 0)
+		write(1, &fl.padc, 1);
 }
 
-void	apply_sub_spec_float(long double n, t_format *recipe, int sign)
+void	process_float(long double n, t_format *recipe)
 {
-	char	*s;
-	int		intlen;
+	t_float	fl;
 
-	if (recipe->space && sign != 0)
-		recipe->space = 0;
-	s = ftoa(n, recipe->precision);
-	intlen = ft_strlen(s);
-	if (recipe->hasprecision && recipe->precision == 0 && n == 0)
-		intlen = 0;
-	if (recipe->hasprecision && recipe->precision > intlen)
-		recipe->precision = recipe->precision - intlen;
+	fl.hassign = 0;
+	if (n < 0)
+	{
+		fl.sign = '-';
+		fl.hassign = 1;
+		n = -n;
+	}
+	else if (n > 0 && recipe->plus)
+	{
+		fl.sign = '+';
+		fl.hassign = 1;
+	}
+	fl.precision = 6;
+
+	// if (recipe->zero && !recipe->hasprecision)
+	if (recipe->zero && !recipe->minus)
+		fl.padc = '0';
 	else
-		recipe->precision = 0;
-	if (sign != 0)
-		recipe->width =
-			recipe->width - (intlen + recipe->precision + recipe->space + 1);
+		fl.padc = ' ';
+	if (recipe->hasprecision && recipe->precision >= 0)
+		fl.precision = recipe->precision;
+
+	fl.int_ld = (long long)n;
+	fl.int_s = uitoa_base(fl.int_ld, 10);
+	n -= (long double)fl.int_ld;
+	fl.append = 0;
+	if (n == 0)
+		fl.append = fl.precision - 1;
+	n *= power(10, fl.precision);
+
+	fl.frac_ld =  (n >= 0) ? (long)(n + 0.5) : (long)(n - 0.5); // why not (ld)0.5?
+
+	if (fl.frac_ld == power(10, fl.precision) && fl.frac_ld != 0)
+	{
+		fl.int_s = uitoa_base(fl.int_ld + 1, 10);
+		fl.frac_ld = 0;
+		fl.append = fl.precision - 1;
+	}
+
+	fl.frac_s = uitoa_base(fl.frac_ld, 10);
+	if (fl.precision != 0)
+		fl.zeros = fl.precision - count_int_digits(fl.frac_ld);
 	else
-		recipe->width =
-				recipe->width - (intlen + recipe->precision + recipe->space);
-	if (recipe->space && sign != 0)
-		recipe->space = 0;
-	if (recipe->minus == 1)
-		left_justify_float(s, intlen, recipe, sign);
-	else if (recipe->minus == 0)
-		right_justify_float(s, intlen, recipe, sign);
+		fl.zeros = 0;
+
+	fl.intlen = count_int_digits(fl.int_ld);
+
+	fl.dot = 0;
+	if ((ft_strlen(fl.frac_s) && fl.precision != 0) || (recipe->hash))
+		fl.dot = 1;
+
+	// if (fl.precision != 0)
+		fl.npad = recipe->width - fl.hassign - fl.intlen - fl.dot - recipe->precision; // which precision?
+	// else
+		// fl.npad = recipe->width - fl.hassign - fl.intlen - fl.dot - recipe->precision; // which precision?
+		// fl.npad = 0;
+
+
+	if (recipe->minus)
+		left_justify_float(recipe, fl);
+	else if (!recipe->minus)
+		right_justify_float(recipe, fl);
 }
-
-// void	process_float(long double n, t_format *recipe)
-// {
-
-// }
 
 void	print_float(t_format *recipe, va_list ap)
 {
 	long double	n;
-	int			sign;
 
-	sign = 0;
+	// TODO: check recipe->length and extract appropriate arg type
 	n = (long double)va_arg(ap, double);
-	if (recipe->precision == 0 && !recipe->hasprecision)
-		recipe->precision = 6;
-	if (recipe->plus && n >= 0)
-		sign = POSITIVE;
-	apply_sub_spec_float(n, recipe, sign);
-	// process_float(n, recipe);
+	process_float(n, recipe);
 }

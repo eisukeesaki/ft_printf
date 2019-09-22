@@ -14,11 +14,11 @@ int		main(void)
 
 	// setbuf(stdout, NULL);
 
-	nprinted_libc = printf("%.6f", 3.9999999);
-	setbuf(stdout, NULL);
-	putchar('\n');
+	// nprinted_libc = printf("%-05.0f", 1.9);
+	// setbuf(stdout, NULL);
+	// putchar('\n');
 
-	nprinted_mine = ft_printf("%.6f", 3.9999999);
+	nprinted_mine = ft_printf("%05.0f", -7.3);
 	setbuf(stdout, NULL);
 	putchar('\n');
 

@@ -49,29 +49,36 @@ typedef struct			s_format
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> recipe
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< float struct
-// typedef struct			s_float
-// {
-// 	char				*int_part_s;
-// 	char				*frac_part_s;
-// 	long double			int_part_ll;
-// 	// pad
-// 	// sign
-// }						t_float;
+typedef struct			s_float
+{
+	long double			int_ld;
+	char				*int_s;
+	int					intlen;
+	long double			frac_ld;
+	char				*frac_s;
+	int					precision;
+	int					append;
+	int					zeros;
+	int					dot;
+	int					npad;
+	char				sign;
+	int					hassign;
+	char				padc;
+}						t_float;
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> float struct
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< float struct
-typedef struct			s_float
-{
-	long double			f;
-	int					precision;
-	int					neg;
-	size_t				len;
-	int					round;
-	char				*int_part;
-	char				*frac_part;
-	// size_t				i;
-	char				*a;
-}						t_float;
+// typedef struct			s_float
+// {
+// 	long double			f;
+// 	int					precision;
+// 	int					neg;
+// 	size_t				len;
+// 	int					round;
+// 	char				*int_part;
+// 	char				*frac_part;
+// 	char				*a;
+// }						t_float;
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> float struct
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< prototypes
@@ -94,7 +101,7 @@ void		print_hex(const char x, t_format *recipe, va_list ap);
 void		print_pointer(t_format *recipe, va_list ap);
 char		*ftoa(long double n, int prec);
 void		print_float(t_format *recipe, va_list ap);
-intmax_t	power(intmax_t base, intmax_t exponent);
+long double	power(intmax_t base, intmax_t exponent);
 // void		ft_putfloat(long double n, size_t prec);
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
 
