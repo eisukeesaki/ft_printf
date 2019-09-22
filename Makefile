@@ -9,13 +9,13 @@ SRCS = ft_printf.c \
 		uint.c \
 		octal.c \
 		hex.c \
-		ftoa.c \
 		float.c \
 		pointer.c \
 		char.c \
 		string.c \
 		count_int_digits.c \
 		itoa_base.c \
+		uitoa_base.c \
 		itoa_base_upper.c \
 		power.c \
 		libft/*.c
@@ -28,13 +28,13 @@ OBJS = ft_printf.o \
 		uint.o \
 		octal.o \
 		hex.o \
-		ftoa.o \
 		float.o \
 		pointer.o \
 		char.o \
 		string.o \
 		count_int_digits.o \
 		itoa_base.o \
+		uitoa_base.o \
 		itoa_base_upper.o \
 		power.o \
 		ft_*.o
