@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 20:03:14 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 23:02:14 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/23 03:06:06 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void	dispatch(char c, t_format *recipe, va_list ap)
 		print_hex((const char)c, recipe, ap);
 	else if (c == 'f')
 		print_float(recipe, ap);
+	else if (c == '%')
+		print_percent(recipe);
 }

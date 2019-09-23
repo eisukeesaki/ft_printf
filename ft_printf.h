@@ -99,6 +99,7 @@ void		print_string(t_format *recipe, va_list ap);
 void		print_octal(t_format *recipe, va_list ap);
 void		print_hex(const char x, t_format *recipe, va_list ap);
 void		print_pointer(t_format *recipe, va_list ap);
+void		print_percent(t_format *recipe);
 char		*ftoa(long double n, int prec);
 void		print_float(t_format *recipe, va_list ap);
 long double	power(intmax_t base, intmax_t exponent);
