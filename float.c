@@ -6,29 +6,43 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/22 06:40:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/23 01:46:12 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
+t_float	sign_and_width(t_format *recipe, t_float fl)
+{
+	if (fl.padc == '0' && recipe->width > 0)
+	{
+		if (recipe->space)
+		{
+			recipe->nprinted += write(1, " ", 1);
+			recipe->space = 0;
+		}
+		if (fl.hassign)
+		{
+			recipe->nprinted += write(1, &fl.sign, 1);
+			fl.hassign = 0;
+		}
+	}
+	return (fl);
+}
+
 void	right_justify_float(t_format *recipe, t_float fl)
 {
 	size_t	i;
 
 	i = 0;
-	if (recipe->space)
-	{
-		recipe->nprinted += write(1, " ", 1);
-		fl.npad--;
-	}
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: implement subroutine that prints sign, then 0pad if padc == 0, vice versa
-	if (fl.hassign)
-		recipe->nprinted += write(1, &fl.sign, 1);
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO: implement subroutine that prints sign, then 0pad if padc == 0, vice versa
+	fl = sign_and_width(recipe, fl);
 	while (fl.npad-- > 0)
 		recipe->nprinted += write(1, &fl.padc, 1);
+	if (recipe->space)
+		recipe->nprinted += write(1, " ", 1);
+	if (fl.hassign)
+		recipe->nprinted += write(1, &fl.sign, 1);
 	while (fl.int_s[i])
 		recipe->nprinted += write(1, &fl.int_s[i++], 1);
 	if (fl.dot)
@@ -52,6 +66,8 @@ void	left_justify_float(t_format *recipe, t_float fl)
 	size_t	i;
 
 	i = 0;
+	if (recipe->space)
+		recipe->nprinted += write(1, " ", 1);
 	if (fl.hassign)
 		recipe->nprinted += write(1, &fl.sign, 1);
 	while (fl.int_s[i])
@@ -89,6 +105,9 @@ void	process_float(long double n, t_format *recipe)
 		fl.hassign = 1;
 	}
 	fl.precision = 6;
+
+	if (recipe->space && fl.hassign)
+		recipe->space = 0;
 
 	// if (recipe->zero && !recipe->hasprecision)
 	if (recipe->zero && !recipe->minus)
@@ -128,7 +147,7 @@ void	process_float(long double n, t_format *recipe)
 		fl.dot = 1;
 
 	// if (fl.precision != 0)
-		fl.npad = recipe->width - fl.hassign - fl.intlen - fl.dot - recipe->precision; // which precision?
+		fl.npad = recipe->width - recipe->space - fl.hassign - fl.intlen - fl.dot - recipe->precision; // which precision?
 	// else
 		// fl.npad = recipe->width - fl.hassign - fl.intlen - fl.dot - recipe->precision; // which precision?
 		// fl.npad = 0;
