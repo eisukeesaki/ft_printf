@@ -19,11 +19,17 @@ int		ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	printed_bytes = parse(format, recipe, ap);
-
-	free(recipe);
+	if (!format[0])
+		return (0);
+	
+	if (format_len == 1 && format[0] == '%')
+		return (0);
+	else
+		printed_bytes = parse(format, recipe, ap);
 
 	va_end(ap);
+
+	free(recipe);
 
 	return (printed_bytes);
 }
