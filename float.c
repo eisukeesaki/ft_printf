@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/23 01:46:12 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/23 02:01:16 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,10 @@ void	print_float(t_format *recipe, va_list ap)
 	long double	n;
 
 	// TODO: check recipe->length and extract appropriate arg type
-	n = (long double)va_arg(ap, double);
+	if (recipe->length == UPRL)
+		n = (long double)va_arg(ap, long double);
+	else
+		n = (long double)va_arg(ap, double);
+
 	process_float(n, recipe);
 }
