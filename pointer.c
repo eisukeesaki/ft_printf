@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 22:56:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/26 01:52:43 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	apply_sub_spec_pointer(uintmax_t n, t_format *recipe)
 		left_justify_pointer(s, intlen, recipe);
 	else if (recipe->minus == 0)
 		right_justify_pointer(s, intlen, recipe);
+	free(s);
 }
 
 void	print_pointer(t_format *recipe, va_list ap)
