@@ -68,20 +68,6 @@ typedef struct			s_float
 }						t_float;
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> float struct
 
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< float struct
-// typedef struct			s_float
-// {
-// 	long double			f;
-// 	int					precision;
-// 	int					neg;
-// 	size_t				len;
-// 	int					round;
-// 	char				*int_part;
-// 	char				*frac_part;
-// 	char				*a;
-// }						t_float;
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> float struct
-
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< prototypes
 int			ft_printf(const char *format, ...);
 size_t		count_int_digits(intmax_t n);
@@ -101,28 +87,15 @@ void		print_octal(t_format *recipe, va_list ap);
 void		print_hex(const char x, t_format *recipe, va_list ap);
 void		print_pointer(t_format *recipe, va_list ap);
 void		print_percent(t_format *recipe);
-char		*ftoa(long double n, int prec);
 void		print_float(t_format *recipe, va_list ap);
+void		format_2(t_format *recipe, t_float *fl);
+void		justify(t_format *recipe, t_float *fl);
+void		left_justify_float(t_format *recipe, t_float *fl);
+void		right_justify_float(t_format *recipe, t_float *fl);
+void		sign_and_width(t_format *recipe, t_float *fl);
+
 long double	power(intmax_t base, intmax_t exponent);
-// void		ft_putfloat(long double n, size_t prec);
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prototypes
-
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< conversion
-// void					conversion_d(va_list ap, t_format format);
-// void					conversion_c(va_list ap, t_format format);
-// void					conversion_s(va_list ap, t_format format);
-// void					conversion_f(va_list ap, t_format format);
-// void					conversion_u(va_list ap, t_format format);
-// void					conversion_o(va_list ap, t_format format);
-// void					conversion_X(va_list ap, t_format format);
-// void					conversion_x(va_list ap, t_format format);
-// void					conversion_p(va_list ap, t_format format);
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> conversion
-
-// void					length_h(const char *s, size_t i, t_format format);
-// void					length_l(const char *s, size_t i, t_format format);
-
-// typedef void			printer(va_list); // print functions' prototype
-// typedef void			formatter(const char *, size_t, t_format);
 
 #endif

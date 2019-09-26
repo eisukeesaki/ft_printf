@@ -10,6 +10,7 @@ SRCS = ft_printf.c \
 		octal.c \
 		hex.c \
 		float.c \
+		float_2.c \
 		percent.c \
 		pointer.c \
 		char.c \
@@ -30,6 +31,7 @@ OBJS = ft_printf.o \
 		octal.o \
 		hex.o \
 		float.o \
+		float_2.o \
 		percent.o \
 		pointer.o \
 		char.o \
