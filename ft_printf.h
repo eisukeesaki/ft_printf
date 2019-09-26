@@ -51,6 +51,7 @@ typedef struct			s_format
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< float struct
 typedef struct			s_float
 {
+	long double			n;
 	long double			int_ld;
 	char				*int_s;
 	int					intlen;
