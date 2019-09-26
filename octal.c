@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 01:22:26 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/25 20:25:02 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	apply_sub_spec_octal(uintmax_t n, t_format *recipe)
 		left_justify_octal(s, intlen, recipe);
 	else if (recipe->minus == 0)
 		right_justify_octal(s, intlen, recipe);
+	free(s);
 }
 
 void	print_octal(t_format *recipe, va_list ap)

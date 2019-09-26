@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/23 02:01:16 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/25 20:22:26 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,8 @@ void	process_float(long double n, t_format *recipe)
 		left_justify_float(recipe, fl);
 	else if (!recipe->minus)
 		right_justify_float(recipe, fl);
+	free(fl.int_s);
+	free(fl.frac_s);
 }
 
 void	print_float(t_format *recipe, va_list ap)

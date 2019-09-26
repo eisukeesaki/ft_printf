@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 01:30:27 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/25 20:26:03 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	apply_sub_spec_int(long long n, t_format *recipe, int sign)
 		left_justify_int(s, intlen, recipe, sign);
 	else if (recipe->minus == 0)
 		right_justify_int(s, intlen, recipe, sign);
+	free(s);
 }
 
 void	print_int(t_format *recipe, va_list ap)

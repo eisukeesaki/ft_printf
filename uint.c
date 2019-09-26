@@ -6,11 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 01:31:29 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/25 20:28:11 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 void	right_justify_uint(char *s, int intlen, t_format *recipe)
 {
@@ -59,6 +60,7 @@ void	apply_sub_spec_uint(unsigned long long n, t_format *recipe)
 		left_justify_uint(s, intlen, recipe);
 	else if (recipe->minus == 0)
 		right_justify_uint(s, intlen, recipe);
+	free(s);
 }
 
 void	print_uint(t_format *recipe, va_list ap)

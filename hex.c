@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 00:58:44 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/25 20:25:26 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	apply_sub_spec_hex(const char x, uintmax_t n, t_format *recipe)
 		left_justify_hex(s, intlen, x, recipe);
 	else if (recipe->minus == 0)
 		right_justify_hex(s, intlen, x, recipe);
+	free(s);
 }
 
 void	print_hex(const char x, t_format *recipe, va_list ap)
