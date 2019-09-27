@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 03:13:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/23 03:17:54 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/26 22:10:26 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_percent(t_format *recipe)
 	if (recipe->space)
 		recipe->space = 0;
 	recipe->width = recipe->width - (recipe->precision + recipe->space + 1);
-	if (recipe->minus == 1)
+	if (recipe->minus)
 		left_justify_percent(recipe);
 	else if (recipe->minus == 0)
 		right_justify_percent(recipe);

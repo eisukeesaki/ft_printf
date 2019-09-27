@@ -18,11 +18,11 @@ int		main(void)
 	// setbuf(stdout, NULL);
 	// putchar('\n');
 
-	nprinted_mine = ft_printf("%05.0f", -7.3);
+	nprinted_mine = ft_printf("%d", 5);
 	setbuf(stdout, NULL);
 	putchar('\n');
 
-	printf("nprinted@libc:%d\n", nprinted_libc);
+	// printf("nprinted@libc:%d\n", nprinted_libc);
 	printf("nprinted@mine:%d\n", nprinted_mine);
 
 	return (0);

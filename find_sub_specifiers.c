@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sub_specs.c                                        :+:      :+:    :+:   */
+/*   find_sub_specifiers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/04 18:46:27 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/26 23:42:10 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	precision(const char *format, t_format *recipe)
 	}
 }
 
-void	length(const char* format, t_format *recipe)
+void	length(const char *format, t_format *recipe)
 {
 	size_t	i;
 
@@ -91,7 +91,7 @@ void	length(const char* format, t_format *recipe)
 	recipe->i = i;
 }
 
-void		sub_specs(const char* format, t_format *recipe, va_list ap)
+void		find_sub_specifiers(const char *format, t_format *recipe, va_list ap)
 {
 	flags(format, recipe);
 	width(format, recipe, ap);

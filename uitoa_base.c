@@ -6,35 +6,34 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/14 23:53:31 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 05:30:01 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "libft/libft.h"
-#include <limits.h>
 
-size_t	count_digit_u(uintmax_t n)
+size_t	count_digit_u(uintmax_t n, int base)
 {
 	size_t	i;
 
 	i = 1;
-	while (n >= 10)
+	while (n >= (unsigned long long)base)
 	{
 		i++;
-		n /= 10;
+		n /= base;
 	}
 	return (i);
 }
 
-char	*itoa_u(uintmax_t n)
+char	*itoa_u(uintmax_t n, int base)
 {
 	uintmax_t	nb;
 	size_t		dgt;
 	char		*s;
 
 	nb = n;
-	dgt = count_digit_u(nb);
+	dgt = count_digit_u(nb, base);
 	s = ft_strnew(dgt);
 	if (!s)
 		return (NULL);
@@ -47,7 +46,7 @@ char	*itoa_u(uintmax_t n)
 	return (s);
 }
 
-char	*toa_u(uintmax_t n, uintmax_t base)
+char	*toa_u(uintmax_t n, int base)
 {
 	size_t	dgt;
 	char	*s;
@@ -55,7 +54,7 @@ char	*toa_u(uintmax_t n, uintmax_t base)
 	int		rem;
 	char	c;
 
-	dgt = count_digit_u(n);
+	dgt = count_digit_u(n, base);
 	s = ft_strnew(dgt);
 	i = 0;
 	c = 'a';
@@ -76,15 +75,10 @@ char	*toa_u(uintmax_t n, uintmax_t base)
 	return (ft_strrev(s));
 }
 
-// char	*itoa_base(intmax_t n, uintmax_t base) // 1
-char	*uitoa_base(uintmax_t n, uintmax_t base) // 2
+char	*uitoa_base(uintmax_t n, int base)
 {
-	// if (n == LONG_MIN) // 1
-	// 	return ("9223372036854775808");
-	if (n == ULONG_MAX && base == 10) // 2
-		return ("18446744073709551615");
-	else if (base == 10)
-		return (itoa_u(n));
+	if (base == 10)
+		return (itoa_u(n, base));
 	else if (base >= 2 && base <= 16 && base != 10)
 		return (toa_u(n, base));
 	else

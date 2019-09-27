@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/25 20:25:26 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 02:32:56 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 void	right_justify_hex(char *s, int intlen, const char x, t_format *recipe)
 {
-	char	pad;
+	char	pad_char;
 
-	pad = (recipe->zero && !recipe->hasprecision) ? '0' : ' ';
-	if (pad == '0')
+	pad_char = (recipe->zero && !recipe->hasprecision) ? '0' : ' ';
+	if (pad_char == '0')
 	{
 		if (recipe->hash && !ft_strequ(s, "0") && x == 'x')
 			recipe->nprinted += write(1, "0x", 2);
 		else if (recipe->hash && !ft_strequ(s, "0") && x == 'X')
 			recipe->nprinted += write(1, "0X", 2);
 		while (recipe->width-- > 0)
-			recipe->nprinted += write(1, &pad, 1);
+			recipe->nprinted += write(1, &pad_char, 1);
 	}
-	else if (pad == ' ')
+	else if (pad_char == ' ')
 	{
 		while (recipe->width-- > 0)
-			recipe->nprinted += write(1, &pad, 1);
+			recipe->nprinted += write(1, &pad_char, 1);
 		if (recipe->hash && !ft_strequ(s, "0") && x == 'x')
 			recipe->nprinted += write(1, "0x", 2);
 		else if (recipe->hash && !ft_strequ(s, "0") && x == 'X')
@@ -57,12 +57,12 @@ void	left_justify_hex(char *s, int intlen, const char x, t_format *recipe)
 		recipe->nprinted += write(1, " ", 1);
 }
 
-void	apply_sub_spec_hex(const char x, uintmax_t n, t_format *recipe)
+void	sub_specifiers_hex(const char x, uintmax_t n, t_format *recipe)
 {
 	char	*s;
 	int		intlen;
 
-	s = x == 'x' ? itoa_base(n, 16) : itoa_base_upper(n, 16);
+	s = x == 'x' ? uitoa_base(n, 16) : itoa_base_upper(n, 16);
 	intlen = (recipe->hasprecision && recipe->precision <= 0 && n == 0) ? 0
 																: ft_strlen(s);
 	if (recipe->hasprecision && ft_strequ(s, "0") && recipe->precision > intlen)
@@ -77,7 +77,7 @@ void	apply_sub_spec_hex(const char x, uintmax_t n, t_format *recipe)
 		recipe->width = recipe->width - (intlen + recipe->precision + 2);
 	else
 		recipe->width = recipe->width - (intlen + recipe->precision);
-	if (recipe->minus == 1)
+	if (recipe->minus)
 		left_justify_hex(s, intlen, x, recipe);
 	else if (recipe->minus == 0)
 		right_justify_hex(s, intlen, x, recipe);
@@ -89,7 +89,7 @@ void	print_hex(const char x, t_format *recipe, va_list ap)
 	uintmax_t	n;
 
 	n = 0;
-	if (recipe->length == 0)
+	if (!recipe->length)
 		n = (unsigned)va_arg(ap, unsigned);
 	else if (recipe->length == HH)
 		n = (unsigned char)va_arg(ap, int);
@@ -99,5 +99,5 @@ void	print_hex(const char x, t_format *recipe, va_list ap)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
 	else if (recipe->length == L)
 		n = (unsigned long)va_arg(ap, unsigned long);
-	apply_sub_spec_hex(x, n, recipe);
+	sub_specifiers_hex(x, n, recipe);
 }

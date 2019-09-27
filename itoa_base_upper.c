@@ -6,35 +6,27 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/10 21:51:01 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 05:30:23 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "libft/libft.h"
-#include <limits.h>
 
-size_t	count_digit_upper(intmax_t n)
+size_t	count_digit_upper(uintmax_t n, int base)
 {
 	size_t	i;
 
 	i = 1;
-	if (n < 0)
-	{
-		if (n == LONG_MIN)
-			return (19);
-		else
-			n *= -1;
-	}
-	while (n >= 10)
+	while (n >= (unsigned long long)base)
 	{
 		i++;
-		n /= 10;
+		n /= base;
 	}
 	return (i);
 }
 
-char	*itoa_upper(intmax_t n)
+char	*itoa_upper(intmax_t n, int base)
 {
 	intmax_t	nb;
 	size_t		dgt;
@@ -43,7 +35,7 @@ char	*itoa_upper(intmax_t n)
 
 	nb = n;
 	neg = n < 0 ? 1 : 0;
-	dgt = count_digit_upper(nb);
+	dgt = count_digit_upper(nb, base);
 	s = ft_strnew(dgt + neg);
 	if (!s)
 		return (NULL);
@@ -61,7 +53,7 @@ char	*itoa_upper(intmax_t n)
 	return (s);
 }
 
-char	*toa_upper(intmax_t n, uintmax_t base)
+char	*toa_upper(intmax_t n, int base)
 {
 	size_t	dgt;
 	char	*s;
@@ -69,7 +61,7 @@ char	*toa_upper(intmax_t n, uintmax_t base)
 	int		rem;
 	char	c;
 
-	dgt = count_digit_upper(n);
+	dgt = count_digit_upper(n, base);
 	s = ft_strnew(dgt);
 	i = 0;
 	c = 'A';
@@ -90,12 +82,10 @@ char	*toa_upper(intmax_t n, uintmax_t base)
 	return (ft_strrev(s));
 }
 
-char	*itoa_base_upper(intmax_t n, uintmax_t base)
+char	*itoa_base_upper(intmax_t n, int base)
 {
-	if (n == LONG_MIN)
-		return ("9223372036854775808");
-	else if (base == 10)
-		return (itoa_upper(n));
+	if (base == 10)
+		return (itoa_upper(n, base));
 	else if (base >= 2 && base <= 16 && base != 10)
 		return (toa_upper(n, base));
 	else

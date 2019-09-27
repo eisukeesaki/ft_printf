@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = ft_printf.c \
 		bzero_recipe.c \
 		parse.c \
-		sub_specs.c \
+		find_sub_specifiers.c \
 		dispatch.c \
 		int.c \
 		uint.c \
@@ -24,7 +24,7 @@ SRCS = ft_printf.c \
 OBJS = ft_printf.o \
 		bzero_recipe.o \
 		parse.o \
-		sub_specs.o \
+		find_sub_specifiers.o \
 		dispatch.o \
 		int.o \
 		uint.o \

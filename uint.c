@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/25 20:28:11 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 02:34:23 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	left_justify_uint(char *s, int intlen, t_format *recipe)
 		recipe->nprinted += write(1, " ", 1);
 }
 
-void	apply_sub_spec_uint(unsigned long long n, t_format *recipe)
+void	sub_specifiers_uint(unsigned long long n, t_format *recipe)
 {
 	char	*s;
 	int		intlen;
@@ -55,10 +55,10 @@ void	apply_sub_spec_uint(unsigned long long n, t_format *recipe)
 		recipe->precision = 0;
 	recipe->width =
 				recipe->width - (intlen + recipe->precision + recipe->space);
-	s = itoa_base(n, 10);
-	if (recipe->minus == 1)
+	s = uitoa_base(n, 10);
+	if (recipe->minus)
 		left_justify_uint(s, intlen, recipe);
-	else if (recipe->minus == 0)
+	else if (!recipe->minus)
 		right_justify_uint(s, intlen, recipe);
 	free(s);
 }
@@ -68,7 +68,7 @@ void	print_uint(t_format *recipe, va_list ap)
 	unsigned long long	n;
 
 	n = 0;
-	if (recipe->length == 0)
+	if (!recipe->length)
 		n = (unsigned)va_arg(ap, unsigned);
 	else if (recipe->length == HH)
 		n = (unsigned char)va_arg(ap, int);
@@ -78,5 +78,5 @@ void	print_uint(t_format *recipe, va_list ap)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
 	else if (recipe->length == L)
 		n = (unsigned long)va_arg(ap, unsigned long);
-	apply_sub_spec_uint(n, recipe);
+	sub_specifiers_uint(n, recipe);
 }

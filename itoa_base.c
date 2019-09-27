@@ -6,35 +6,27 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/11 04:25:44 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 05:29:45 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "libft/libft.h"
-#include <limits.h>
 
-size_t	count_digit(intmax_t n)
+size_t	count_digit(uintmax_t n, int base)
 {
 	size_t	i;
 
 	i = 1;
-	if (n < 0)
-	{
-		if (n == LONG_MIN)
-			return (19);
-		else
-			n *= -1;
-	}
-	while (n >= 10)
+	while (n >= (unsigned long long)base)
 	{
 		i++;
-		n /= 10;
+		n /= base;
 	}
 	return (i);
 }
 
-char	*itoa(intmax_t n)
+char	*itoa(intmax_t n, int base)
 {
 	intmax_t	nb;
 	size_t		dgt;
@@ -43,7 +35,7 @@ char	*itoa(intmax_t n)
 
 	nb = n;
 	neg = n < 0 ? 1 : 0;
-	dgt = count_digit(nb);
+	dgt = count_digit(nb, base);
 	s = ft_strnew(dgt + neg);
 	if (!s)
 		return (NULL);
@@ -61,7 +53,7 @@ char	*itoa(intmax_t n)
 	return (s);
 }
 
-char	*toa(intmax_t n, uintmax_t base)
+char	*toa(intmax_t n, int base)
 {
 	size_t	dgt;
 	char	*s;
@@ -69,7 +61,7 @@ char	*toa(intmax_t n, uintmax_t base)
 	int		rem;
 	char	c;
 
-	dgt = count_digit(n);
+	dgt = count_digit(n, base);
 	s = ft_strnew(dgt);
 	i = 0;
 	c = 'a';
@@ -90,15 +82,10 @@ char	*toa(intmax_t n, uintmax_t base)
 	return (ft_strrev(s));
 }
 
-// char	*itoa_base(intmax_t n, uintmax_t base) // 1
-char	*itoa_base(uintmax_t n, uintmax_t base) // 2
+char	*itoa_base(intmax_t n, uintmax_t base)
 {
-	// if (n == LONG_MIN) // 1
-	// 	return ("9223372036854775808");
-	if (n == ULONG_MAX && base == 10) // 2
-		return ("18446744073709551615");
-	else if (base == 10)
-		return (itoa(n));
+	if (base == 10)
+		return (itoa(n, base));
 	else if (base >= 2 && base <= 16 && base != 10)
 		return (toa(n, base));
 	else

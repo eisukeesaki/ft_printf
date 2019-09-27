@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/26 02:18:25 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/26 22:30:39 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	sign_and_width(t_format *recipe, t_float *fl)
 {
-	if (fl->padc == '0' && recipe->width > 0)
+	if (fl->pad_char == '0' && recipe->width > 0)
 	{
 		if (recipe->space)
 		{
@@ -36,8 +36,8 @@ void	right_justify_float(t_format *recipe, t_float *fl)
 
 	i = 0;
 	sign_and_width(recipe, fl);
-	while (fl->npad-- > 0)
-		recipe->nprinted += write(1, &fl->padc, 1);
+	while (fl->pad-- > 0)
+		recipe->nprinted += write(1, &fl->pad_char, 1);
 	if (recipe->space)
 		recipe->nprinted += write(1, " ", 1);
 	if (fl->hassign)
@@ -81,8 +81,8 @@ void	left_justify_float(t_format *recipe, t_float *fl)
 			fl->precision--;
 		}
 	}
-	while (fl->npad-- > 0)
-		write(1, &fl->padc, 1);
+	while (fl->pad-- > 0)
+		write(1, &fl->pad_char, 1);
 }
 
 void	justify(t_format *recipe, t_float *fl)
@@ -103,5 +103,5 @@ void	format_2(t_format *recipe, t_float *fl)
 	fl->dot = 0;
 	if ((ft_strlen(fl->frac_s) && fl->precision != 0) || (recipe->hash))
 		fl->dot = 1;
-	fl->npad = recipe->width - recipe->space - fl->hassign - fl->intlen - fl->dot - recipe->precision;
+	fl->pad = recipe->width - recipe->space - fl->hassign - fl->intlen - fl->dot - recipe->precision;
 }
