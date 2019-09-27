@@ -6,38 +6,38 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/26 22:13:35 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 06:18:47 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void	left_justify_string(t_format *recipe, char *s, int slen)
+void	left_justify_string(t_format *fmt, char *s, int slen)
 {
-	if (recipe->hasprecision && slen > recipe->precision)
-		slen = recipe->precision;
-	recipe->nprinted += write(1, s, slen);
-	if (recipe->width > slen)
+	if (fmt->hasprecision && slen > fmt->precision)
+		slen = fmt->precision;
+	fmt->nprinted += write(1, s, slen);
+	if (fmt->width > slen)
 	{
-		while ((recipe->width--) - (slen) > 0)
-			recipe->nprinted += write(1, " ", 1);
+		while ((fmt->width--) - (slen) > 0)
+			fmt->nprinted += write(1, " ", 1);
 	}
 }
 
-void	right_justify_string(t_format *recipe, char *s, int slen)
+void	right_justify_string(t_format *fmt, char *s, int slen)
 {
-	if (recipe->hasprecision && slen > recipe->precision)
-		slen = recipe->precision;
-	if (recipe->width > slen)
+	if (fmt->hasprecision && slen > fmt->precision)
+		slen = fmt->precision;
+	if (fmt->width > slen)
 	{
-		while ((recipe->width--) - (slen) > 0)
-			recipe->nprinted += write(1, " ", 1);
+		while ((fmt->width--) - (slen) > 0)
+			fmt->nprinted += write(1, " ", 1);
 	}
-	recipe->nprinted += write(1, s, slen);
+	fmt->nprinted += write(1, s, slen);
 }
 
-void	print_string(t_format *recipe, va_list ap)
+void	print_string(t_format *fmt, va_list ap)
 {
 	char	*s;
 	int		slen;
@@ -45,8 +45,8 @@ void	print_string(t_format *recipe, va_list ap)
 	if (!(s = (char *)va_arg(ap, char *)))
 		s = "(null)";
 	slen = (int)ft_strlen(s);
-	if (recipe->minus)
-		left_justify_string(recipe, s, slen);
-	else if (!recipe->minus)
-		right_justify_string(recipe, s, slen);
+	if (fmt->minus)
+		left_justify_string(fmt, s, slen);
+	else if (!fmt->minus)
+		right_justify_string(fmt, s, slen);
 }

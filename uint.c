@@ -6,77 +6,75 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 02:34:23 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 06:27:52 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-void	right_justify_uint(char *s, int intlen, t_format *recipe)
+void	right_justify_uint(char *s, int intlen, t_format *fmt)
 {
 	char	pad;
 
-	pad = (recipe->zero && !recipe->hasprecision) ? '0' : ' ';
-	while (recipe->width-- > 0)
-		recipe->nprinted += write(1, &pad, 1);
-	if (recipe->space)
-		recipe->nprinted += write(1, " ", 1);
-	while (recipe->precision-- > 0)
-		recipe->nprinted += write(1, "0", 1);
-	recipe->nprinted += write(1, s, intlen);
+	pad = (fmt->zero && !fmt->hasprecision) ? '0' : ' ';
+	while (fmt->width-- > 0)
+		fmt->nprinted += write(1, &pad, 1);
+	if (fmt->space)
+		fmt->nprinted += write(1, " ", 1);
+	while (fmt->precision-- > 0)
+		fmt->nprinted += write(1, "0", 1);
+	fmt->nprinted += write(1, s, intlen);
 }
 
-void	left_justify_uint(char *s, int intlen, t_format *recipe)
+void	left_justify_uint(char *s, int intlen, t_format *fmt)
 {
-	if (recipe->space)
-		recipe->nprinted += write(1, " ", 1);
-	while (recipe->precision > 0)
+	if (fmt->space)
+		fmt->nprinted += write(1, " ", 1);
+	while (fmt->precision > 0)
 	{
-		recipe->nprinted += write(1, "0", 1);
-		recipe->precision--;
+		fmt->nprinted += write(1, "0", 1);
+		fmt->precision--;
 	}
-	recipe->nprinted += write(1, s, intlen);
-	while (recipe->width-- > 0)
-		recipe->nprinted += write(1, " ", 1);
+	fmt->nprinted += write(1, s, intlen);
+	while (fmt->width-- > 0)
+		fmt->nprinted += write(1, " ", 1);
 }
 
-void	sub_specifiers_uint(unsigned long long n, t_format *recipe)
+void	sub_specifiers_uint(unsigned long long n, t_format *fmt)
 {
 	char	*s;
 	int		intlen;
 
 	intlen = count_int_digits(n);
-	if (recipe->hasprecision && recipe->precision == 0 && n == 0)
+	if (fmt->hasprecision && fmt->precision == 0 && n == 0)
 		intlen = 0;
-	if (recipe->hasprecision && recipe->precision > intlen)
-		recipe->precision = recipe->precision - intlen;
+	if (fmt->hasprecision && fmt->precision > intlen)
+		fmt->precision = fmt->precision - intlen;
 	else
-		recipe->precision = 0;
-	recipe->width =
-				recipe->width - (intlen + recipe->precision + recipe->space);
+		fmt->precision = 0;
+	fmt->width = fmt->width - (intlen + fmt->precision + fmt->space);
 	s = uitoa_base(n, 10);
-	if (recipe->minus)
-		left_justify_uint(s, intlen, recipe);
-	else if (!recipe->minus)
-		right_justify_uint(s, intlen, recipe);
+	if (fmt->minus)
+		left_justify_uint(s, intlen, fmt);
+	else if (!fmt->minus)
+		right_justify_uint(s, intlen, fmt);
 	free(s);
 }
 
-void	print_uint(t_format *recipe, va_list ap)
+void	print_uint(t_format *fmt, va_list ap)
 {
 	unsigned long long	n;
 
 	n = 0;
-	if (!recipe->length)
+	if (!fmt->length)
 		n = (unsigned)va_arg(ap, unsigned);
-	else if (recipe->length == HH)
+	else if (fmt->length == HH)
 		n = (unsigned char)va_arg(ap, int);
-	else if (recipe->length == H)
+	else if (fmt->length == H)
 		n = (unsigned short)va_arg(ap, int);
-	else if (recipe->length == LL)
+	else if (fmt->length == LL)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
-	else if (recipe->length == L)
+	else if (fmt->length == L)
 		n = (unsigned long)va_arg(ap, unsigned long);
-	sub_specifiers_uint(n, recipe);
+	sub_specifiers_uint(n, fmt);
 }

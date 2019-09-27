@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = ft_printf.c \
-		bzero_recipe.c \
+		bzero_fmt.c \
 		parse.c \
 		find_sub_specifiers.c \
 		dispatch.c \
@@ -22,7 +22,7 @@ SRCS = ft_printf.c \
 		power.c \
 		libft/*.c
 OBJS = ft_printf.o \
-		bzero_recipe.o \
+		bzero_fmt.o \
 		parse.o \
 		find_sub_specifiers.o \
 		dispatch.o \

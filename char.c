@@ -6,29 +6,29 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/26 22:09:51 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 06:40:46 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_char(t_format *recipe, va_list ap)
+void	print_char(t_format *fmt, va_list ap)
 {
 	char	c;
 
 	c = (unsigned char)va_arg(ap, int);
-	if (recipe->width && recipe->minus == 0)
+	if (fmt->width && !fmt->minus)
 	{
-		while (recipe->width-- > 1)
-			recipe->nprinted += write(1, " ", 1);
-		recipe->nprinted = write(1, &c, 1);
+		while (fmt->width-- > 1)
+			fmt->nprinted += write(1, " ", 1);
+		fmt->nprinted = write(1, &c, 1);
 	}
-	else if (recipe->width && recipe->minus)
+	else if (fmt->width && fmt->minus)
 	{
-		recipe->nprinted = write(1, &c, 1);
-		while (recipe->width-- > 1)
-			recipe->nprinted += write(1, " ", 1);
+		fmt->nprinted = write(1, &c, 1);
+		while (fmt->width-- > 1)
+			fmt->nprinted += write(1, " ", 1);
 	}
 	else
-		recipe->nprinted = write(1, &c, 1);
+		fmt->nprinted = write(1, &c, 1);
 }

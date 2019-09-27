@@ -5,96 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 19:32:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/26 23:42:10 by eesaki           ###   ########.fr       */
+/*   Created: 2019/09/27 06:55:43 by eesaki            #+#    #+#             */
+/*   Updated: 2019/09/27 07:16:03 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void	flags(const char *format, t_format *recipe)
+void	flags(const char *format, t_format *fmt)
 {
-	while (ft_strchr(FLAGS, format[recipe->i]))
+	while (ft_strchr(FLAGS, format[fmt->i]))
 	{
-		if (format[recipe->i] == '#')
-			recipe->hash = 1;
-		else if (format[recipe->i] == '0')
-			recipe->zero = 1;
-		else if (format[recipe->i] == '-')
-			recipe->minus = 1;
-		else if (format[recipe->i] == '+')
-			recipe->plus = 1;
-		else if (format[recipe->i] == ' ')
-			recipe->space = 1;
-		recipe->i++;
+		if (format[fmt->i] == '#')
+			fmt->hash = 1;
+		else if (format[fmt->i] == '0')
+			fmt->zero = 1;
+		else if (format[fmt->i] == '-')
+			fmt->minus = 1;
+		else if (format[fmt->i] == '+')
+			fmt->plus = 1;
+		else if (format[fmt->i] == ' ')
+			fmt->space = 1;
+		fmt->i++;
 	}
-	if (recipe->plus)
-		recipe->space = 0;
+	if (fmt->plus)
+		fmt->space = 0;
 }
 
-void	width(const char *format, t_format *recipe, va_list ap)
+void	width(const char *format, t_format *fmt, va_list ap)
 {
-	if ('0' <= format[recipe->i] && format[recipe->i] <= '9')
+	if ('0' <= format[fmt->i] && format[fmt->i] <= '9')
 	{
-		recipe->width = ft_atoi(&format[recipe->i]);
-		while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
-			recipe->i++;
+		fmt->width = ft_atoi(&format[fmt->i]);
+		while ('0' <= format[fmt->i] && format[fmt->i] <= '9')
+			fmt->i++;
 	}
-	else if (format[recipe->i] == '*')
+	else if (format[fmt->i] == '*')
 	{
-		recipe->width = (int)va_arg(ap, int);
-		while (format[recipe->i] == '*')
-			recipe->i++;
+		fmt->width = (int)va_arg(ap, int);
+		while (format[fmt->i] == '*')
+			fmt->i++;
 	}
 }
 
-void	precision(const char *format, t_format *recipe)
+void	precision(const char *format, t_format *fmt)
 {
-	if (format[recipe->i] == '.')
+	if (format[fmt->i] == '.')
 	{
-		recipe->i++;
-		recipe->hasprecision = 1;
-		if (format[recipe->i] >= '0' && format[recipe->i] <= '9')
+		fmt->i++;
+		fmt->hasprecision = 1;
+		if (format[fmt->i] >= '0' && format[fmt->i] <= '9')
 		{
-			recipe->precision = ft_atoi(&format[recipe->i]);
-		while ('0' <= format[recipe->i] && format[recipe->i] <= '9')
-			recipe->i++;
+			fmt->precision = ft_atoi(&format[fmt->i]);
+			while ('0' <= format[fmt->i] && format[fmt->i] <= '9')
+				fmt->i++;
 		}
 	}
 }
 
-void	length(const char *format, t_format *recipe)
+void	length(const char *format, t_format *fmt)
 {
 	size_t	i;
 
-	i = recipe->i;
+	i = fmt->i;
 	if (ft_strchr(LENGTH, format[i]))
 	{
 		if (format[i] == 'h')
 		{
-			recipe->length = 1;
+			fmt->length = 1;
 			if (format[i + 1] == 'h')
-				recipe->length = 2;
+				fmt->length = 2;
 		}
 		if (format[i] == 'l')
 		{
-			recipe->length = 3;
+			fmt->length = 3;
 			if (format[i + 1] == 'l')
-				recipe->length = 4;
+				fmt->length = 4;
 		}
 		if (format[i] == 'L')
-			recipe->length = 5;
+			fmt->length = 5;
 	}
 	while (ft_strchr(LENGTH, format[i]))
 		i++;
-	recipe->i = i;
+	fmt->i = i;
 }
 
-void		find_sub_specifiers(const char *format, t_format *recipe, va_list ap)
+void	find_sub_specifiers(const char *format, t_format *fmt, va_list ap)
 {
-	flags(format, recipe);
-	width(format, recipe, ap);
-	precision(format, recipe);
-	length(format, recipe);
+	flags(format, fmt);
+	width(format, fmt, ap);
+	precision(format, fmt);
+	length(format, fmt);
 }

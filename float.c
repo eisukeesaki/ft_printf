@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/26 22:03:54 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 06:59:10 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 void	convert(t_float *fl)
 {
@@ -19,7 +18,7 @@ void	convert(t_float *fl)
 	fl->int_s = uitoa_base(fl->int_ld, 10);
 	fl->n -= (long double)fl->int_ld;
 	fl->n *= power(10, fl->precision);
-	fl->frac_ld =  (fl->n >= 0) ? (long)(fl->n + 0.5) : (long)(fl->n - 0.5); // why not (ld)0.5?
+	fl->frac_ld = (fl->n >= 0) ? (long)(fl->n + 0.5) : (long)(fl->n - 0.5);
 	if (fl->frac_ld == power(10, fl->precision) && fl->frac_ld != 0)
 	{
 		fl->int_s = uitoa_base(fl->int_ld + 1, 10);
@@ -28,7 +27,7 @@ void	convert(t_float *fl)
 	fl->frac_s = uitoa_base(fl->frac_ld, 10);
 }
 
-void	format(t_format *recipe, t_float *fl)
+void	format(t_format *fmt, t_float *fl)
 {
 	if (fl->n < 0)
 	{
@@ -36,17 +35,17 @@ void	format(t_format *recipe, t_float *fl)
 		fl->hassign = 1;
 		fl->n = -fl->n;
 	}
-	else if (fl->n > 0 && recipe->plus)
+	else if (fl->n > 0 && fmt->plus)
 	{
 		fl->sign = '+';
 		fl->hassign = 1;
 	}
 	fl->precision = 6;
-	if (recipe->space && fl->hassign)
-		recipe->space = 0;
-	fl->pad_char = recipe->zero && !recipe->minus ? '0' : ' ';
-	if (recipe->hasprecision && recipe->precision >= 0)
-		fl->precision = recipe->precision;
+	if (fmt->space && fl->hassign)
+		fmt->space = 0;
+	fl->pad_char = fmt->zero && !fmt->minus ? '0' : ' ';
+	if (fmt->hasprecision && fmt->precision >= 0)
+		fl->precision = fmt->precision;
 }
 
 void	bzero_fl(t_float *fl)
@@ -76,19 +75,19 @@ t_float	*init_fl(void)
 	return (fl);
 }
 
-void	print_float(t_format *recipe, va_list ap)
+void	print_float(t_format *fmt, va_list ap)
 {
-	t_float 	*fl;
+	t_float	*fl;
 
 	fl = init_fl();
-	if (recipe->length == UPRL)
+	if (fmt->length == UPPER_L)
 		fl->n = (long double)va_arg(ap, long double);
 	else
 		fl->n = (long double)va_arg(ap, double);
-	format(recipe, fl);
+	format(fmt, fl);
 	convert(fl);
-	format_2(recipe, fl);
-	justify(recipe, fl);
+	format_2(fmt, fl);
+	justify(fmt, fl);
 	free(fl->int_s);
 	free(fl->frac_s);
 	free(fl);
