@@ -19,8 +19,7 @@ SRCS = ft_printf.c \
 		itoa_base.c \
 		uitoa_base.c \
 		itoa_base_upper.c \
-		power.c \
-		libft/*.c
+		power.c
 OBJS = ft_printf.o \
 		bzero_fmt.o \
 		parse.o \
@@ -40,29 +39,38 @@ OBJS = ft_printf.o \
 		itoa_base.o \
 		uitoa_base.o \
 		itoa_base_upper.o \
-		power.o \
-		ft_*.o
+		power.o
 NAME = libftprintf.a
-RM = rm -rf
+RM = rm -f
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -c $(SRCS) -I libft
+	@echo ">compiling libft and creating archive"
+	make -C libft
+	@echo ">copying libft.a to project root as libftprintf.a"
+	cp libft/libft.a ./$(NAME)
+	@echo ">creating archive"
 	ar rcs $(NAME) $(OBJS)
+	@echo ">generating index to archive"
+	ranlib $(NAME)
+
+$(OBJS):
+	@echo ">compiling ft_printf without linking"
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 all: $(NAME)
 
 clean:
+	@echo ">deleting libft object files"
+	make clean -C libft
+	@echo ">deleting ft_printf object files"
 	$(RM) $(OBJS)
 
-fclean: clean
+fclean:
+	@echo ">deleting libft object files and archive"
+	make fclean -C libft
+	@echo ">deleting ft_printf object files"
+	$(RM) $(OBJS)
+	@echo ">deleting ft_printf archive"
 	$(RM) $(NAME)
 
 re: fclean all
-
-libft/libft.a:
-	make -c libft
-
-# TODO: generate object files to dedicated directory
-		# separate them to libftobj/ ftprintfobj/ ?
-# TODO: check for libft changes and make them every time if necessary
-# TODO: organize files to src/ includes/ ?
