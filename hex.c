@@ -6,12 +6,21 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 06:33:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/27 23:39:35 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
+
+void	hash(t_format *fmt, char *s, const char x)
+{
+	if (fmt->hash && !ft_strequ(s, "0") && x == 'x')
+		fmt->nprinted += write(1, "0x", 2);
+	else if (fmt->hash && !ft_strequ(s, "0") && x == 'X')
+		fmt->nprinted += write(1, "0X", 2);
+	fmt->hash = 0;
+}
 
 void	right_justify_hex(char *s, int intlen, const char x, t_format *fmt)
 {
@@ -19,23 +28,11 @@ void	right_justify_hex(char *s, int intlen, const char x, t_format *fmt)
 
 	pad_char = (fmt->zero && !fmt->hasprecision) ? '0' : ' ';
 	if (pad_char == '0')
-	{
-		if (fmt->hash && !ft_strequ(s, "0") && x == 'x')
-			fmt->nprinted += write(1, "0x", 2);
-		else if (fmt->hash && !ft_strequ(s, "0") && x == 'X')
-			fmt->nprinted += write(1, "0X", 2);
-		while (fmt->width-- > 0)
-			fmt->nprinted += write(1, &pad_char, 1);
-	}
-	else if (pad_char == ' ')
-	{
-		while (fmt->width-- > 0)
-			fmt->nprinted += write(1, &pad_char, 1);
-		if (fmt->hash && !ft_strequ(s, "0") && x == 'x')
-			fmt->nprinted += write(1, "0x", 2);
-		else if (fmt->hash && !ft_strequ(s, "0") && x == 'X')
-			fmt->nprinted += write(1, "0X", 2);
-	}
+		hash(fmt, s, x);
+	while (fmt->width-- > 0)
+		fmt->nprinted += write(1, &pad_char, 1);
+	if (fmt->hash)
+		hash(fmt, s, x);
 	while (fmt->precision-- > 0)
 		fmt->nprinted += write(1, "0", 1);
 	fmt->nprinted += write(1, s, intlen);
