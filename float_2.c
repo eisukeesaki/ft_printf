@@ -6,28 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 04:16:43 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 08:02:37 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	sign_and_width(t_format *fmt, t_float *fl)
-{
-	if (fl->pad_char == '0' && fmt->width > 0)
-	{
-		if (fmt->space)
-		{
-			fmt->nprinted += write(1, " ", 1);
-			fmt->space = 0;
-		}
-		if (fl->hassign)
-		{
-			fmt->nprinted += write(1, &fl->sign, 1);
-			fl->hassign = 0;
-		}
-	}
-}
 
 void	left_justify_float(t_format *fmt, t_float *fl)
 {
@@ -54,6 +37,23 @@ void	left_justify_float(t_format *fmt, t_float *fl)
 	}
 	while (fl->pad-- > 0)
 		write(1, &fl->pad_char, 1);
+}
+
+void	sign_and_width(t_format *fmt, t_float *fl)
+{
+	if (fl->pad_char == '0' && fmt->width > 0)
+	{
+		if (fmt->space)
+		{
+			fmt->nprinted += write(1, " ", 1);
+			fmt->space = 0;
+		}
+		if (fl->hassign)
+		{
+			fmt->nprinted += write(1, &fl->sign, 1);
+			fl->hassign = 0;
+		}
+	}
 }
 
 void	right_justify_float(t_format *fmt, t_float *fl)
