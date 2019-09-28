@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 06:47:10 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 04:18:21 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	left_justify_int(char *s, int intlen, t_format *fmt, int sign)
 		fmt->nprinted += write(1, " ", 1);
 }
 
-void	sub_specifiers_int(long long n, t_format *fmt, int sign)
+void	sub_specifiers_int(intmax_t n, t_format *fmt, int sign)
 {
 	char	*s;
 	int		intlen;
@@ -90,16 +90,16 @@ void	sub_specifiers_int(long long n, t_format *fmt, int sign)
 	if (fmt->space && sign)
 		fmt->space = 0;
 	s = itoa_base(n, 10);
-	if (fmt->minus)
-		left_justify_int(s, intlen, fmt, sign);
-	else if (!fmt->minus)
+	if (!fmt->minus)
 		right_justify_int(s, intlen, fmt, sign);
+	else if (fmt->minus)
+		left_justify_int(s, intlen, fmt, sign);
 	free(s);
 }
 
 void	print_int(t_format *fmt, va_list ap)
 {
-	long long	n;
+	intmax_t	n;
 	int			sign;
 
 	n = 0;

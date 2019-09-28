@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 06:59:10 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 06:47:10 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	convert(t_float *fl)
 {
 	fl->int_ld = (long long)fl->n;
-	fl->int_s = uitoa_base(fl->int_ld, 10);
+	fl->int_s = itoa_base(fl->int_ld, 10);
 	fl->n -= (long double)fl->int_ld;
 	fl->n *= power(10, fl->precision);
 	fl->frac_ld = (fl->n >= 0) ? (long)(fl->n + 0.5) : (long)(fl->n - 0.5);
 	if (fl->frac_ld == power(10, fl->precision) && fl->frac_ld != 0)
 	{
-		fl->int_s = uitoa_base(fl->int_ld + 1, 10);
+		fl->int_s = itoa_base(fl->int_ld + 1, 10);
 		fl->frac_ld = 0;
 	}
-	fl->frac_s = uitoa_base(fl->frac_ld, 10);
+	fl->frac_s = itoa_base(fl->frac_ld, 10);
 }
 
 void	format(t_format *fmt, t_float *fl)

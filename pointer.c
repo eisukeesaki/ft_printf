@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 06:45:39 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	sub_specifiers_pointer(uintmax_t n, t_format *fmt)
 	char	*s;
 	int		intlen;
 
-	s = uitoa_base(n, 16);
+	s = itoa_base(n, 16);
 	intlen = ft_strlen(s);
 	fmt->width -= intlen + 2;
-	if (fmt->minus)
-		left_justify_pointer(s, intlen, fmt);
-	else if (!fmt->minus)
+	if (!fmt->minus)
 		right_justify_pointer(s, intlen, fmt);
+	else if (fmt->minus)
+		left_justify_pointer(s, intlen, fmt);
 	free(s);
 }
 

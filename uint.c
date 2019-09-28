@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 06:27:52 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 06:45:22 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	left_justify_uint(char *s, int intlen, t_format *fmt)
 		fmt->nprinted += write(1, " ", 1);
 }
 
-void	sub_specifiers_uint(unsigned long long n, t_format *fmt)
+void	sub_specifiers_uint(uintmax_t n, t_format *fmt)
 {
 	char	*s;
 	int		intlen;
@@ -53,17 +53,17 @@ void	sub_specifiers_uint(unsigned long long n, t_format *fmt)
 	else
 		fmt->precision = 0;
 	fmt->width = fmt->width - (intlen + fmt->precision + fmt->space);
-	s = uitoa_base(n, 10);
-	if (fmt->minus)
-		left_justify_uint(s, intlen, fmt);
-	else if (!fmt->minus)
+	s = itoa_base(n, 10);
+	if (!fmt->minus)
 		right_justify_uint(s, intlen, fmt);
+	else if (fmt->minus)
+		left_justify_uint(s, intlen, fmt);
 	free(s);
 }
 
 void	print_uint(t_format *fmt, va_list ap)
 {
-	unsigned long long	n;
+	uintmax_t	n;
 
 	n = 0;
 	if (!fmt->length)

@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 06:48:23 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sub_specifiers_hex(const char x, uintmax_t n, t_format *fmt)
 	char	*s;
 	int		intlen;
 
-	s = x == 'x' ? uitoa_base(n, 16) : itoa_base_upper(n, 16);
+	s = x == 'x' ? itoa_base(n, 16) : itoa_base_upper(n, 16);
 	intlen = (fmt->hasprecision && fmt->precision <= 0 && n == 0) ? 0
 																: ft_strlen(s);
 	if (fmt->hasprecision && ft_strequ(s, "0") && fmt->precision > intlen)
@@ -73,10 +73,10 @@ void	sub_specifiers_hex(const char x, uintmax_t n, t_format *fmt)
 		fmt->width = fmt->width - (intlen + fmt->precision + 2);
 	else
 		fmt->width = fmt->width - (intlen + fmt->precision);
-	if (fmt->minus)
-		left_justify_hex(s, intlen, x, fmt);
-	else if (fmt->minus == 0)
+	if (!fmt->minus)
 		right_justify_hex(s, intlen, x, fmt);
+	else if (fmt->minus)
+		left_justify_hex(s, intlen, x, fmt);
 	free(s);
 }
 

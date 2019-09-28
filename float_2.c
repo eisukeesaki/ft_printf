@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 04:16:43 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,6 @@ void	sign_and_width(t_format *fmt, t_float *fl)
 		{
 			fmt->nprinted += write(1, &fl->sign, 1);
 			fl->hassign = 0;
-		}
-	}
-}
-
-void	right_justify_float(t_format *fmt, t_float *fl)
-{
-	size_t	i;
-
-	i = 0;
-	sign_and_width(fmt, fl);
-	while (fl->pad-- > 0)
-		fmt->nprinted += write(1, &fl->pad_char, 1);
-	if (fmt->space)
-		fmt->nprinted += write(1, " ", 1);
-	if (fl->hassign)
-		fmt->nprinted += write(1, &fl->sign, 1);
-	while (fl->int_s[i])
-		fmt->nprinted += write(1, &fl->int_s[i++], 1);
-	if (fl->dot)
-	{
-		fmt->nprinted += write(1, ".", 1);
-		while (fl->zeros-- > 0 && fl->precision-- != 0)
-			fmt->nprinted += write(1, "0", 1);
-		i = 0;
-		while (fl->frac_s[i] && fl->precision != 0)
-		{
-			fmt->nprinted += write(1, &fl->frac_s[i++], 1);
-			fl->precision--;
 		}
 	}
 }
@@ -84,12 +56,40 @@ void	left_justify_float(t_format *fmt, t_float *fl)
 		write(1, &fl->pad_char, 1);
 }
 
+void	right_justify_float(t_format *fmt, t_float *fl)
+{
+	size_t	i;
+
+	i = 0;
+	sign_and_width(fmt, fl);
+	while (fl->pad-- > 0)
+		fmt->nprinted += write(1, &fl->pad_char, 1);
+	if (fmt->space)
+		fmt->nprinted += write(1, " ", 1);
+	if (fl->hassign)
+		fmt->nprinted += write(1, &fl->sign, 1);
+	while (fl->int_s[i])
+		fmt->nprinted += write(1, &fl->int_s[i++], 1);
+	if (fl->dot)
+	{
+		fmt->nprinted += write(1, ".", 1);
+		while (fl->zeros-- > 0 && fl->precision-- != 0)
+			fmt->nprinted += write(1, "0", 1);
+		i = 0;
+		while (fl->frac_s[i] && fl->precision != 0)
+		{
+			fmt->nprinted += write(1, &fl->frac_s[i++], 1);
+			fl->precision--;
+		}
+	}
+}
+
 void	justify(t_format *fmt, t_float *fl)
 {
-	if (fmt->minus)
-		left_justify_float(fmt, fl);
-	else if (!fmt->minus)
+	if (!fmt->minus)
 		right_justify_float(fmt, fl);
+	else if (fmt->minus)
+		left_justify_float(fmt, fl);
 }
 
 void	format_2(t_format *fmt, t_float *fl)

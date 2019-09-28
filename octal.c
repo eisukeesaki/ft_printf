@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 06:45:28 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	sub_specifiers_octal(uintmax_t n, t_format *fmt)
 	char	*s;
 	int		intlen;
 
-	s = uitoa_base(n, 8);
+	s = itoa_base(n, 8);
 	intlen =
 	(fmt->hasprecision && fmt->precision <= 0 && !fmt->hash && n == 0) ? 0
 																: ft_strlen(s);
@@ -59,10 +59,10 @@ void	sub_specifiers_octal(uintmax_t n, t_format *fmt)
 		fmt->width = fmt->width - (intlen + fmt->precision);
 	else
 		fmt->width = fmt->width - (intlen + fmt->precision + fmt->hash);
-	if (fmt->minus)
-		left_justify_octal(s, intlen, fmt);
-	else if (!fmt->minus)
+	if (!fmt->minus)
 		right_justify_octal(s, intlen, fmt);
+	else if (fmt->minus)
+		left_justify_octal(s, intlen, fmt);
 	free(s);
 }
 

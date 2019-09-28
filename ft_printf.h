@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:48:53 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 01:14:12 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 06:50:39 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@
 **									symbol lists
 **-----------------------------------------------------------------------------
 */
-# define CONVERSIONS	"cspdiouxXf%"
+# define CONVERSIONS	"csdiuoxXpf%"
 # define SUBSPEC		"#0-+ *.0123456789lL"
 # define FLAGS			"#0-+ "
 # define LENGTH			"hlL"
-# define ALLSYMBOLS		"cspdiouxXf%#0-+ *.0123456789hlL"
+# define ALLSYMBOLS		"csdiuoxXpf%#0-+ *.0123456789hlL"
 
 /*
 **-----------------------------------------------------------------------------
@@ -100,31 +100,33 @@ typedef struct			s_float
 **-----------------------------------------------------------------------------
 */
 int						ft_printf(const char *format, ...);
-int						count_int_digits(intmax_t n);
-void					find_sub_specifiers(const char *format,
-													t_format *fmt, va_list ap);
-void					dispatch(char c, t_format *fmt, va_list ap);
 void					bzero_fmt(t_format *fmt);
 void					re_bzero_fmt(t_format *fmt);
 ssize_t					parse(const char *format,
 										t_format *fmt, va_list ap, size_t i);
-char					*itoa_base(intmax_t n, int base);
-char					*uitoa_base(uintmax_t n, int base);
-char					*itoa_base_upper(intmax_t n, int base);
-void					print_int(t_format *fmt, va_list ap);
-void					print_uint(t_format *fmt, va_list ap);
+void					find_sub_specifiers(const char *format,
+													t_format *fmt, va_list ap);
+void					dispatch(char c, t_format *fmt, va_list ap);
+
 void					print_char(t_format *fmt, va_list ap);
 void					print_string(t_format *fmt, va_list ap);
+void					print_int(t_format *fmt, va_list ap);
+void					print_uint(t_format *fmt, va_list ap);
 void					print_octal(t_format *fmt, va_list ap);
 void					print_hex(const char x, t_format *fmt, va_list ap);
 void					print_pointer(t_format *fmt, va_list ap);
-void					print_percent(t_format *fmt);
 void					print_float(t_format *fmt, va_list ap);
+void					print_percent(t_format *fmt);
+
+int						count_int_digits(intmax_t n);
+long double				power(int base, intmax_t exponent);
 void					format_2(t_format *fmt, t_float *fl);
 void					justify(t_format *fmt, t_float *fl);
-void					left_justify_float(t_format *fmt, t_float *fl);
 void					right_justify_float(t_format *fmt, t_float *fl);
 void					sign_and_width(t_format *fmt, t_float *fl);
-long double				power(intmax_t base, intmax_t exponent);
+void					left_justify_float(t_format *fmt, t_float *fl);
+
+char					*itoa_base(intmax_t n, int base);
+char					*itoa_base_upper(intmax_t n, int base);
 
 #endif

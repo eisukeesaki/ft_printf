@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 04:19:50 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	print_string(t_format *fmt, va_list ap)
 	if (!(s = (char *)va_arg(ap, char *)))
 		s = "(null)";
 	slen = (int)ft_strlen(s);
-	if (fmt->minus)
-		left_justify_string(fmt, s, slen);
-	else if (!fmt->minus)
+	if (!fmt->minus)
 		right_justify_string(fmt, s, slen);
+	else if (fmt->minus)
+		left_justify_string(fmt, s, slen);
 }

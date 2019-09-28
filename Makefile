@@ -17,7 +17,6 @@ SRCS = ft_printf.c \
 		string.c \
 		count_int_digits.c \
 		itoa_base.c \
-		uitoa_base.c \
 		itoa_base_upper.c \
 		power.c
 OBJS = ft_printf.o \
@@ -37,7 +36,6 @@ OBJS = ft_printf.o \
 		string.o \
 		count_int_digits.o \
 		itoa_base.o \
-		uitoa_base.o \
 		itoa_base_upper.o \
 		power.o
 NAME = libftprintf.a
