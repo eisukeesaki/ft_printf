@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 23:24:03 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 05:29:45 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 00:55:53 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include "libft/libft.h"
+#include "ft_printf.h"
 
 size_t	count_digit(uintmax_t n, int base)
 {
@@ -82,7 +81,7 @@ char	*toa(intmax_t n, int base)
 	return (ft_strrev(s));
 }
 
-char	*itoa_base(intmax_t n, uintmax_t base)
+char	*itoa_base(intmax_t n, int base)
 {
 	if (base == 10)
 		return (itoa(n, base));

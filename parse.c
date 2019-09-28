@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:40:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 07:06:29 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 int		sub_specifiers_dispatch(
 					const char *format, t_format *fmt, size_t i, va_list ap)

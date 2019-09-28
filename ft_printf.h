@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:48:53 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 07:14:40 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 01:14:12 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include "libft/libft.h"
 
 /*
 **-----------------------------------------------------------------------------
@@ -99,7 +100,7 @@ typedef struct			s_float
 **-----------------------------------------------------------------------------
 */
 int						ft_printf(const char *format, ...);
-size_t					count_int_digits(intmax_t n);
+int						count_int_digits(intmax_t n);
 void					find_sub_specifiers(const char *format,
 													t_format *fmt, va_list ap);
 void					dispatch(char c, t_format *fmt, va_list ap);
@@ -107,7 +108,7 @@ void					bzero_fmt(t_format *fmt);
 void					re_bzero_fmt(t_format *fmt);
 ssize_t					parse(const char *format,
 										t_format *fmt, va_list ap, size_t i);
-char					*itoa_base(uintmax_t n, int base);
+char					*itoa_base(intmax_t n, int base);
 char					*uitoa_base(uintmax_t n, int base);
 char					*itoa_base_upper(intmax_t n, int base);
 void					print_int(t_format *fmt, va_list ap);

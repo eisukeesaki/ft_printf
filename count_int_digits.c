@@ -6,12 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 22:03:22 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/21 23:57:57 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 00:21:26 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdint.h>
+#include "ft_printf.h"
 
 int		count_int_digits(intmax_t n)
 {

@@ -6,11 +6,10 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 06:33:07 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 00:16:18 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	right_justify_octal(char *s, int intlen, t_format *fmt)

@@ -6,11 +6,10 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:38:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 07:04:03 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 00:57:50 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 int		ft_printf(const char *format, ...)
