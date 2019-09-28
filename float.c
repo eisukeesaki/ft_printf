@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 06:47:10 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 07:32:14 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ void	print_float(t_format *fmt, va_list ap)
 
 	fl = init_fl();
 	if (fmt->length == UPPER_L)
-		fl->n = (long double)va_arg(ap, long double);
+		fl->n = va_arg(ap, long double);
 	else
-		fl->n = (long double)va_arg(ap, double);
+		fl->n = va_arg(ap, double);
 	format(fmt, fl);
 	convert(fl);
 	format_2(fmt, fl);

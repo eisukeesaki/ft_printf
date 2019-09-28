@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 06:45:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 07:23:19 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	print_pointer(t_format *fmt, va_list ap)
 {
 	uintmax_t	p;
 
-	p = (unsigned long long)va_arg(ap, unsigned long long);
+	p = va_arg(ap, unsigned long long);
 	sub_specifiers_pointer(p, fmt);
 }

@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 06:45:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 07:22:05 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ void	print_uint(t_format *fmt, va_list ap)
 
 	n = 0;
 	if (!fmt->length)
-		n = (unsigned)va_arg(ap, unsigned);
+		n = va_arg(ap, unsigned);
 	else if (fmt->length == HH)
 		n = (unsigned char)va_arg(ap, int);
 	else if (fmt->length == H)
 		n = (unsigned short)va_arg(ap, int);
 	else if (fmt->length == LL)
-		n = (unsigned long long)va_arg(ap, unsigned long long);
+		n = va_arg(ap, unsigned long long);
 	else if (fmt->length == L)
-		n = (unsigned long)va_arg(ap, unsigned long);
+		n = va_arg(ap, unsigned long);
 	sub_specifiers_uint(n, fmt);
 }

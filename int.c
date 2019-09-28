@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 04:18:21 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 07:21:39 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,15 @@ void	print_int(t_format *fmt, va_list ap)
 	n = 0;
 	sign = 0;
 	if (!fmt->length)
-		n = (int)va_arg(ap, int);
+		n = va_arg(ap, int);
 	else if (fmt->length == HH)
 		n = (char)va_arg(ap, int);
 	else if (fmt->length == H)
 		n = (short)va_arg(ap, int);
 	else if (fmt->length == LL)
-		n = (long long)va_arg(ap, long long);
+		n = va_arg(ap, long long);
 	else if (fmt->length == L)
-		n = (long)va_arg(ap, long);
+		n = va_arg(ap, long);
 	if (fmt->plus && n >= 0)
 		sign = POSITIVE;
 	else if (n < 0)

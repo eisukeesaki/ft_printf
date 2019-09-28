@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 22:57:16 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 06:48:23 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 07:23:10 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ void	print_hex(const char x, t_format *fmt, va_list ap)
 
 	n = 0;
 	if (!fmt->length)
-		n = (unsigned)va_arg(ap, unsigned);
+		n = va_arg(ap, unsigned);
 	else if (fmt->length == HH)
 		n = (unsigned char)va_arg(ap, int);
 	else if (fmt->length == H)
 		n = (unsigned short)va_arg(ap, int);
 	else if (fmt->length == LL)
-		n = (unsigned long long)va_arg(ap, unsigned long long);
+		n = va_arg(ap, unsigned long long);
 	else if (fmt->length == L)
-		n = (unsigned long)va_arg(ap, unsigned long);
+		n = va_arg(ap, unsigned long);
 	sub_specifiers_hex(x, n, fmt);
 }

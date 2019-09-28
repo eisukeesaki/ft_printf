@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/27 06:40:46 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/28 07:30:58 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_char(t_format *fmt, va_list ap)
 {
 	char	c;
 
-	c = (unsigned char)va_arg(ap, int);
+	c = (char)va_arg(ap, int);
 	if (fmt->width && !fmt->minus)
 	{
 		while (fmt->width-- > 1)
