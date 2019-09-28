@@ -44,13 +44,12 @@ NAME = libftprintf.a
 RM = rm -f
 
 $(NAME): $(OBJS)
-	@echo ">compiling libft and creating archive"
 	make -C libft
-	@echo ">copying libft.a to project root as libftprintf.a"
+	@echo ">copying libft archive to project root as libftprintf.a"
 	cp libft/libft.a ./$(NAME)
-	@echo ">creating archive"
+	@echo ">creating ft_printf archive"
 	ar rcs $(NAME) $(OBJS)
-	@echo ">generating index to archive"
+	@echo ">generating index to ft_printf archive"
 	ranlib $(NAME)
 
 $(OBJS):
@@ -60,13 +59,11 @@ $(OBJS):
 all: $(NAME)
 
 clean:
-	@echo ">deleting libft object files"
 	make clean -C libft
 	@echo ">deleting ft_printf object files"
 	$(RM) $(OBJS)
 
 fclean:
-	@echo ">deleting libft object files and archive"
 	make fclean -C libft
 	@echo ">deleting ft_printf object files"
 	$(RM) $(OBJS)
