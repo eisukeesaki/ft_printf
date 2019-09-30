@@ -6,10 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 07:23:19 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 04:31:54 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	right_justify_pointer(char *s, int intlen, t_format *fmt)

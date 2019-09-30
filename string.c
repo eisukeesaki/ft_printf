@@ -6,10 +6,11 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 20:14:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 07:23:30 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 04:32:20 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	left_justify_string(t_format *fmt, char *s, int slen)

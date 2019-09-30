@@ -6,12 +6,13 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 03:38:30 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 04:34:48 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
 #include <limits.h>
+#include "ft_printf.h"
 
 int		zero_and_width_int(t_format *fmt, char pad, char sign_char, int sign)
 {
