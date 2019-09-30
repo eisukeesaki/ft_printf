@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 19:40:54 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 04:31:23 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 04:51:44 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		sub_specifiers_dispatch(
 	else if (ft_strchr(CONVERSIONS, format[i]))
 	{
 		dispatch(format[i], fmt, ap);
-		re_bzero_fmt(fmt);
+		re_init_fmt(fmt);
 	}
 	return (fmt->i - 1);
 }

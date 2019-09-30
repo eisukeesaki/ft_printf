@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:48:53 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 04:28:00 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 04:51:21 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ typedef struct			s_float
 **-----------------------------------------------------------------------------
 */
 int						ft_printf(const char *format, ...);
-void					bzero_fmt(t_format *fmt);
-void					re_bzero_fmt(t_format *fmt);
+void					re_init_fmt(t_format *fmt);
 ssize_t					parse(const char *format,
 										t_format *fmt, va_list ap, size_t i);
 void					find_sub_specifiers(const char *format,
