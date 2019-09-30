@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 04:28:27 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 07:03:01 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_float	*init_fl(void)
 	t_float *fl;
 
 	if (!(fl = (t_float *)malloc(sizeof(t_float))))
-		return (0);
+		return (1);
 	bzero_fl(fl);
 	return (fl);
 }

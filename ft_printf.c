@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:38:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 04:44:22 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 06:56:11 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_printf(const char *format, ...)
 
 	format_len = ft_strlen(format);
 	if (!(fmt = (t_format *)malloc(sizeof(t_format))))
-		return (0);
+		return (1);
 	ft_bzero(fmt, sizeof(t_format));
 	fmt->format = (char *)format;
 	va_start(ap, format);
