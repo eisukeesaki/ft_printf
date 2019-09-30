@@ -6,11 +6,12 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 07:21:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 03:38:30 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
 
 int		zero_and_width_int(t_format *fmt, char pad, char sign_char, int sign)
 {
@@ -97,13 +98,8 @@ void	sub_specifiers_int(intmax_t n, t_format *fmt, int sign)
 	free(s);
 }
 
-void	print_int(t_format *fmt, va_list ap)
+void	print_int(t_format *fmt, va_list ap, int sign, intmax_t n)
 {
-	intmax_t	n;
-	int			sign;
-
-	n = 0;
-	sign = 0;
 	if (!fmt->length)
 		n = va_arg(ap, int);
 	else if (fmt->length == HH)
@@ -118,6 +114,11 @@ void	print_int(t_format *fmt, va_list ap)
 		sign = POSITIVE;
 	else if (n < 0)
 	{
+		if (n == LONG_MIN)
+		{
+			fmt->nprinted += write(1, "-9223372036854775808", 20);
+			return ;
+		}
 		sign = NEGATIVE;
 		n *= -1;
 	}

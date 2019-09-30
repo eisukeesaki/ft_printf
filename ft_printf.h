@@ -6,7 +6,7 @@
 /*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:48:53 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/28 06:50:39 by eesaki           ###   ########.fr       */
+/*   Updated: 2019/09/30 03:34:53 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ void					dispatch(char c, t_format *fmt, va_list ap);
 
 void					print_char(t_format *fmt, va_list ap);
 void					print_string(t_format *fmt, va_list ap);
-void					print_int(t_format *fmt, va_list ap);
+void					print_int(t_format *fmt, va_list ap, int sign,
+																intmax_t n);
 void					print_uint(t_format *fmt, va_list ap);
 void					print_octal(t_format *fmt, va_list ap);
 void					print_hex(const char x, t_format *fmt, va_list ap);
