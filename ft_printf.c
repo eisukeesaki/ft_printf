@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eesaki <eesaki@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 05:38:44 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 06:56:11 by eesaki           ###   ########.fr       */
+/*   Updated: 2020/08/23 19:04:43 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_printf(const char *format, ...)
 
 	format_len = ft_strlen(format);
 	if (!(fmt = (t_format *)malloc(sizeof(t_format))))
-		return (1);
+		error("failed to allcate fmt in ft_printf()");
 	ft_bzero(fmt, sizeof(t_format));
 	fmt->format = (char *)format;
 	va_start(ap, format);

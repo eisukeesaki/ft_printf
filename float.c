@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eesaki <eesaki@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 18:48:32 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 07:03:01 by eesaki           ###   ########.fr       */
+/*   Updated: 2020/08/23 19:03:59 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_float	*init_fl(void)
 	t_float *fl;
 
 	if (!(fl = (t_float *)malloc(sizeof(t_float))))
-		return (1);
+		error("failed to allocate fl in init_fl()");
 	bzero_fl(fl);
 	return (fl);
 }
