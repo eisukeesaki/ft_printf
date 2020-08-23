@@ -1,6 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c \
+INC = -I libft
+LIBFT = libft/libft.a
+SRCS = \
+		error.c \
+		ft_printf.c \
 		re_init_fmt.c \
 		parse.c \
 		find_sub_specifiers.c \
@@ -19,7 +23,9 @@ SRCS = ft_printf.c \
 		itoa_base.c \
 		itoa_base_upper.c \
 		power.c
-OBJS = ft_printf.o \
+OBJS = \
+		error.o \
+		ft_printf.o \
 		re_init_fmt.o \
 		parse.o \
 		find_sub_specifiers.o \
@@ -42,30 +48,30 @@ NAME = libftprintf.a
 RM = rm -f
 
 $(NAME): $(OBJS)
-	make -C libft
-	@echo ">copying libft archive to project root as libftprintf.a"
-	cp libft/libft.a ./$(NAME)
-	@echo ">creating ft_printf archive"
-	ar rcs $(NAME) $(OBJS)
-	@echo ">generating index to ft_printf archive"
-	ranlib $(NAME)
+	@make -C libft
+	@echo "copying libft archive to project root as libftprintf.a"
+	@cp $(LIBFT) ./$(NAME)
+	@echo "creating ft_printf archive"
+	@ar rcs $(NAME) $(OBJS)
+	@echo "generating index to ft_printf archive"
+	@ranlib $(NAME)
 
 $(OBJS):
-	@echo ">compiling ft_printf without linking"
-	$(CC) $(CFLAGS) -c $(SRCS)
+	@echo "compiling ft_printf without linking"
+	@$(CC) $(CFLAGS) $(INC) -c $(SRCS)
 
 all: $(NAME)
 
 clean:
-	make clean -C libft
-	@echo ">deleting ft_printf object files"
-	$(RM) $(OBJS)
+	@make clean -C libft
+	@echo "deleting ft_printf object files"
+	@$(RM) $(OBJS)
 
 fclean:
-	make fclean -C libft
-	@echo ">deleting ft_printf object files"
-	$(RM) $(OBJS)
-	@echo ">deleting ft_printf archive"
-	$(RM) $(NAME)
+	@make fclean -C libft
+	@echo "deleting ft_printf object files"
+	@$(RM) $(OBJS)
+	@echo "deleting ft_printf archive"
+	@$(RM) $(NAME)
 
 re: fclean all

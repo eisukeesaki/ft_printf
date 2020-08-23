@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_sub_specifiers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eesaki <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: eesaki <eesaki@student.42.us.org>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 06:55:43 by eesaki            #+#    #+#             */
-/*   Updated: 2019/09/30 04:29:16 by eesaki           ###   ########.fr       */
+/*   Updated: 2020/08/23 19:36:40 by eesaki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 void	flags(const char *format, t_format *fmt)
