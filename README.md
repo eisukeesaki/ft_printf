@@ -4,7 +4,7 @@
 
 **This is my own implementation of the Standard C Library function, `printf()`.**
 
-I Implemented it only using the most fundamental functions.
+I Implemented it using only the most fundamental functions.
 
 - write
 - read
