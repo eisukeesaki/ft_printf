@@ -18,9 +18,9 @@ I Implemented it using only the most fundamental functions.
 
 - Format specifiers: `%c`, `%s`, `%d`, `%i`, `%u`, `%o`, `%x`, `%X`, `%p`, `%%`, and ...*drum roll...* `%f`
 - Format flags: `#`, `0`, `-`, `+`, `' '`
-- Argument size modifiers hh, h, l, ll, L
 - Field width
-- Precision
+- Precision modifier
+- Length modifiers `hh`, `h`, `l`, `ll`, `L`
 
 ### My header
 
