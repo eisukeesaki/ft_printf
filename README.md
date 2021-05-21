@@ -6,8 +6,10 @@
 
 I Implemented it using only the most fundamental functions.
 
-- write
+- open
+- close
 - read
+- write
 - malloc
 - free
 - exit
