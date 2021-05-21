@@ -1,5 +1,7 @@
 # ft_printf
 
+### What is `ft_printf`?
+
 **This is my own implementation of the Standard C Library function, `printf()`.**
 
 I Implemented it only using the most fundamental functions.
